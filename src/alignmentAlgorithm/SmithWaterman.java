@@ -143,8 +143,8 @@ public class SmithWaterman {
 			if (!alignments[0][i].equals("ln")) {
 				String s1 = alignments[1][i];
 				String s2 = alignments[0][i];
-				//maximum of 30 characters
-				for (int k = 30 - s1.length(); k > 0; k--) {
+				//maximum of 50 characters
+				for (int k = 50 - s1.length(); k > 0; k--) {
 					System.out.print(" ");
 				}
 				System.out.println(s1 + " - " + s2);
