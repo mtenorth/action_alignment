@@ -266,6 +266,8 @@ public class Main {
 			double wup = (2.0 * depth3) / ((depth1 - depth3) + (depth2 - depth3) + 2.0 * depth3);
 			System.out.println("WUP similarity: " + wup);
 			
+			System.out.println("Test");
+			
 		} catch (OWLOntologyCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
