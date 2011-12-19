@@ -7,6 +7,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Set;
 
+import ontology.Ontology;
+
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -24,6 +26,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 
+import evaluation.ConfusionMatrix;
 import fileReader.DataFileReader;
 import fileReader.SequenceFileReader;
 import alignmentAlgorithm.NeedlemanWunsch;
@@ -38,52 +41,19 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		/*
-		ActionElement reach = new ActionElement("Reaching");
-		ActionElement take = new ActionElement("TakingSomething");
-		ActionElement move = new ActionElement("Moving");
-		ActionElement put = new ActionElement("PuttingDown");
-		ActionElement release = new ActionElement("Releasing");
-		ActionElement wait = new ActionElement("Waiting");
 		
-		ArrayList<ActionElement> seq1 = new ArrayList<ActionElement>();
-		seq1.add(reach);
-		seq1.add(take);
-		seq1.add(move);
-		seq1.add(put);
-		seq1.add(release);
-		seq1.add(wait);
+		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+		Ontology ontology = new Ontology(url);
+		String object1 = "ClearGlass";
+		String object2 = "Water";
+		String object3 = "Event";
+		String object4 = "ClosingADoor";
+		String object5 = "B21";
+		ontology.getWupSimilarity(object1, object2);
+		ontology.getWupSimilarity(object1, object5);
+		ontology.getWupSimilarity(object3, object4);
+		ontology.getWupSimilarity(object4, object5);
 		
-		ArrayList<ActionElement> seq2 = new ArrayList<ActionElement>();
-		seq2.add(reach);
-		seq2.add(take);
-		seq2.add(move);
-		seq2.add(wait);
-		seq2.add(wait);
-		seq2.add(put);
-		seq2.add(release);
-		seq2.add(wait);
-		*/
-		
-		/*
-		SequenceFileReader reader1 = new SequenceFileReader();
-		SequenceFileReader reader2 = new SequenceFileReader();
-		
-		ArrayList<ActionElement> seq1 = reader1.getSequence("C:/Users/Administrator/Desktop/Data/sequences-johannes/lefthand-0-2-condensed.csv");
-		ArrayList<ActionElement> seq2 = reader2.getSequence("C:/Users/Administrator/Desktop/Data/sequences-johannes/lefthand-0-11-condensed.csv");
-		
-		NeedlemanWunsch ndl = new NeedlemanWunsch(seq1, seq2);
-		
-		ndl.printMatrix();
-		ndl.printTraceback();
-		ndl.printAlignment();
-			
-		SmithWaterman smt = new SmithWaterman(seq1, seq2);
-		
-		smt.printMatrix();
-		smt.printTraceback();
-		smt.printAlignment();
-		*/
 		
 		/*
 		DataFileReader reader1 = new DataFileReader();
@@ -141,6 +111,7 @@ public class Main {
 		ActionSequence a17 = new ActionSequence("S55", seq17);
 		
 		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
+		
 		aList.add(a1);
 		aList.add(a2);
 		aList.add(a3);
@@ -162,114 +133,6 @@ public class Main {
 		ConfusionMatrix cm = new ConfusionMatrix(aList);
 		cm.printConfusionMatrix();
 		*/
-		
-		try {
-			
-			/*
-			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			IRI iri = IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl");
-			OWLOntology ontology = manager.loadOntologyFromOntologyDocument(iri);
-			//for (OWLClass cls : ontology.getClassesInSignature()){
-			//	System.out.println(cls);
-			//}
-			//System.out.println();
-			OWLDataFactory dataFactory = manager.getOWLDataFactory();
-			OWLClass closingADoorClass = dataFactory.getOWLClass(IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl#ClosingADoor"));
-			OWLClass parallelExtensionClass = dataFactory.getOWLClass(IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl#ParallelExtension"));
-			//Set<OWLClassExpression> set = actionClass.getSuperClasses(ontology);
-			//for (OWLClassExpression clsExpression : set){
-			//	System.out.println(clsExpression);
-			//}
-			//System.out.println();
-			OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
-			//ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
-			//OWLReasonerConfiguration config = new SimpleConfiguration(progressMonitor);
-			OWLReasoner reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
-			
-			NodeSet<OWLClass> nodeSet = reasoner.getSuperClasses(closingADoorClass, false);
-			for (Node<OWLClass> cls : nodeSet){
-				System.out.println(cls.getRepresentativeElement());
-			}
-			System.out.println();
-			nodeSet = reasoner.getSuperClasses(parallelExtensionClass, false);
-			for (Node<OWLClass> cls : nodeSet){
-				System.out.println(cls.getRepresentativeElement());
-			}
-			*/
-			
-			
-			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			OWLDataFactory dataFactory = manager.getOWLDataFactory();
-			OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
-			OWLOntology ontology = manager.loadOntologyFromOntologyDocument(IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl"));
-			OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
-			
-			System.out.println("Class1: OpeningADoor");
-			OWLClass class1 = dataFactory.getOWLClass(IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl#OpeningADoor"));
-			NodeSet<OWLClass> superClasses1 = reasoner.getSuperClasses(class1, false);
-			Set<Node<OWLClass>> set1 = superClasses1.getNodes();
-			ArrayList<Node<OWLClass>> list1 = new ArrayList<Node<OWLClass>>(set1);
-			int depth1 = list1.size();
-			System.out.println("Depth: " + depth1);
-			OWLClass[] array1 = new OWLClass[depth1];
-			System.out.println("SuperClasses of Class1");
-			for (int i = 0; i < depth1; i++){
-				array1[i] = list1.get(i).getRepresentativeElement();
-				System.out.println(array1[i]);
-			}
-			
-			System.out.println();
-			
-			System.out.println("Class2: ParallelExtension");
-			OWLClass class2 = dataFactory.getOWLClass(IRI.create("http://ias.cs.tum.edu/kb/knowrob.owl#ParallelExtension"));
-			NodeSet<OWLClass> superClasses2 = reasoner.getSuperClasses(class2, false);
-			Set<Node<OWLClass>> set2 = superClasses2.getNodes();
-			ArrayList<Node<OWLClass>> list2 = new ArrayList<Node<OWLClass>>(set2);
-			int depth2 = list2.size();
-			System.out.println("Depth: " + depth2);
-			OWLClass[] array2 = new OWLClass[depth2];
-			System.out.println("SuperClasses of Class2");
-			for (int i = 0; i < depth2; i++){
-				array2[i] = list2.get(i).getRepresentativeElement();
-				System.out.println(array2[i]);
-			}
-			
-			System.out.println();
-			
-			System.out.println("Lowest common ancestor:");
-			OWLClass ancestor = null;
-			for (int i = depth1 - 1; i >=0; i--){
-				for (int j = depth2 - 1; j >= 0; j--) {
-					if (array1[i].equals(array2[j])) {
-						ancestor = array1[i];	
-					}
-					if (ancestor != null){
-						break;
-					}
-				}
-				if (ancestor != null){
-					break;
-				}
-			}
-			System.out.println(ancestor);
-			NodeSet<OWLClass> superClasses3 = reasoner.getSuperClasses(ancestor, false);
-			Set<Node<OWLClass>> set3 = superClasses3.getNodes();
-			int depth3 = set3.size();
-			System.out.println("Depth: " + depth3);
-			System.out.println("SuperClasses of ancestor");
-			for (Node<OWLClass> cls : superClasses3){
-				System.out.println(cls.getRepresentativeElement());
-			}
-			
-			System.out.println();
-			
-			double wup = (2.0 * depth3) / ((depth1 - depth3) + (depth2 - depth3) + 2.0 * depth3);
-			System.out.println("WUP similarity: " + wup);
-			
-		} catch (OWLOntologyCreationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 

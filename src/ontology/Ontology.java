@@ -68,12 +68,14 @@ public class Ontology {
 			}
 			Object[] nodes1 = superClasses1.toArray();
 			for (Object object : nodes1){
+				@SuppressWarnings("unchecked")
 				Node<OWLClass> node = (Node<OWLClass>) object;
 				Set<Node<OWLClass>> newSuperClasses = reasoner.getSuperClasses(node.getRepresentativeElement(), true).getNodes();
 				superClasses1.addAll(newSuperClasses);
 			}
 			Object[] nodes2 = superClasses2.toArray();
 			for (Object object : nodes2){
+				@SuppressWarnings("unchecked")
 				Node<OWLClass> node = (Node<OWLClass>) object;
 				Set<Node<OWLClass>> newSuperClasses = reasoner.getSuperClasses(node.getRepresentativeElement(), true).getNodes();
 				superClasses2.addAll(newSuperClasses);
@@ -97,6 +99,7 @@ public class Ontology {
 			}
 			Object[] nodes = superClasses.toArray();
 			for (Object object : nodes){
+				@SuppressWarnings("unchecked")
 				Node<OWLClass> node = (Node<OWLClass>) object;
 				Set<Node<OWLClass>> newSuperClasses = reasoner.getSuperClasses(node.getRepresentativeElement(), true).getNodes();
 				superClasses.addAll(newSuperClasses);
