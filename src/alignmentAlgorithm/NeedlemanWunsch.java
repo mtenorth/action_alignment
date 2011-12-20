@@ -67,13 +67,13 @@ public class NeedlemanWunsch {
 		}
 	}
 	
-	private int Compare(ActionElement a1, ActionElement a2){
+	/*private int Compare(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())){
 			return match;
 		} else {
 			return mismatch;
 		}
-	}
+	}*/
 	
 	private int Compare2(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())){

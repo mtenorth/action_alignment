@@ -1,38 +1,6 @@
 package main;
 
-import java.awt.List;
-import java.io.File;
-import java.lang.reflect.Array;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Set;
-
 import ontology.Ontology;
-
-import org.semanticweb.HermiT.Reasoner;
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
-import org.semanticweb.owlapi.reasoner.Node;
-import org.semanticweb.owlapi.reasoner.NodeSet;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
-
-import evaluation.ConfusionMatrix;
-import fileReader.DataFileReader;
-import fileReader.SequenceFileReader;
-import alignmentAlgorithm.NeedlemanWunsch;
-import alignmentAlgorithm.SmithWaterman;
-import sequence.ActionSequence;
-import sequenceElement.ActionElement;
 
 public class Main {
 
