@@ -1,6 +1,12 @@
 package main;
 
+import java.util.ArrayList;
+
+import evaluation.ConfusionMatrix;
+import fileReader.DataFileReader;
 import ontology.Ontology;
+import sequence.ActionSequence;
+import sequenceElement.ActionElement;
 
 public class Main {
 
