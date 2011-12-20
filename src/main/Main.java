@@ -15,7 +15,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		
+		/*
 		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
 		Ontology ontology = new Ontology(url);
 		String object1 = "ClearGlass";
@@ -23,13 +23,18 @@ public class Main {
 		String object3 = "Event";
 		String object4 = "ClosingADoor";
 		String object5 = "B21";
-		ontology.getWupSimilarity(object1, object2);
-		ontology.getWupSimilarity(object1, object5);
-		ontology.getWupSimilarity(object3, object4);
+		String object6 = "Box";
+		String object7 = "ObjectType";
+		String object8 = "Color";
+		String object9 = "ColoredThing";
+		String object10 = "ColorlessThing";
 		ontology.getWupSimilarity(object4, object5);
+		//ontology.getWupSimilarity(object5, object8);
+		//ontology.getWupSimilarity(object3, object4);
+		//ontology.getWupSimilarity(object4, object5);
+		*/
 		
 		
-		/*
 		DataFileReader reader1 = new DataFileReader();
 		DataFileReader reader2 = new DataFileReader();
 		DataFileReader reader3 = new DataFileReader();
@@ -106,7 +111,7 @@ public class Main {
 		
 		ConfusionMatrix cm = new ConfusionMatrix(aList);
 		cm.printConfusionMatrix();
-		*/
+		
 		
 	}
 

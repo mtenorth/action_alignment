@@ -6,9 +6,9 @@ import sequenceElement.ActionElement;
 
 public class NeedlemanWunsch {
 
-	int match = 10;
-	int mismatch = -5;
-	int gap = -3;
+	int match = 2;
+	int mismatch = -2;
+	int gap = -1;
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;

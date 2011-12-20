@@ -37,9 +37,9 @@ public class Ontology {
 		reasoner = reasonerFactory.createReasoner(ontology);
 	}
 	
-	public double getWupSimilarity(String object1, String object2){
-		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + object1));
-		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + object2));
+	public double getWupSimilarity(String entity1, String entity2){
+		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
+		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
 		OWLClass predecessor = this.getLowestCommonPredecessorOf(class1, class2);
 		double depth1 = (double) this.getDepthOf(predecessor);
 		double depth2 = (double) this.getDepthOf(class1);
@@ -47,7 +47,7 @@ public class Ontology {
 		System.out.println(predecessor + " depth: " + depth1);
 		System.out.println(class1 + " depth: " + depth2);
 		System.out.println(class2 + " depth: " + depth3);
-		double wup = depth1 / (depth2 + depth3);
+		double wup = (2 * (depth1 + 1)) / ((depth2 + 1) + (depth3 + 1));
 		System.out.println("wup = " + wup);
 		System.out.println();
 		return wup;
