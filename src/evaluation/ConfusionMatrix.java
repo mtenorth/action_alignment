@@ -2,6 +2,8 @@ package evaluation;
 
 import java.util.ArrayList;
 
+import ontology.Ontology;
+
 import alignmentAlgorithm.NeedlemanWunsch;
 
 import sequence.ActionSequence;
@@ -10,13 +12,14 @@ public class ConfusionMatrix {
 
 	private int number;
 	private ArrayList<ActionSequence> seqList;
+	private Ontology ontology = new Ontology("http://ias.cs.tum.edu/kb/knowrob.owl");
 	
 	public ConfusionMatrix(ArrayList<ActionSequence> seqList){
 		number = seqList.size();
 		this.seqList = seqList;
 	}
 	
-	public void printConfusionMatrix(){
+	public void printConfusionMatrix(int compare){
 		for (int i = 0; i < 10; i++){
 			for (int j = 0; j < 12; j++){
 				System.out.print(" ");
@@ -46,8 +49,8 @@ public class ConfusionMatrix {
 			}
 			System.out.print(identifier + "  ");
 			for (int k = 0; k < number; k++){
-				NeedlemanWunsch ndl = new NeedlemanWunsch(seqList.get(i).getSequence(), seqList.get(k).getSequence());
-				int score = ndl.getScore();
+				NeedlemanWunsch ndl = new NeedlemanWunsch(seqList.get(i).getSequence(), seqList.get(k).getSequence(), compare, ontology);
+				double score = ndl.getScore();
 				for (int l = 0; l < 6 - String.valueOf(score).length(); l++){
 					System.out.print(" ");
 				}

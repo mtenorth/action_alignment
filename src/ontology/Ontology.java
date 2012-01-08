@@ -44,12 +44,12 @@ public class Ontology {
 		double depth1 = (double) this.getDepthOf(predecessor);
 		double depth2 = (double) this.getDepthOf(class1);
 		double depth3 = (double) this.getDepthOf(class2);
-		System.out.println(predecessor + " depth: " + depth1);
-		System.out.println(class1 + " depth: " + depth2);
-		System.out.println(class2 + " depth: " + depth3);
+		//System.out.println(predecessor + " depth: " + depth1);
+		//System.out.println(class1 + " depth: " + depth2);
+		//System.out.println(class2 + " depth: " + depth3);
 		double wup = (2 * (depth1 + 1)) / ((depth2 + 1) + (depth3 + 1));
-		System.out.println("wup = " + wup);
-		System.out.println();
+		//System.out.println("wup = " + wup);
+		//System.out.println();
 		return wup;
 	}
 	
@@ -58,12 +58,30 @@ public class Ontology {
 		Set<Node<OWLClass>> superClasses1 = reasoner.getSuperClasses(class1, true).getNodes();
 		Set<Node<OWLClass>> superClasses2 = reasoner.getSuperClasses(class2, true).getNodes();
 		while (true) {
-			for (Node<OWLClass> cls : superClasses1) {
-				if (superClasses2.contains(cls)) {
-					predecessor = cls.getRepresentativeElement();
+			for (Node<OWLClass> cls : superClasses1){
+				if (superClasses2.contains(cls)){
+					if (predecessor == null){
+						int d1 = this.getDepthOf(cls.getRepresentativeElement());
+						int d2 = this.getDepthOf(class1);
+						int d3 = this.getDepthOf(class2);
+						if (d1 < d2 && d1 < d3) {
+							predecessor = cls.getRepresentativeElement();
+						}
+					} else{
+						int d1 = this.getDepthOf(cls.getRepresentativeElement());
+						int d2 = this.getDepthOf(predecessor);
+						int d3 = this.getDepthOf(class1);
+						int d4 = this.getDepthOf(class2);
+						if (d1 > d2 && d3 >= d4 && d1 < d4) {
+							predecessor = cls.getRepresentativeElement();
+						}
+						if (d1 > d2 && d3 < d4 && d1 < d3) {
+							predecessor = cls.getRepresentativeElement();
+						}
+					}
 				}
 			}
-			if (!(predecessor == null)){
+			if (predecessor != null){
 				break;
 			}
 			Object[] nodes1 = superClasses1.toArray();

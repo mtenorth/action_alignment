@@ -2,13 +2,15 @@ package alignmentAlgorithm;
 
 import java.util.ArrayList;
 
+import ontology.Ontology;
+
 import sequenceElement.ActionElement;
 
 public class NeedlemanWunsch {
 
-	int match = 2;
-	int mismatch = -2;
-	int gap = -1;
+	double match = 2;
+	double mismatch = -2;
+	double gap = -1;
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
@@ -16,18 +18,21 @@ public class NeedlemanWunsch {
 	private int m;
 	private int n;
 	
-	private int[][] matrix;
+	private double[][] matrix;
 	private String[][] traceback;
 	private String[][] alignments;
 	
 	private int pointer = 0;
 	
-	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2){
+	Ontology ontology;
+	
+	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
+		this.ontology = ontology;
 		this.seq1 = seq1;
 		this.seq2 = seq2;
 		m = seq1.size();
 		n = seq2.size();
-		matrix = new int[m+1][n+1];
+		matrix = new double[m+1][n+1];
 		traceback = new String[m+1][n+1];
 		alignments = new String[2][m+n];
 		//initialisation of the matrix + traceback
@@ -44,10 +49,15 @@ public class NeedlemanWunsch {
 		//recursive calculation of the remaining alignment-scores + traceback
 		for (int i = 1; i <= m; i++){
 			for (int j = 1; j <= n; j++){
-				//int score1 = matrix[i-1][j-1] + Compare(seq1.get(i-1), seq2.get(j-1));
-				int score1 = matrix[i-1][j-1] + Compare2(seq1.get(i-1), seq2.get(j-1));
-				int score2 = matrix[i-1][j] + gap;
-				int score3 = matrix[i][j-1] + gap;
+				double score1;
+				if (function == 1) {
+					score1 = matrix[i - 1][j - 1] + Compare1(seq1.get(i - 1), seq2.get(j - 1));
+				} 
+				else {
+					score1 = matrix[i - 1][j - 1] + Compare2(seq1.get(i - 1), seq2.get(j - 1));
+				}
+				double score2 = matrix[i-1][j] + gap;
+				double score3 = matrix[i][j-1] + gap;
 				if (score1 >= score2){
 					if (score1 >= score3){
 						matrix[i][j] = score1;
@@ -67,38 +77,72 @@ public class NeedlemanWunsch {
 		}
 	}
 	
-	/*private int Compare(ActionElement a1, ActionElement a2){
+	private double Compare1(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())){
 			return match;
 		} else {
 			return mismatch;
 		}
-	}*/
+	}
 	
-	private int Compare2(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())){
+	
+	private double Compare2(ActionElement a1, ActionElement a2){
+		//System.out.println();
+		//System.out.println(a1.getName() + " - " + a2.getName());
+		if (a1.getName().equals(a2.getName())) {
+			//System.out.println("+2");
 			return match;
 		} else {
-			if (a1.getHashMap().get("verb").equals(a2.getHashMap().get("verb"))){
-				if (a1.getHashMap().get("object1").equals(a2.getHashMap().get("object1"))){
-					if (a1.getHashMap().get("preposition").equals(a2.getHashMap().get("preposition"))){
-						return match - 3;
-					} else {
-						return match - 6;
-					}
-				} else {
-					return match - 9;
-				}
-			} else {
+			double compare = 0;
+			String verb1 = a1.getHashMap().get("verb");
+			String verb2 = a2.getHashMap().get("verb");
+			String firstObject1 = a1.getHashMap().get("object1");
+			String firstObject2 = a2.getHashMap().get("object1");
+			String preposition1 = a1.getHashMap().get("preposition");
+			String preposition2 = a2.getHashMap().get("preposition");
+			String secondObject1 = a1.getHashMap().get("object2");
+			String secondObject2 = a2.getHashMap().get("object2");
+			if (!verb1.equals(verb2) && !firstObject1.equals(firstObject2) && 
+				!preposition1.equals(preposition2) && !secondObject1.equals(secondObject2)) {
+				//System.out.println("-2");
 				return mismatch;
+			} else {
+				if (!verb1.equals(verb2)) {
+					double x = ontology.getWupSimilarity(verb1, verb2);
+					compare = compare - 1.0 + x;
+					//System.out.println("--> " + verb1 + " - " + verb2);
+					//System.out.println("--> " + x);
+				}
+				if (!firstObject1.equals(firstObject2)) {
+					double x = ontology.getWupSimilarity(firstObject1, firstObject2);
+					compare = compare - 1.0 + x;
+					//System.out.println("--> " + firstObject1 + " - " + firstObject2);
+					//System.out.println("--> " + x);
+				}
+				if (!preposition1.equals(preposition2)) {
+					double x = ontology.getWupSimilarity(preposition1, preposition2);
+					compare = compare - 1.0 + x;
+					//System.out.println("--> " + preposition1 + " - " + preposition2);
+					//System.out.println("--> " + x);
+				}
+				if (!secondObject1.equals(secondObject2)) {
+					double x = ontology.getWupSimilarity(secondObject1, secondObject2);
+					compare = compare - 1.0 + x;
+					//System.out.println("--> " + secondObject1 + " - " + secondObject2);
+					//System.out.println("--> " + x);
+				}
+				//double x = 2 + compare;
+				//System.out.println(x + " !");
+				return match + compare;
 			}
 		}
 	}
 	
+	
 	public void printMatrix(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
-				int x = matrix[i][j];
+				double x = matrix[i][j];
 				String s = String.valueOf(x);
 				//maximum of 6 characters
 				for (int k = 6 - s.length(); k > 0; k--){
@@ -162,8 +206,10 @@ public class NeedlemanWunsch {
 		}
 	}
 	
-	public int getScore(){
-		return matrix[m][n];
+	public double getScore(){
+		double score = matrix[m][n] / (m + n);
+		score = (score + 1.0) / 2.0;
+		return Math.round(score * 100.0) / 100.0;
 	}
 	
 }
