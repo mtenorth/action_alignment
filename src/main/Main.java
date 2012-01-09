@@ -20,6 +20,8 @@ public class Main {
 		
 		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
 		Ontology ontology = new Ontology(url);
+		
+		/*
 		String object1 = "ClearGlass";
 		String object2 = "Water";
 		String object3 = "Event";
@@ -30,13 +32,13 @@ public class Main {
 		String object8 = "Color";
 		String object9 = "ColoredThing";
 		String object10 = "ColorlessThing";
-		//ontology.getWupSimilarity(object1, object2);
-		//ontology.getWupSimilarity(object8, object9);
-		//ontology.getWupSimilarity(object6, object9);
-		//ontology.getWupSimilarity(object1, object5);
-		//ontology.getWupSimilarity(object7, object9);
-		//ontology.getWupSimilarity(object2, object4);
-		
+		ontology.getWupSimilarity(object1, object2);
+		ontology.getWupSimilarity(object8, object9);
+		ontology.getWupSimilarity(object6, object9);
+		ontology.getWupSimilarity(object1, object5);
+		ontology.getWupSimilarity(object7, object9);
+		ontology.getWupSimilarity(object2, object4);
+		*/
 		
 		
 		DataFileReader reader1 = new DataFileReader();
@@ -97,12 +99,12 @@ public class Main {
 		
 		aList.add(a1);
 		aList.add(a2);
-		//aList.add(a3);
-		//aList.add(a4);
-		//aList.add(a5);
-		//aList.add(a6);
-		//aList.add(a7);
-		//aList.add(a8);
+		aList.add(a3);
+		aList.add(a4);
+		aList.add(a5);
+		aList.add(a6);
+		aList.add(a7);
+		aList.add(a8);
 		//aList.add(a9);
 		//aList.add(a10);
 		//aList.add(a11);
@@ -113,18 +115,22 @@ public class Main {
 		//aList.add(a16);
 		//aList.add(a17);
 		
-		ConfusionMatrix cm = new ConfusionMatrix(aList);
-		cm.printConfusionMatrix(1);
-		cm.printConfusionMatrix(2);
+		//ConfusionMatrix cm = new ConfusionMatrix(aList);
+		//cm.printConfusionMatrix(1);
+		//cm.printConfusionMatrix(2);
 		
 		
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seq1, seq2, 1, ontology);
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seq1, seq5, 1, ontology);
 		System.out.println();
 		ndl1.printAlignment();
+		System.out.println();
+		System.out.println(ndl1.getScore());
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seq1, seq2, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seq1, seq5, 2, ontology);
 		System.out.println();
 		ndl2.printAlignment();
+		System.out.println();
+		System.out.println(ndl2.getScore());
 		
 	}
 

@@ -47,7 +47,7 @@ public class Ontology {
 		//System.out.println(predecessor + " depth: " + depth1);
 		//System.out.println(class1 + " depth: " + depth2);
 		//System.out.println(class2 + " depth: " + depth3);
-		double wup = (2 * (depth1 + 1)) / ((depth2 + 1) + (depth3 + 1));
+		double wup = (2 * depth1) / (depth2 + depth3);
 		//System.out.println("wup = " + wup);
 		//System.out.println();
 		return wup;
