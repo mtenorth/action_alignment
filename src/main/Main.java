@@ -97,14 +97,14 @@ public class Main {
 		
 		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
 		
-		aList.add(a1);
-		aList.add(a2);
-		aList.add(a3);
-		aList.add(a4);
-		aList.add(a5);
-		aList.add(a6);
-		aList.add(a7);
-		aList.add(a8);
+		//aList.add(a1);
+		//aList.add(a2);
+		//aList.add(a3);
+		//aList.add(a4);
+		//aList.add(a5);
+		//aList.add(a6);
+		//aList.add(a7);
+		//aList.add(a8);
 		//aList.add(a9);
 		//aList.add(a10);
 		//aList.add(a11);
@@ -115,9 +115,9 @@ public class Main {
 		//aList.add(a16);
 		//aList.add(a17);
 		
-		//ConfusionMatrix cm = new ConfusionMatrix(aList);
-		//cm.printConfusionMatrix(1);
-		//cm.printConfusionMatrix(2);
+		ConfusionMatrix cm = new ConfusionMatrix(aList);
+		cm.printConfusionMatrix(1);
+		cm.printConfusionMatrix(2);
 		
 		
 		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seq1, seq5, 1, ontology);

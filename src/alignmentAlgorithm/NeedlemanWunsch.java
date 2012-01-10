@@ -8,9 +8,9 @@ import sequenceElement.ActionElement;
 
 public class NeedlemanWunsch {
 
-	double match = 2;
-	double mismatch = -2;
-	double gap = -1;
+	private double match = 2;
+	private double mismatch = -2;
+	private double gap = -1;
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
@@ -24,7 +24,7 @@ public class NeedlemanWunsch {
 	
 	private int pointer = 0;
 	
-	Ontology ontology;
+	private Ontology ontology;
 	
 	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
 		this.ontology = ontology;
@@ -102,39 +102,43 @@ public class NeedlemanWunsch {
 			String preposition2 = a2.getHashMap().get("preposition");
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
-			if (!verb1.equals(verb2) && !firstObject1.equals(firstObject2) && 
-				!preposition1.equals(preposition2) && !secondObject1.equals(secondObject2)) {
-				//System.out.println("-2");
-				return mismatch;
-			} else {
-				if (!verb1.equals(verb2)) {
-					double x = ontology.getWupSimilarity(verb1, verb2);
-					compare = compare - 1.0 + x;
-					//System.out.println("--> " + verb1 + " - " + verb2);
-					//System.out.println("--> " + x);
-				}
-				if (!firstObject1.equals(firstObject2)) {
-					double x = ontology.getWupSimilarity(firstObject1, firstObject2);
-					compare = compare - 1.0 + x;
-					//System.out.println("--> " + firstObject1 + " - " + firstObject2);
-					//System.out.println("--> " + x);
-				}
-				if (!preposition1.equals(preposition2)) {
-					double x = ontology.getWupSimilarity(preposition1, preposition2);
-					compare = compare - 1.0 + x;
-					//System.out.println("--> " + preposition1 + " - " + preposition2);
-					//System.out.println("--> " + x);
-				}
-				if (!secondObject1.equals(secondObject2)) {
-					double x = ontology.getWupSimilarity(secondObject1, secondObject2);
-					compare = compare - 1.0 + x;
-					//System.out.println("--> " + secondObject1 + " - " + secondObject2);
-					//System.out.println("--> " + x);
-				}
-				//double x = 2 + compare;
-				//System.out.println(x + " !");
-				return match + compare;
+			
+			if (verb1.isEmpty() && verb2.isEmpty()) {
+				compare -= 1;
+			} else if (!verb1.equals(verb2)) {
+				double x = ontology.getWupSimilarity(verb1, verb2);
+				compare = compare - 1.0 + x;
+				//System.out.println("--> " + verb1 + " - " + verb2);
+				//System.out.println("--> " + x);
 			}
+			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
+				compare -= 1;
+			} else if (!firstObject1.equals(firstObject2)) {
+				double x = ontology.getWupSimilarity(firstObject1, firstObject2);
+				compare = compare - 1.0 + x;
+				//System.out.println("--> " + firstObject1 + " - " + firstObject2);
+				//System.out.println("--> " + x);
+			}
+			if (preposition1.isEmpty() && preposition2.isEmpty()) {
+				compare -= 1;
+			} else if (!preposition1.equals(preposition2)) {
+				double x = ontology.getWupSimilarity(preposition1, preposition2);
+				compare = compare - 1.0 + x;
+				//System.out.println("--> " + preposition1 + " - " + preposition2);
+				//System.out.println("--> " + x);
+			}
+			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
+				compare -= 1;
+			} else if (!secondObject1.equals(secondObject2)) {
+				double x = ontology.getWupSimilarity(secondObject1, secondObject2);
+				compare = compare - 1.0 + x;
+				//System.out.println("--> " + secondObject1 + " - " + secondObject2);
+				//System.out.println("--> " + x);
+			}
+			
+			//double x = 2 + compare;
+			//System.out.println(x + " !");
+			return match + compare;
 		}
 	}
 	
