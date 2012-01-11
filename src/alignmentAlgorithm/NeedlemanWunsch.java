@@ -90,10 +90,11 @@ public class NeedlemanWunsch {
 		//System.out.println();
 		//System.out.println(a1.getName() + " - " + a2.getName());
 		if (a1.getName().equals(a2.getName())) {
-			//System.out.println("+2");
+			//System.out.println("match");
 			return match;
 		} else {
 			double compare = 0;
+			
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -103,10 +104,16 @@ public class NeedlemanWunsch {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
+			//long start;
+			//long ende;
+			
 			if (verb1.isEmpty() && verb2.isEmpty()) {
 				compare -= 1;
 			} else if (!verb1.equals(verb2)) {
+				//start = System.currentTimeMillis();
 				double x = ontology.getWupSimilarity(verb1, verb2);
+				//ende = System.currentTimeMillis();
+				//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
 				compare = compare - 1.0 + x;
 				//System.out.println("--> " + verb1 + " - " + verb2);
 				//System.out.println("--> " + x);
@@ -114,7 +121,10 @@ public class NeedlemanWunsch {
 			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
 				compare -= 1;
 			} else if (!firstObject1.equals(firstObject2)) {
+				//zstVorher = System.currentTimeMillis();
 				double x = ontology.getWupSimilarity(firstObject1, firstObject2);
+				//zstNachher = System.currentTimeMillis();
+				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
 				compare = compare - 1.0 + x;
 				//System.out.println("--> " + firstObject1 + " - " + firstObject2);
 				//System.out.println("--> " + x);
@@ -122,7 +132,10 @@ public class NeedlemanWunsch {
 			if (preposition1.isEmpty() && preposition2.isEmpty()) {
 				compare -= 1;
 			} else if (!preposition1.equals(preposition2)) {
+				//zstVorher = System.currentTimeMillis();
 				double x = ontology.getWupSimilarity(preposition1, preposition2);
+				//zstNachher = System.currentTimeMillis();
+				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
 				compare = compare - 1.0 + x;
 				//System.out.println("--> " + preposition1 + " - " + preposition2);
 				//System.out.println("--> " + x);
@@ -130,7 +143,10 @@ public class NeedlemanWunsch {
 			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
 				compare -= 1;
 			} else if (!secondObject1.equals(secondObject2)) {
+				//zstVorher = System.currentTimeMillis();
 				double x = ontology.getWupSimilarity(secondObject1, secondObject2);
+				//zstNachher = System.currentTimeMillis();
+				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
 				compare = compare - 1.0 + x;
 				//System.out.println("--> " + secondObject1 + " - " + secondObject2);
 				//System.out.println("--> " + x);

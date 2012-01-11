@@ -22,6 +22,7 @@ public class Ontology {
 	private OWLReasoner reasoner;
 	
 	public Ontology(String url){
+		long start = System.currentTimeMillis();
 		this.url = url;
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		try {
@@ -35,25 +36,40 @@ public class Ontology {
 		dataFactory = manager.getOWLDataFactory();
 		OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
 		reasoner = reasonerFactory.createReasoner(ontology);
+		reasoner.getClass();
+		long ende = System.currentTimeMillis();
+		System.out.println("Ontology" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+		System.out.println();
 	}
 	
 	public double getWupSimilarity(String entity1, String entity2){
+		
+		//long start = System.currentTimeMillis();
+		
 		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
 		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
 		OWLClass predecessor = this.getLowestCommonPredecessorOf(class1, class2);
 		double depth1 = (double) this.getDepthOf(predecessor);
 		double depth2 = (double) this.getDepthOf(class1);
 		double depth3 = (double) this.getDepthOf(class2);
-		//System.out.println(predecessor + " depth: " + depth1);
-		//System.out.println(class1 + " depth: " + depth2);
-		//System.out.println(class2 + " depth: " + depth3);
+		System.out.println(predecessor + " depth: " + depth1);
+		System.out.println(class1 + " depth: " + depth2);
+		System.out.println(class2 + " depth: " + depth3);
 		double wup = (2 * depth1) / (depth2 + depth3);
-		//System.out.println("wup = " + wup);
+		System.out.println("wup = " + wup);
+		System.out.println();
+		
+		//long ende = System.currentTimeMillis();
+		//System.out.println("-->" + entity1 + " - " + entity2 + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
 		//System.out.println();
+		
 		return wup;
 	}
 	
 	private OWLClass getLowestCommonPredecessorOf(OWLClass class1, OWLClass class2){
+		
+		//long start = System.currentTimeMillis();
+		
 		OWLClass predecessor = null;
 		Set<Node<OWLClass>> superClasses1 = reasoner.getSuperClasses(class1, true).getNodes();
 		Set<Node<OWLClass>> superClasses2 = reasoner.getSuperClasses(class2, true).getNodes();
@@ -99,10 +115,17 @@ public class Ontology {
 				superClasses2.addAll(newSuperClasses);
 			}
 		}
+		
+		//long ende = System.currentTimeMillis();
+		//System.out.println("--> -->getLowestCommonPredecessorOf" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+		
 		return predecessor;
 	}
 	
 	private int getDepthOf(OWLClass cls){
+		
+		//long start = System.currentTimeMillis();
+		
 		int depth = 0;
 		if (cls.equals(dataFactory.getOWLThing())){
 			return depth;
@@ -112,6 +135,10 @@ public class Ontology {
 			depth = depth + 1;
 			for (Node<OWLClass> node : superClasses){
 				if (node.getRepresentativeElement().equals(dataFactory.getOWLThing())){
+					
+					//long ende = System.currentTimeMillis();
+					//System.out.println("-->getDepthOf" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+					
 					return depth;
 				}
 			}
