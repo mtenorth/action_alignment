@@ -7,13 +7,15 @@ import ontology.Ontology;
 import sequenceElement.ActionElement;
 
 public class NeedlemanWunsch {
-
+	
 	private double match = 2;
 	private double mismatch = -2;
 	private double gap = -1;
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
+	
+	private Ontology ontology;
 	
 	private int m;
 	private int n;
@@ -23,13 +25,12 @@ public class NeedlemanWunsch {
 	private String[][] alignments;
 	
 	private int pointer = 0;
-	
-	private Ontology ontology;
+	private int nothingCount = 0;
 	
 	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
-		this.ontology = ontology;
 		this.seq1 = seq1;
 		this.seq2 = seq2;
+		this.ontology = ontology;
 		m = seq1.size();
 		n = seq2.size();
 		matrix = new double[m+1][n+1];
@@ -50,12 +51,23 @@ public class NeedlemanWunsch {
 		for (int i = 1; i <= m; i++){
 			for (int j = 1; j <= n; j++){
 				double score1;
+				double d;
 				if (function == 1) {
-					score1 = matrix[i - 1][j - 1] + Compare1(seq1.get(i - 1), seq2.get(j - 1));
+					d = Compare1(seq1.get(i - 1), seq2.get(j - 1));
+					score1 = matrix[i - 1][j - 1] + d;
 				} 
 				else {
-					score1 = matrix[i - 1][j - 1] + Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					d = Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					score1 = matrix[i - 1][j - 1] + d;
 				}
+				
+				if (d == match) {
+					String s = seq1.get(i - 1).getHashMap().get("verb");
+					if (s.equals("Nothing")) {
+						score1 -= 2.0;
+					}
+				}
+				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
 				if (score1 >= score2){
@@ -75,16 +87,16 @@ public class NeedlemanWunsch {
 				}
 			}
 		}
+		this.countNothing(m, n);
 	}
 	
 	private double Compare1(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())){
+		if (a1.getName().equals(a2.getName())) {
 			return match;
 		} else {
 			return mismatch;
 		}
 	}
-	
 	
 	private double Compare2(ActionElement a1, ActionElement a2){
 		//System.out.println();
@@ -158,14 +170,13 @@ public class NeedlemanWunsch {
 		}
 	}
 	
-	
 	public void printMatrix(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
-				double x = matrix[i][j];
+				double x = Math.round(matrix[i][j] * 100.0) / 100.0;
 				String s = String.valueOf(x);
-				//maximum of 6 characters
-				for (int k = 6 - s.length(); k > 0; k--){
+				//maximum of 8 characters
+				for (int k = 8 - s.length(); k > 0; k--){
 					System.out.print(" ");
 				}
 				System.out.print(s);
@@ -191,7 +202,7 @@ public class NeedlemanWunsch {
 	}
 	
 	public void printAlignment(){
-		if (pointer == 0){
+		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
@@ -203,6 +214,10 @@ public class NeedlemanWunsch {
 			}
 			System.out.println(s1 + " - " + s2);
 		}
+		System.out.println();
+		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);
+		double score = this.getScore();
+		System.out.println("Alignment-Score: " + score);
 		System.out.println();
 	}
 	
@@ -226,8 +241,24 @@ public class NeedlemanWunsch {
 		}
 	}
 	
+	private void countNothing(int m, int n) {
+		String s = traceback[m][n];
+		if (s.equals("diag")){
+			String s1 = seq1.get(m - 1).getHashMap().get("verb");
+			String s2 = seq2.get(n - 1).getHashMap().get("verb");
+			if (s1.equals("Nothing") && s2.equals("Nothing")) {
+				nothingCount++;
+			}
+			countNothing(m - 1, n - 1);
+		} else if (s.equals("left")){
+			countNothing(m, n - 1);
+		} else if (s.equals("up")){
+			countNothing(m - 1, n);
+		}
+	}
+	
 	public double getScore(){
-		double score = matrix[m][n] / (m + n);
+		double score = (matrix[m][n] + 2.0 * nothingCount) / (m + n);
 		score = (score + 1.0) / 2.0;
 		return Math.round(score * 100.0) / 100.0;
 	}

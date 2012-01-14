@@ -38,7 +38,7 @@ public class Ontology {
 		reasoner = reasonerFactory.createReasoner(ontology);
 		reasoner.getClass();
 		long ende = System.currentTimeMillis();
-		System.out.println("Ontology" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+		System.out.println("Ontology wurde in " + ((ende - start)/1000.0) + " Sekunden geladen.");
 		System.out.println();
 	}
 	
@@ -52,16 +52,17 @@ public class Ontology {
 		double depth1 = (double) this.getDepthOf(predecessor);
 		double depth2 = (double) this.getDepthOf(class1);
 		double depth3 = (double) this.getDepthOf(class2);
-		System.out.println(predecessor + " depth: " + depth1);
-		System.out.println(class1 + " depth: " + depth2);
-		System.out.println(class2 + " depth: " + depth3);
+		//System.out.println(predecessor + " depth: " + depth1);
+		//System.out.println(class1 + " depth: " + depth2);
+		//System.out.println(class2 + " depth: " + depth3);
 		double wup = (2 * depth1) / (depth2 + depth3);
-		System.out.println("wup = " + wup);
-		System.out.println();
+		//System.out.println("wup = " + wup);
+		//System.out.println();
 		
 		//long ende = System.currentTimeMillis();
-		//System.out.println("-->" + entity1 + " - " + entity2 + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
-		//System.out.println();
+		//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+		
+		System.out.println("  " + entity1 + " : " + entity2 + "  |  " + wup);
 		
 		return wup;
 	}

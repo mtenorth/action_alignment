@@ -2,9 +2,8 @@ package main;
 
 import java.util.ArrayList;
 
-import org.semanticweb.HermiT.debugger.Debugger.WaitOption;
-
 import alignmentAlgorithm.NeedlemanWunsch;
+import alignmentAlgorithm.SmithWaterman;
 
 import evaluation.ConfusionMatrix;
 import fileReader.DataFileReader;
@@ -19,13 +18,12 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		
 		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
 		Ontology ontology = new Ontology(url);
 		
 		/*
-		String object1 = "ClearGlass";
-		String object2 = "Water";
+		String object1 = "TableSalt";
+		String object2 = "Pepper-TheSpice";
 		String object3 = "Event";
 		String object4 = "ClosingADoor";
 		String object5 = "B21";
@@ -37,7 +35,7 @@ public class Main {
 		String object11 = "none";
 		String object12 = "";
 		
-		ontology.getWupSimilarity(object1, object10);
+		ontology.getWupSimilarity(object1, object2);
 		ontology.getWupSimilarity(object10, object11);
 		ontology.getWupSimilarity(object1, object2);
 		ontology.getWupSimilarity(object11, object12);
@@ -47,6 +45,8 @@ public class Main {
 		ontology.getWupSimilarity(object8, object9);
 		*/
 		
+		
+		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
 		
 		DataFileReader reader1 = new DataFileReader();
 		DataFileReader reader2 = new DataFileReader();
@@ -65,84 +65,176 @@ public class Main {
 		DataFileReader reader15 = new DataFileReader();
 		DataFileReader reader16 = new DataFileReader();
 		DataFileReader reader17 = new DataFileReader();
+		DataFileReader reader18 = new DataFileReader();
+		DataFileReader reader19 = new DataFileReader();
+		DataFileReader reader20 = new DataFileReader();
+		DataFileReader reader21 = new DataFileReader();
+		DataFileReader reader22 = new DataFileReader();
+		DataFileReader reader23 = new DataFileReader();
+		DataFileReader reader24 = new DataFileReader();
+		DataFileReader reader25 = new DataFileReader();
+		DataFileReader reader26 = new DataFileReader();
+		DataFileReader reader27 = new DataFileReader();
+		DataFileReader reader28 = new DataFileReader();
+		DataFileReader reader29 = new DataFileReader();
+		DataFileReader reader30 = new DataFileReader();
+		DataFileReader reader31 = new DataFileReader();
+		DataFileReader reader32 = new DataFileReader();
+		DataFileReader reader33 = new DataFileReader();
+		DataFileReader reader34 = new DataFileReader();
+		DataFileReader reader35 = new DataFileReader();
 		
-		ArrayList<ActionElement> seq06 = reader1.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S06/labels.dat");
-		ArrayList<ActionElement> seq07 = reader2.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S07/labels.dat");
-		ArrayList<ActionElement> seq08 = reader3.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S08/labels.dat");
-		ArrayList<ActionElement> seq09 = reader4.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S09/labels.dat");
-		ArrayList<ActionElement> seq11 = reader5.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S11/labels.dat");
-		ArrayList<ActionElement> seq12 = reader6.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S12/labels.dat");
-		ArrayList<ActionElement> seq13 = reader7.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S13/labels.dat");
-		ArrayList<ActionElement> seq14 = reader8.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S14/labels.dat");
-		ArrayList<ActionElement> seq15 = reader9.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S15/labels.dat");
-		ArrayList<ActionElement> seq16 = reader10.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S16/labels.dat");
-		ArrayList<ActionElement> seq17 = reader11.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S17/labels.dat");
-		ArrayList<ActionElement> seq19 = reader12.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S19/labels.dat");
-		ArrayList<ActionElement> seq20 = reader13.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S20/labels.dat");
-		ArrayList<ActionElement> seq25 = reader14.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S25/labels.dat");
-		ArrayList<ActionElement> seq53 = reader15.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S53/labels.dat");
-		ArrayList<ActionElement> seq54 = reader16.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S54/labels.dat");
-		ArrayList<ActionElement> seq55 = reader17.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S55/labels.dat");
+		ArrayList<ActionElement> seqEgg06 = reader1.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S06/labels.dat");
+		ArrayList<ActionElement> seqEgg07 = reader2.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S07/labels.dat");
+		ArrayList<ActionElement> seqEgg08 = reader3.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S08/labels.dat");
+		ArrayList<ActionElement> seqEgg09 = reader4.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S09/labels.dat");
+		ArrayList<ActionElement> seqEgg11 = reader5.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S11/labels.dat");
+		ArrayList<ActionElement> seqEgg12 = reader6.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S12/labels.dat");
+		ArrayList<ActionElement> seqEgg13 = reader7.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S13/labels.dat");
+		ArrayList<ActionElement> seqEgg14 = reader8.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S14/labels.dat");
+		ArrayList<ActionElement> seqEgg15 = reader9.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S15/labels.dat");
+		ArrayList<ActionElement> seqEgg16 = reader10.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S16/labels.dat");
+		ArrayList<ActionElement> seqEgg17 = reader11.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S17/labels.dat");
+		ArrayList<ActionElement> seqEgg19 = reader12.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S19/labels.dat");
+		ArrayList<ActionElement> seqEgg20 = reader13.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S20/labels.dat");
+		ArrayList<ActionElement> seqEgg25 = reader14.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S25/labels.dat");
+		ArrayList<ActionElement> seqEgg53 = reader15.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S53/labels.dat");
+		ArrayList<ActionElement> seqEgg54 = reader16.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S54/labels.dat");
+		ArrayList<ActionElement> seqEgg55 = reader17.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S55/labels.dat");
 		
-		ActionSequence a06 = new ActionSequence("S06", seq06);
-		ActionSequence a07 = new ActionSequence("S07", seq07);
-		ActionSequence a08 = new ActionSequence("S08", seq08);
-		ActionSequence a09 = new ActionSequence("S09", seq09);
-		ActionSequence a11 = new ActionSequence("S11", seq11);
-		ActionSequence a12 = new ActionSequence("S12", seq12);
-		ActionSequence a13 = new ActionSequence("S13", seq13);
-		ActionSequence a14 = new ActionSequence("S14", seq14);
-		ActionSequence a15 = new ActionSequence("S15", seq15);
-		ActionSequence a16 = new ActionSequence("S16", seq16);
-		ActionSequence a17 = new ActionSequence("S17", seq17);
-		ActionSequence a19 = new ActionSequence("S19", seq19);
-		ActionSequence a20 = new ActionSequence("S20", seq20);
-		ActionSequence a25 = new ActionSequence("S25", seq25);
-		ActionSequence a53 = new ActionSequence("S53", seq53);
-		ActionSequence a54 = new ActionSequence("S54", seq54);
-		ActionSequence a55 = new ActionSequence("S55", seq55);
+		ArrayList<ActionElement> seqBro06 = reader18.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S06/labels.dat");
+		ArrayList<ActionElement> seqBro07 = reader19.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S07/labels.dat");
+		ArrayList<ActionElement> seqBro08 = reader20.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S08/labels.dat");
+		ArrayList<ActionElement> seqBro09 = reader21.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S09/labels.dat");
+		ArrayList<ActionElement> seqBro10 = reader22.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S10/labels.dat");
+		ArrayList<ActionElement> seqBro12 = reader23.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S12/labels.dat");
+		ArrayList<ActionElement> seqBro13 = reader24.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S13/labels.dat");
+		ArrayList<ActionElement> seqBro14 = reader25.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S14/labels.dat");
+		ArrayList<ActionElement> seqBro16 = reader26.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S16/labels.dat");
+		ArrayList<ActionElement> seqBro17 = reader27.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S17/labels.dat");
+		ArrayList<ActionElement> seqBro18 = reader28.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S18/labels.dat");
+		ArrayList<ActionElement> seqBro19 = reader29.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S19/labels.dat");
+		ArrayList<ActionElement> seqBro20 = reader30.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S20/labels.dat");
+		ArrayList<ActionElement> seqBro22 = reader31.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S22/labels.dat");
+		ArrayList<ActionElement> seqBro23 = reader32.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S23/labels.dat");
+		ArrayList<ActionElement> seqBro24 = reader33.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S24/labels.dat");
 		
-		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
+		ArrayList<ActionElement> example1 = reader32.getSequence("C:/Users/Administrator/Desktop/Data/Making/example1.dat");
+		ArrayList<ActionElement> example2 = reader33.getSequence("C:/Users/Administrator/Desktop/Data/Making/example2.dat");
+		
+		ActionSequence aEgg06 = new ActionSequence("Egg_S06", seqEgg06);
+		ActionSequence aEgg07 = new ActionSequence("Egg_S07", seqEgg07);
+		ActionSequence aEgg08 = new ActionSequence("Egg_S08", seqEgg08);
+		ActionSequence aEgg09 = new ActionSequence("Egg_S09", seqEgg09);
+		ActionSequence aEgg11 = new ActionSequence("Egg_S11", seqEgg11);
+		ActionSequence aEgg12 = new ActionSequence("Egg_S12", seqEgg12);
+		ActionSequence aEgg13 = new ActionSequence("Egg_S13", seqEgg13);
+		ActionSequence aEgg14 = new ActionSequence("Egg_S14", seqEgg14);
+		ActionSequence aEgg15 = new ActionSequence("Egg_S15", seqEgg15);
+		ActionSequence aEgg16 = new ActionSequence("Egg_S16", seqEgg16);
+		ActionSequence aEgg17 = new ActionSequence("Egg_S17", seqEgg17);
+		ActionSequence aEgg19 = new ActionSequence("Egg_S19", seqEgg19);
+		ActionSequence aEgg20 = new ActionSequence("Egg_S20", seqEgg20);
+		ActionSequence aEgg25 = new ActionSequence("Egg_S25", seqEgg25);
+		ActionSequence aEgg53 = new ActionSequence("Egg_S53", seqEgg53);
+		ActionSequence aEgg54 = new ActionSequence("Egg_S54", seqEgg54);
+		ActionSequence aEgg55 = new ActionSequence("Egg_S55", seqEgg55);
+		
+		ActionSequence aBro06 = new ActionSequence("Bro_S06", seqBro06);
+		ActionSequence aBro07 = new ActionSequence("Bro_S07", seqBro07);
+		ActionSequence aBro08 = new ActionSequence("Bro_S08", seqBro08);
+		ActionSequence aBro09 = new ActionSequence("Bro_S09", seqBro09);
+		ActionSequence aBro10 = new ActionSequence("Bro_S10", seqBro10);
+		ActionSequence aBro12 = new ActionSequence("Bro_S12", seqBro12);
+		ActionSequence aBro13 = new ActionSequence("Bro_S13", seqBro13);
+		ActionSequence aBro14 = new ActionSequence("Bro_S14", seqBro14);
+		ActionSequence aBro16 = new ActionSequence("Bro_S16", seqBro16);
+		ActionSequence aBro17 = new ActionSequence("Bro_S17", seqBro17);
+		ActionSequence aBro18 = new ActionSequence("Bro_S18", seqBro18);
+		ActionSequence aBro19 = new ActionSequence("Bro_S19", seqBro19);
+		ActionSequence aBro20 = new ActionSequence("Bro_S20", seqBro20);
+		ActionSequence aBro22 = new ActionSequence("Bro_S22", seqBro22);
+		ActionSequence aBro23 = new ActionSequence("Bro_S23", seqBro23);
+		ActionSequence aBro24 = new ActionSequence("Bro_S24", seqBro24);
+		
+		ActionSequence aExample1 = new ActionSequence("example1", example1);
+		ActionSequence aExample2 = new ActionSequence("example2", example2);
+		
+		
+		aList.add(aEgg06);
+		aList.add(aEgg07);
+		aList.add(aEgg08);
+		aList.add(aEgg09);
+		aList.add(aEgg11);
+		aList.add(aEgg12);
+		
+		aList.add(aEgg13);
+		aList.add(aEgg14);
+		aList.add(aEgg15);
+		aList.add(aEgg16);
+		aList.add(aEgg17);
+		aList.add(aEgg19);
+		aList.add(aEgg20);
+		aList.add(aEgg25);
+		aList.add(aEgg53);
+		aList.add(aEgg54);
+		aList.add(aEgg55);
 		/*
-		aList.add(a06);
-		aList.add(a07);
-		aList.add(a08);
-		aList.add(a09);
-		aList.add(a11);
-		aList.add(a12);
-		aList.add(a13);
-		aList.add(a14);
-		aList.add(a15);
-		aList.add(a16);
-		aList.add(a17);
-		aList.add(a19);
-		aList.add(a20);
-		aList.add(a25);
-		aList.add(a53);
-		aList.add(a54);
-		aList.add(a55);
+		aList.add(aBro06);
+		aList.add(aBro07);
+		aList.add(aBro08);
+		aList.add(aBro09);
+		aList.add(aBro10);
+		aList.add(aBro12);
 		
+		aList.add(aBro13);
+		aList.add(aBro14);
+		aList.add(aBro16);
+		aList.add(aBro17);
+		aList.add(aBro18);
+		aList.add(aBro19);
+		aList.add(aBro20);
+		aList.add(aBro22);
+		aList.add(aBro23);
+		aList.add(aBro24);
+		*/
+		
+		/*
 		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
 		cm1.printConfusionMatrix();
+		
+		
 		
 		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
 		cm2.printConfusionMatrix();
 		*/
 		
-		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seq, seq, 1, ontology);
-		System.out.println();
-		ndl1.printAlignment();
-		System.out.println();
-		System.out.println(ndl1.getScore());
-		*/
-		/*
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seq, seq, 2, ontology);
-		System.out.println();
-		ndl2.printAlignment();
-		System.out.println();
-		System.out.println(ndl2.getScore());
-		*/
+		
+		//NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, ontology);
+		//ndl1.printAlignment();
+		
+		
+		
+		//NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg07, seqBro06, 2, ontology);
+		//ndl2.printAlignment();
+		
+		
+		
+		//SmithWaterman smt1 = new SmithWaterman(seqEgg07, seqBro06, 1, ontology);
+		//smt1.printAlignment();
+		
+		
+		
+		SmithWaterman smt2 = new SmithWaterman(seqEgg06, seqEgg07, 2, ontology);
+		smt2.printAlignment();
+		
+		
+		
+		//SmithWaterman smt2 = new SmithWaterman(example1, example2, 2, ontology);
+		//smt2.printAlignment();
+		//smt2.printTraceback();
+		//smt2.printMatrix();
+		
 		
 	}
 

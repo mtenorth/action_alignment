@@ -39,6 +39,7 @@ public class ConfusionMatrix {
 	
 	public void printConfusionMatrix(){
 		long start = System.currentTimeMillis();
+		this.calculateConfusionMatrix();
 		for (int i = 0; i < 10; i++){
 			for (int j = 0; j < 12; j++){
 				System.out.print(" ");
@@ -60,7 +61,6 @@ public class ConfusionMatrix {
 			System.out.println();
 		}
 		System.out.println();
-		this.calculateConfusionMatrix();
 		for (int i = 0; i < number; i++){
 			String identifier = seqList.get(i).getIdentifier();
 			int length = identifier.length();
@@ -79,7 +79,8 @@ public class ConfusionMatrix {
 		}
 		long ende = System.currentTimeMillis();
 		System.out.println();
-		System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
+		System.out.println("Berechnungszeit: " + ((ende - start)/1000.0) + " Sek.");
+		System.out.println();
 	}
 	
 }
