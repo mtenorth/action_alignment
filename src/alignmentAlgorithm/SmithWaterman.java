@@ -117,7 +117,7 @@ public class SmithWaterman {
 			}
 		} else {
 			
-			System.out.println(a1.getName() + " : " + a2.getName());
+			//System.out.println(a1.getName() + " : " + a2.getName());
 			
 			double compare = 0;
 			
@@ -180,9 +180,9 @@ public class SmithWaterman {
 				//System.out.println("--> " + x);
 			}
 			
-			double x = 2 + compare;
-			System.out.println("--> " + x);
-			System.out.println();
+			//double x = 2 + compare;
+			//System.out.println("--> " + x);
+			//System.out.println();
 			
 			return match + compare;
 		}

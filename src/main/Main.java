@@ -119,8 +119,8 @@ public class Main {
 		ArrayList<ActionElement> seqBro23 = reader32.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S23/labels.dat");
 		ArrayList<ActionElement> seqBro24 = reader33.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S24/labels.dat");
 		
-		ArrayList<ActionElement> example1 = reader32.getSequence("C:/Users/Administrator/Desktop/Data/Making/example1.dat");
-		ArrayList<ActionElement> example2 = reader33.getSequence("C:/Users/Administrator/Desktop/Data/Making/example2.dat");
+		ArrayList<ActionElement> example1 = reader34.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example1.dat");
+		ArrayList<ActionElement> example2 = reader35.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example2.dat");
 		
 		ActionSequence aEgg06 = new ActionSequence("Egg_S06", seqEgg06);
 		ActionSequence aEgg07 = new ActionSequence("Egg_S07", seqEgg07);
@@ -161,13 +161,30 @@ public class Main {
 		ActionSequence aExample2 = new ActionSequence("example2", example2);
 		
 		
+		/*
+		aList.add(aBro06);
+		aList.add(aBro07);
+		aList.add(aBro08);
+		aList.add(aBro09);
+		aList.add(aBro10);
+		aList.add(aBro12);
+		aList.add(aBro13);
+		aList.add(aBro14);
+		aList.add(aBro16);
+		aList.add(aBro17);
+		aList.add(aBro18);
+		aList.add(aBro19);
+		aList.add(aBro20);
+		aList.add(aBro22);
+		aList.add(aBro23);
+		aList.add(aBro24);
+		
 		aList.add(aEgg06);
 		aList.add(aEgg07);
 		aList.add(aEgg08);
 		aList.add(aEgg09);
 		aList.add(aEgg11);
 		aList.add(aEgg12);
-		
 		aList.add(aEgg13);
 		aList.add(aEgg14);
 		aList.add(aEgg15);
@@ -179,54 +196,36 @@ public class Main {
 		aList.add(aEgg53);
 		aList.add(aEgg54);
 		aList.add(aEgg55);
-		/*
-		aList.add(aBro06);
-		aList.add(aBro07);
-		aList.add(aBro08);
-		aList.add(aBro09);
-		aList.add(aBro10);
-		aList.add(aBro12);
-		
-		aList.add(aBro13);
-		aList.add(aBro14);
-		aList.add(aBro16);
-		aList.add(aBro17);
-		aList.add(aBro18);
-		aList.add(aBro19);
-		aList.add(aBro20);
-		aList.add(aBro22);
-		aList.add(aBro23);
-		aList.add(aBro24);
-		*/
-		
-		/*
-		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
-		cm1.printConfusionMatrix();
-		
-		
-		
-		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
-		cm2.printConfusionMatrix();
 		*/
 		
 		
-		//NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, ontology);
-		//ndl1.printAlignment();
+		//ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
+		//cm1.printConfusionMatrix();
 		
 		
 		
-		//NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg07, seqBro06, 2, ontology);
-		//ndl2.printAlignment();
+		//ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
+		//cm2.printConfusionMatrix();
 		
 		
 		
-		//SmithWaterman smt1 = new SmithWaterman(seqEgg07, seqBro06, 1, ontology);
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqBro16, seqEgg16, 1, ontology);
+		ndl1.printAlignment();
+		
+		
+		
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqBro16, seqEgg16, 2, ontology);
+		ndl2.printAlignment();
+		
+		
+		
+		//SmithWaterman smt1 = new SmithWaterman(seqBro16, seqEgg16, 1, ontology);
 		//smt1.printAlignment();
 		
 		
 		
-		SmithWaterman smt2 = new SmithWaterman(seqEgg06, seqEgg07, 2, ontology);
-		smt2.printAlignment();
+		//SmithWaterman smt2 = new SmithWaterman(seqBro16, seqEgg16, 2, ontology);
+		//smt2.printAlignment();
 		
 		
 		

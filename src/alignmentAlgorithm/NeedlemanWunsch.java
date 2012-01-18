@@ -70,6 +70,19 @@ public class NeedlemanWunsch {
 				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
+				
+				if (score1 > score2 && score1 > score3){
+					matrix[i][j] = score1;
+					traceback[i][j] = "diag";
+				} else if (score2 > score3){
+						matrix[i][j] = score2;
+						traceback[i][j] = "up";
+				} else {
+						matrix[i][j] = score3;
+						traceback[i][j] = "left";
+				}
+				
+				/*
 				if (score1 >= score2){
 					if (score1 >= score3){
 						matrix[i][j] = score1;
@@ -85,6 +98,7 @@ public class NeedlemanWunsch {
 						matrix[i][j] = score3;
 						traceback[i][j] = "left";
 				}
+				*/
 			}
 		}
 		this.countNothing(m, n);

@@ -62,7 +62,7 @@ public class Ontology {
 		//long ende = System.currentTimeMillis();
 		//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
 		
-		System.out.println("  " + entity1 + " : " + entity2 + "  |  " + wup);
+		//System.out.println("  " + entity1 + " : " + entity2 + "  |  " + wup);
 		
 		return wup;
 	}
