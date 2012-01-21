@@ -8,9 +8,9 @@ import sequenceElement.ActionElement;
 
 public class SmithWaterman {
 
-	double match = 2;
-	double mismatch = -2;
-	double gap = -1;
+	double match = 1.0;
+	double mismatch = -1.0;
+	double gap = -0.5;
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
@@ -54,8 +54,34 @@ public class SmithWaterman {
 				} else {
 					score1 = matrix[i - 1][j - 1] + Compare2(seq1.get(i - 1), seq2.get(j - 1));
 				}
-				double score2 = matrix[i-1][j] + gap;
-				double score3 = matrix[i][j-1] + gap;
+				double score2 = matrix[i-1][j] + 4.0 * gap;
+				double score3 = matrix[i][j-1] + 4.0 * gap;
+				if (score1 > 0 || score2 > 0 || score3 > 0){
+					if (score1 > score2 && score1 > score3){
+						matrix[i][j] = score1;
+						traceback[i][j] = "diag";
+						if (score1 > maxScore){
+							maxScore = score1;
+						}
+					} else if (score2 > score3){
+						matrix[i][j] = score2;
+						traceback[i][j] = "up";
+						if (score2 > maxScore){
+							maxScore = score2;
+						}
+					} else {
+						matrix[i][j] = score3;
+						traceback[i][j] = "left";
+						if (score3 > maxScore){
+							maxScore = score3;
+						}
+					}
+				} else {
+					matrix[i][j] = 0;
+					traceback[i][j] = "done";
+				}
+				
+				/*
 				if (score1 > 0 || score2 > 0 || score3 > 0){
 					if (score1 >= score2){
 						if (score1 >= score3){
@@ -88,6 +114,7 @@ public class SmithWaterman {
 					matrix[i][j] = 0;
 					traceback[i][j] = "done";
 				}
+				*/
 			}
 		}
 		
@@ -98,29 +125,10 @@ public class SmithWaterman {
 			if (a1.getHashMap().get("verb").equals("Nothing")) {
 				return 0;
 			} else {
-				return match;
+				return 4.0 * match;
 			}
 		} else {
-			return mismatch;
-		}
-	}
-	
-	private double Compare2(ActionElement a1, ActionElement a2){
-		//System.out.println();
-		//System.out.println(a1.getName() + " - " + a2.getName());
-		if (a1.getName().equals(a2.getName())) {
-			if (a1.getHashMap().get("verb").equals("Nothing")) {
-				return 0;
-			} else {
-				//System.out.println("match");
-				return match;
-			}
-		} else {
-			
-			//System.out.println(a1.getName() + " : " + a2.getName());
-			
 			double compare = 0;
-			
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -130,61 +138,93 @@ public class SmithWaterman {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
-			//long start;
-			//long ende;
-			
 			if (verb1.isEmpty() && verb2.isEmpty()) {
-				compare -= 1;
-			} else if (!verb1.equals(verb2)) {
-				//start = System.currentTimeMillis();
-				double x = ontology.getWupSimilarity(verb1, verb2);
-				//ende = System.currentTimeMillis();
-				//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
-				compare = compare - 1.0 + x;
-				//System.out.println("--> " + verb1 + " - " + verb2);
-				//System.out.println("--> " + x);
+				compare += mismatch;
+			} else if (verb1.equals(verb2)) {
+				compare += match;
+			} else {
+				compare += mismatch;
 			}
 			
 			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
-				compare -= 1;
-			} else if (!firstObject1.equals(firstObject2)) {
-				//zstVorher = System.currentTimeMillis();
-				double x = ontology.getWupSimilarity(firstObject1, firstObject2);
-				//zstNachher = System.currentTimeMillis();
-				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
-				compare = compare - 1.0 + x;
-				//System.out.println("--> " + firstObject1 + " - " + firstObject2);
-				//System.out.println("--> " + x);
+				compare += mismatch;
+			} else if (firstObject1.equals(firstObject2)) {
+				compare += match;
+			} else {
+				compare += mismatch;
 			}
 			
 			if (preposition1.isEmpty() && preposition2.isEmpty()) {
-				compare -= 1;
-			} else if (!preposition1.equals(preposition2)) {
-				//zstVorher = System.currentTimeMillis();
-				double x = ontology.getWupSimilarity(preposition1, preposition2);
-				//zstNachher = System.currentTimeMillis();
-				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
-				compare = compare - 1.0 + x;
-				//System.out.println("--> " + preposition1 + " - " + preposition2);
-				//System.out.println("--> " + x);
+				compare += mismatch;
+			} else if (preposition1.equals(preposition2)) {
+				compare += match;
+			} else {
+				compare += mismatch;
 			}
+			
 			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
-				compare -= 1;
-			} else if (!secondObject1.equals(secondObject2)) {
-				//zstVorher = System.currentTimeMillis();
-				double x = ontology.getWupSimilarity(secondObject1, secondObject2);
-				//zstNachher = System.currentTimeMillis();
-				//System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000.0) + " sec");
-				compare = compare - 1.0 + x;
-				//System.out.println("--> " + secondObject1 + " - " + secondObject2);
-				//System.out.println("--> " + x);
+				compare += mismatch;
+			} else if (secondObject1.equals(secondObject2)) {
+				compare += match;
+			} else {
+				compare += mismatch;
 			}
 			
-			//double x = 2 + compare;
-			//System.out.println("--> " + x);
-			//System.out.println();
+			return compare;
+		}
+	}
+	
+	private double Compare2(ActionElement a1, ActionElement a2){
+		if (a1.getName().equals(a2.getName())) {
+			if (a1.getHashMap().get("verb").equals("Nothing")) {
+				return 0;
+			} else {
+				return 4.0 * match;
+			}
+		} else {
+			double compare = 0;
+			String verb1 = a1.getHashMap().get("verb");
+			String verb2 = a2.getHashMap().get("verb");
+			String firstObject1 = a1.getHashMap().get("object1");
+			String firstObject2 = a2.getHashMap().get("object1");
+			String preposition1 = a1.getHashMap().get("preposition");
+			String preposition2 = a2.getHashMap().get("preposition");
+			String secondObject1 = a1.getHashMap().get("object2");
+			String secondObject2 = a2.getHashMap().get("object2");
 			
-			return match + compare;
+			if (verb1.isEmpty() && verb2.isEmpty()) {
+				compare += mismatch;
+			} else if (verb1.equals(verb2)) {
+				compare += match;
+			} else {
+				compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
+			}
+			
+			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
+				compare += mismatch;
+			} else if (firstObject1.equals(firstObject2)) {
+				compare += match;
+			} else {
+				compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
+			}
+			
+			if (preposition1.isEmpty() && preposition2.isEmpty()) {
+				compare += mismatch;
+			} else if (preposition1.equals(preposition2)) {
+				compare += match;
+			} else {
+				compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
+			}
+			
+			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
+				compare += mismatch;
+			} else if (secondObject1.equals(secondObject2)) {
+				compare += match;
+			} else {
+				compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
+			}
+			
+			return compare;
 		}
 	}
 	
