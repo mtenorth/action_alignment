@@ -149,7 +149,7 @@ public class NeedlemanWunsch {
 				if (verb1.isEmpty() || verb2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + ontology.getWupSimilarity(verb1, verb2);
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
 				}
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				compare += match;
@@ -159,7 +159,7 @@ public class NeedlemanWunsch {
 				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + ontology.getWupSimilarity(firstObject1, firstObject2);
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
 				}
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				compare += match;
@@ -169,7 +169,7 @@ public class NeedlemanWunsch {
 				if (preposition1.isEmpty() || preposition2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + ontology.getWupSimilarity(preposition1, preposition2);
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
 				}
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				compare += match;
@@ -179,7 +179,7 @@ public class NeedlemanWunsch {
 				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + ontology.getWupSimilarity(secondObject1, secondObject2);
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
 				}
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				compare += match;
@@ -231,7 +231,7 @@ public class NeedlemanWunsch {
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
-			System.out.println(s1 + " <-> " + s2);
+			System.out.println(s1 + " - " + s2);
 		}
 		System.out.println();
 		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);

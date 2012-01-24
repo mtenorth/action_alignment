@@ -28,8 +28,12 @@ public class ConfusionMatrix {
 		for (int i = 0; i < number; i++) {
 			for (int j = 0; j < number; j++) {
 				if (i <= j) {
+					//System.out.println("i = " + i + "; j = " + j + ";");
+					//long start = System.currentTimeMillis();
 					NeedlemanWunsch ndl = new NeedlemanWunsch(seqList.get(i).getSequence(), seqList.get(j).getSequence(), compare, ontology);
 					confusionMatrix[i][j] = ndl.getScore();
+					//long ende = System.currentTimeMillis();
+					//System.out.println("Berechnungszeit: " + ((ende - start)/1000.0) + " Sek.");
 				} else {
 					confusionMatrix[i][j] = confusionMatrix[j][i];
 				}

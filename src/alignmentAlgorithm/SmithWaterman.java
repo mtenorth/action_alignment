@@ -122,11 +122,7 @@ public class SmithWaterman {
 	
 	private double Compare1(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
-			if (a1.getHashMap().get("verb").equals("Nothing")) {
-				return 0;
-			} else {
-				return 4.0 * match;
-			}
+			return 4.0 * match;
 		} else {
 			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
@@ -138,36 +134,28 @@ public class SmithWaterman {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
-			if (verb1.isEmpty() && verb2.isEmpty()) {
+			if (!verb1.equals(verb2)) {
 				compare += mismatch;
-			} else if (verb1.equals(verb2)) {
+			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch;
 			}
 			
-			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
+			if (!firstObject1.equals(firstObject2)) {
 				compare += mismatch;
-			} else if (firstObject1.equals(firstObject2)) {
+			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch;
 			}
 			
-			if (preposition1.isEmpty() && preposition2.isEmpty()) {
+			if (!preposition1.equals(preposition2)) {
 				compare += mismatch;
-			} else if (preposition1.equals(preposition2)) {
+			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch;
 			}
 			
-			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
+			if (!secondObject1.equals(secondObject2)) {
 				compare += mismatch;
-			} else if (secondObject1.equals(secondObject2)) {
+			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch;
 			}
 			
 			return compare;
@@ -176,11 +164,7 @@ public class SmithWaterman {
 	
 	private double Compare2(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
-			if (a1.getHashMap().get("verb").equals("Nothing")) {
-				return 0;
-			} else {
-				return 4.0 * match;
-			}
+			return 4.0 * match;
 		} else {
 			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
@@ -192,36 +176,44 @@ public class SmithWaterman {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
-			if (verb1.isEmpty() && verb2.isEmpty()) {
-				compare += mismatch;
-			} else if (verb1.equals(verb2)) {
+			if (!verb1.equals(verb2)) {
+				if (verb1.isEmpty() || verb2.isEmpty()) {
+					compare += mismatch;
+				} else {
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
+				}
+			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
 			}
 			
-			if (firstObject1.isEmpty() && firstObject2.isEmpty()) {
-				compare += mismatch;
-			} else if (firstObject1.equals(firstObject2)) {
+			if (!firstObject1.equals(firstObject2)) {
+				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
+					compare += mismatch;
+				} else {
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
+				}
+			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
 			}
 			
-			if (preposition1.isEmpty() && preposition2.isEmpty()) {
-				compare += mismatch;
-			} else if (preposition1.equals(preposition2)) {
+			if (!preposition1.equals(preposition2)) {
+				if (preposition1.isEmpty() || preposition2.isEmpty()) {
+					compare += mismatch;
+				} else {
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
+				}
+			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
 			}
 			
-			if (secondObject1.isEmpty() && secondObject2.isEmpty()) {
-				compare += mismatch;
-			} else if (secondObject1.equals(secondObject2)) {
+			if (!secondObject1.equals(secondObject2)) {
+				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
+					compare += mismatch;
+				} else {
+					compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
+				}
+			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				compare += match;
-			} else {
-				compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
 			}
 			
 			return compare;

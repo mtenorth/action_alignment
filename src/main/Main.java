@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
+
 import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
 
@@ -168,7 +169,7 @@ public class Main {
 		ActionSequence aExample4 = new ActionSequence("example4", example4);
 		
 		
-		/*
+		
 		aList.add(aBro06);
 		aList.add(aBro07);
 		aList.add(aBro08);
@@ -185,7 +186,7 @@ public class Main {
 		aList.add(aBro22);
 		aList.add(aBro23);
 		aList.add(aBro24);
-		/*
+		
 		aList.add(aEgg06);
 		aList.add(aEgg07);
 		aList.add(aEgg08);
@@ -211,34 +212,34 @@ public class Main {
 		*/
 		
 		
-		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
-		cm1.printConfusionMatrix();
+		//ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
+		//cm1.printConfusionMatrix();
 		
 		
 		
-		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
-		cm2.printConfusionMatrix();
+		//ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
+		//cm2.printConfusionMatrix();
 		
 		
 		
-		//NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg11, 1, ontology);
-		//ndl1.printAlignment();
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(example1, example2, 1, ontology);
+		ndl1.printAlignment();
 		
 		
 		
-		//NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg11, 2, ontology);
-		//ndl2.printAlignment();
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(example1, example2, 2, ontology);
+		ndl2.printAlignment();
 		
 		
 		/*
 		SmithWaterman smt1 = new SmithWaterman(seqBro16, seqEgg16, 1, ontology);
 		smt1.printAlignment();
+		
+		
+		
+		SmithWaterman smt2 = new SmithWaterman(seqBro16, seqEgg16, 2, ontology);
+		smt2.printAlignment();
 		*/
-		
-		
-		//SmithWaterman smt2 = new SmithWaterman(seqBro16, seqEgg16, 2, ontology);
-		//smt2.printAlignment();
-		
 		
 		
 		//SmithWaterman smt2 = new SmithWaterman(example1, example2, 2, ontology);
