@@ -8,6 +8,7 @@ import alignmentAlgorithm.SmithWaterman;
 
 import evaluation.ConfusionMatrix;
 import fileReader.DataFileReader;
+import fileReader.Translater;
 import ontology.Ontology;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
@@ -23,9 +24,13 @@ public class Main {
 		Ontology ontology = new Ontology(url);
 		
 		/*
-		String object1 = "TableSalt";
-		String object2 = "Pepper-TheSpice";
-		String object3 = "Event";
+		Translater t = new Translater();
+		String s1 = t.getTranslateMap().get("walk");
+		String s2 = t.getTranslateMap().get("fridge");
+		
+		String object1 = "Reading";
+		String object2 = "ClosingSomething";
+		String object3 = "Refrigerator";
 		String object4 = "ClosingADoor";
 		String object5 = "B21";
 		String object6 = "Box";
@@ -36,9 +41,9 @@ public class Main {
 		String object11 = "Cupboard";
 		String object12 = "Cupboard";
 		
-		ontology.getWupSimilarity(object11, object12);
-		
-		ontology.getWupSimilarity(object10, object11);
+		ontology.getWupSimilarity(s1, s2);
+		//ontology.getWupSimilarity(object10, object11);
+		/*
 		ontology.getWupSimilarity(object1, object2);
 		ontology.getWupSimilarity(object11, object12);
 		ontology.getWupSimilarity(object5, object6);
@@ -169,7 +174,7 @@ public class Main {
 		ActionSequence aExample4 = new ActionSequence("example4", example4);
 		
 		
-		
+		/*
 		aList.add(aBro06);
 		aList.add(aBro07);
 		aList.add(aBro08);
@@ -186,7 +191,7 @@ public class Main {
 		aList.add(aBro22);
 		aList.add(aBro23);
 		aList.add(aBro24);
-		
+		*/
 		aList.add(aEgg06);
 		aList.add(aEgg07);
 		aList.add(aEgg08);
@@ -211,25 +216,25 @@ public class Main {
 		aList.add(aExample4);
 		*/
 		
-		
-		//ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
-		//cm1.printConfusionMatrix();
-		
-		
-		
-		//ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
-		//cm2.printConfusionMatrix();
+		/*
+		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
+		cm1.printConfusionMatrix();
 		
 		
 		
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(example1, example2, 1, ontology);
+		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
+		cm2.printConfusionMatrix();
+		*/
+		
+		/*
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg20, seqEgg25, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(example1, example2, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg20, seqEgg25, 2, ontology);
 		ndl2.printAlignment();
-		
+		*/
 		
 		/*
 		SmithWaterman smt1 = new SmithWaterman(seqBro16, seqEgg16, 1, ontology);

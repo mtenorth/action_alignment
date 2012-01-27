@@ -2,6 +2,8 @@ package alignmentAlgorithm;
 
 import java.util.ArrayList;
 
+import fileReader.Translater;
+
 import ontology.Ontology;
 
 import sequenceElement.ActionElement;
@@ -63,7 +65,7 @@ public class NeedlemanWunsch {
 				
 				if (d == 4.0 * match) {
 					String s = seq1.get(i - 1).getHashMap().get("verb");
-					if (s.equals("Nothing")) {
+					if (s.equals("none")) {
 						score1 -= 2.0;
 					}
 				}
@@ -93,7 +95,6 @@ public class NeedlemanWunsch {
 		if (a1.getName().equals(a2.getName())) {
 			return 4.0 * match;
 		} else {
-			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -102,6 +103,7 @@ public class NeedlemanWunsch {
 			String preposition2 = a2.getHashMap().get("preposition");
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
+			double compare = 0;
 			
 			if (!verb1.equals(verb2)) {
 				compare += mismatch;
@@ -135,7 +137,6 @@ public class NeedlemanWunsch {
 		if (a1.getName().equals(a2.getName())) {
 			return 4.0 * match;
 		} else {
-			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -144,12 +145,16 @@ public class NeedlemanWunsch {
 			String preposition2 = a2.getHashMap().get("preposition");
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
+			double compare = 0;
+			Translater translater = new Translater();
 			
 			if (!verb1.equals(verb2)) {
 				if (verb1.isEmpty() || verb2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
+					verb1 = translater.getTranslateMap().get(verb1);
+					verb2 = translater.getTranslateMap().get(verb2);
+					compare += mismatch + ontology.getWupSimilarity(verb1, verb2);
 				}
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				compare += match;
@@ -159,7 +164,9 @@ public class NeedlemanWunsch {
 				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
+					firstObject1 = translater.getTranslateMap().get(firstObject1);
+					firstObject2 = translater.getTranslateMap().get(firstObject2);
+					compare += mismatch + ontology.getWupSimilarity(firstObject1, firstObject2);
 				}
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				compare += match;
@@ -169,7 +176,9 @@ public class NeedlemanWunsch {
 				if (preposition1.isEmpty() || preposition2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
+					preposition1 = translater.getTranslateMap().get(preposition1);
+					preposition2 = translater.getTranslateMap().get(preposition2);
+					compare += mismatch + ontology.getWupSimilarity(preposition1, preposition2);
 				}
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				compare += match;
@@ -179,7 +188,9 @@ public class NeedlemanWunsch {
 				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
+					secondObject1 = translater.getTranslateMap().get(secondObject1);
+					secondObject2 = translater.getTranslateMap().get(secondObject2);
+					compare += mismatch + ontology.getWupSimilarity(secondObject1, secondObject2);
 				}
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				compare += match;
@@ -231,7 +242,7 @@ public class NeedlemanWunsch {
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
-			System.out.println(s1 + " - " + s2);
+			System.out.println(s1 + " & - & " + s2);
 		}
 		System.out.println();
 		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);
@@ -242,19 +253,31 @@ public class NeedlemanWunsch {
 	
 	private void calculateAlignmentRecursive(int m, int n){
 		String s = traceback[m][n];
-		if (s.equals("diag")){
-			alignments[0][pointer] = seq1.get(m-1).getName();
-			alignments[1][pointer] = seq2.get(n-1).getName();
+		if (s.equals("diag")) {
+			String name1 = seq1.get(m - 1).getName();
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
+			String name2 = seq2.get(n - 1).getName();
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
+			alignments[0][pointer] = name1;
+			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
-		} else if (s.equals("left")){
-			alignments[0][pointer] = "|";
-			alignments[1][pointer] = seq2.get(n-1).getName();
+		} else if (s.equals("left")) {
+			String name2 = seq2.get(n - 1).getName();
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
+			alignments[0][pointer] = "$|$";
+			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
-		} else if (s.equals("up")){
-			alignments[0][pointer] = seq1.get(m-1).getName();
-			alignments[1][pointer] = "|";
+		} else if (s.equals("up")) {
+			String name1 = seq1.get(m - 1).getName();
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
+			alignments[0][pointer] = name1;
+			alignments[1][pointer] = "$|$";
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		}
@@ -265,7 +288,7 @@ public class NeedlemanWunsch {
 		if (s.equals("diag")){
 			String s1 = seq1.get(m - 1).getHashMap().get("verb");
 			String s2 = seq2.get(n - 1).getHashMap().get("verb");
-			if (s1.equals("Nothing") && s2.equals("Nothing")) {
+			if (s1.equals("none") && s2.equals("none")) {
 				//System.out.println("++");
 				nothingCount++;
 			}
