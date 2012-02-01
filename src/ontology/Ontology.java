@@ -52,11 +52,11 @@ public class Ontology {
 		double depth1 = (double) this.getDepthOf(predecessor);
 		double depth2 = (double) this.getDepthOf(class1);
 		double depth3 = (double) this.getDepthOf(class2);
-		System.out.println(predecessor + " depth: " + depth1);
-		System.out.println(class1 + " depth: " + depth2);
-		System.out.println(class2 + " depth: " + depth3);
+		//System.out.println(predecessor + " depth: " + depth1);
+		//System.out.println(class1 + " depth: " + depth2);
+		//System.out.println(class2 + " depth: " + depth3);
 		double wup = (2 * depth1) / (depth2 + depth3);
-		System.out.println("wup = " + wup);
+		//System.out.println("wup = " + wup);
 		//System.out.println();
 		
 		//long ende = System.currentTimeMillis();

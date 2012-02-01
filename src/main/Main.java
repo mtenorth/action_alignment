@@ -20,14 +20,25 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		
 		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
 		Ontology ontology = new Ontology(url);
 		
 		/*
 		Translater t = new Translater();
-		String s1 = t.getTranslateMap().get("walk");
-		String s2 = t.getTranslateMap().get("fridge");
 		
+		String s1 = t.getTranslateMap().get("twist_off");
+		String s2 = t.getTranslateMap().get("open");
+		String s3 = t.getTranslateMap().get("cap");
+		String s4 = t.getTranslateMap().get("oil");
+		
+		/*
+		String s1 = t.getTranslateMap().get("salt");
+		String s2 = t.getTranslateMap().get("frying_pan");
+		String s3 = t.getTranslateMap().get("cupboard_bottom_left");
+		String s4 = t.getTranslateMap().get("counter");
+		*/
+		/*
 		String object1 = "Reading";
 		String object2 = "ClosingSomething";
 		String object3 = "Refrigerator";
@@ -42,7 +53,7 @@ public class Main {
 		String object12 = "Cupboard";
 		
 		ontology.getWupSimilarity(s1, s2);
-		//ontology.getWupSimilarity(object10, object11);
+		ontology.getWupSimilarity(s3, s4);
 		/*
 		ontology.getWupSimilarity(object1, object2);
 		ontology.getWupSimilarity(object11, object12);
@@ -174,12 +185,13 @@ public class Main {
 		ActionSequence aExample4 = new ActionSequence("example4", example4);
 		
 		
-		/*
+		
 		aList.add(aBro06);
 		aList.add(aBro07);
 		aList.add(aBro08);
 		aList.add(aBro09);
 		aList.add(aBro10);
+		/*
 		aList.add(aBro12);
 		aList.add(aBro13);
 		aList.add(aBro14);
@@ -191,7 +203,7 @@ public class Main {
 		aList.add(aBro22);
 		aList.add(aBro23);
 		aList.add(aBro24);
-		*/
+		/*
 		aList.add(aEgg06);
 		aList.add(aEgg07);
 		aList.add(aEgg08);
@@ -226,23 +238,23 @@ public class Main {
 		cm2.printConfusionMatrix();
 		*/
 		
-		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg20, seqEgg25, 1, null);
+		
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg20, seqEgg25, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg07, 2, ontology);
 		ndl2.printAlignment();
-		*/
+		
 		
 		/*
-		SmithWaterman smt1 = new SmithWaterman(seqBro16, seqEgg16, 1, ontology);
+		SmithWaterman smt1 = new SmithWaterman(seqBro06, seqEgg07, 1, ontology);
 		smt1.printAlignment();
 		
 		
 		
-		SmithWaterman smt2 = new SmithWaterman(seqBro16, seqEgg16, 2, ontology);
+		SmithWaterman smt2 = new SmithWaterman(seqBro06, seqEgg07, 2, ontology);
 		smt2.printAlignment();
 		*/
 		

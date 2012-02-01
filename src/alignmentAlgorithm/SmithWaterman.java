@@ -2,6 +2,8 @@ package alignmentAlgorithm;
 
 import java.util.ArrayList;
 
+import fileReader.Translater;
+
 import ontology.Ontology;
 
 import sequenceElement.ActionElement;
@@ -49,13 +51,25 @@ public class SmithWaterman {
 		for (int i = 1; i <= m; i++){
 			for (int j = 1; j <= n; j++){
 				double score1;
+				double d;
 				if (function == 1) {
-					score1 = matrix[i - 1][j - 1] + Compare1(seq1.get(i - 1), seq2.get(j - 1));
+					d = Compare1(seq1.get(i - 1), seq2.get(j - 1));
+					score1 = matrix[i - 1][j - 1] + d;
 				} else {
-					score1 = matrix[i - 1][j - 1] + Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					d = Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					score1 = matrix[i - 1][j - 1] + d;
 				}
+				
+				if (d == 4.0 * match) {
+					String s = seq1.get(i - 1).getHashMap().get("verb");
+					if (s.equals("none")) {
+						score1 -= 2.0;
+					}
+				}
+				
 				double score2 = matrix[i-1][j] + 4.0 * gap;
 				double score3 = matrix[i][j-1] + 4.0 * gap;
+				
 				if (score1 > 0 || score2 > 0 || score3 > 0){
 					if (score1 > score2 && score1 > score3){
 						matrix[i][j] = score1;
@@ -124,7 +138,6 @@ public class SmithWaterman {
 		if (a1.getName().equals(a2.getName())) {
 			return 4.0 * match;
 		} else {
-			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -133,6 +146,7 @@ public class SmithWaterman {
 			String preposition2 = a2.getHashMap().get("preposition");
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
+			double compare = 0;
 			
 			if (!verb1.equals(verb2)) {
 				compare += mismatch;
@@ -166,7 +180,6 @@ public class SmithWaterman {
 		if (a1.getName().equals(a2.getName())) {
 			return 4.0 * match;
 		} else {
-			double compare = 0;
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -175,12 +188,16 @@ public class SmithWaterman {
 			String preposition2 = a2.getHashMap().get("preposition");
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
+			double compare = 0;
+			Translater translater = new Translater();
 			
 			if (!verb1.equals(verb2)) {
 				if (verb1.isEmpty() || verb2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(verb1, verb2);
+					verb1 = translater.getTranslateMap().get(verb1);
+					verb2 = translater.getTranslateMap().get(verb2);
+					compare += mismatch + ontology.getWupSimilarity(verb1, verb2);
 				}
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				compare += match;
@@ -190,7 +207,9 @@ public class SmithWaterman {
 				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(firstObject1, firstObject2);
+					firstObject1 = translater.getTranslateMap().get(firstObject1);
+					firstObject2 = translater.getTranslateMap().get(firstObject2);
+					compare += mismatch + ontology.getWupSimilarity(firstObject1, firstObject2);
 				}
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				compare += match;
@@ -200,7 +219,9 @@ public class SmithWaterman {
 				if (preposition1.isEmpty() || preposition2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(preposition1, preposition2);
+					preposition1 = translater.getTranslateMap().get(preposition1);
+					preposition2 = translater.getTranslateMap().get(preposition2);
+					compare += mismatch + ontology.getWupSimilarity(preposition1, preposition2);
 				}
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				compare += match;
@@ -210,7 +231,9 @@ public class SmithWaterman {
 				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
 					compare += mismatch;
 				} else {
-					compare += mismatch + 2.0 * ontology.getWupSimilarity(secondObject1, secondObject2);
+					secondObject1 = translater.getTranslateMap().get(secondObject1);
+					secondObject2 = translater.getTranslateMap().get(secondObject2);
+					compare += mismatch + ontology.getWupSimilarity(secondObject1, secondObject2);
 				}
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				compare += match;
@@ -269,6 +292,7 @@ public class SmithWaterman {
 			}
 		}
 		for (int i = pointer - 1; i >= 0; i--){
+			// if "ln" println for next local alignment
 			if (!alignments[0][i].equals("ln")) {
 				String s1 = alignments[1][i];
 				String s2 = alignments[0][i];
@@ -276,7 +300,7 @@ public class SmithWaterman {
 				for (int k = 50 - s1.length(); k > 0; k--) {
 					System.out.print(" ");
 				}
-				System.out.println(s1 + " - " + s2);
+				System.out.println(s1 + " & - & " + s2);
 			} else {
 				System.out.println();
 			}
@@ -287,24 +311,40 @@ public class SmithWaterman {
 	private void calculateAlignmentRecursive(int m, int n){
 		String s = traceback[m][n];
 		if (s.equals("diag")){
-			alignments[0][pointer] = seq1.get(m-1).getName();
-			alignments[1][pointer] = seq2.get(n-1).getName();
+			String name1 = seq1.get(m - 1).getName();
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
+			String name2 = seq2.get(n - 1).getName();
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
+			alignments[0][pointer] = name1;
+			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")){
-			alignments[0][pointer] = "|";
-			alignments[1][pointer] = seq2.get(n-1).getName();
+			String name2 = seq2.get(n - 1).getName();
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
+			alignments[0][pointer] = "$|$";
+			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")){
-			alignments[0][pointer] = seq1.get(m-1).getName();
-			alignments[1][pointer] = "|";
+			String name1 = seq1.get(m - 1).getName();
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
+			alignments[0][pointer] = name1;
+			alignments[1][pointer] = "$|$";
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		} else {
 			alignments[0][pointer] = "ln";
 			pointer++;
 		}
+	}
+	
+	public double getScore() {
+		return maxScore;
 	}
 	
 }
