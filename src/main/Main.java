@@ -238,7 +238,7 @@ public class Main {
 		cm2.printConfusionMatrix();
 		*/
 		
-		
+		/*
 		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, null);
 		ndl1.printAlignment();
 		
@@ -246,7 +246,7 @@ public class Main {
 		
 		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg07, 2, ontology);
 		ndl2.printAlignment();
-		
+		*/
 		
 		/*
 		SmithWaterman smt1 = new SmithWaterman(seqBro06, seqEgg07, 1, ontology);
