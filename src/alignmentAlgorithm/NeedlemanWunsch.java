@@ -1,10 +1,13 @@
 package alignmentAlgorithm;
 
+import hierarchicStructure.HierarchicStructure;
+import hierarchicStructure.Transformer;
+
 import java.util.ArrayList;
 
-import fileReader.Translater;
 
 import ontology.Ontology;
+import ontology.Translater;
 
 import sequenceElement.ActionElement;
 
@@ -38,6 +41,18 @@ public class NeedlemanWunsch {
 	private int nothingCount = 0;
 	
 	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
+		HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+		Transformer transformer = new Transformer(hierarchy);
+		for (ActionElement a : seq1) {
+			System.out.println(a.getName());
+		}
+		System.out.println();
+		seq1 = transformer.transform(seq1);
+		for (ActionElement a : seq1) {
+			System.out.println(a.getName());
+		}
+		System.out.println();
+		//transformer.transform(seq2);
 		this.seq1 = seq1;
 		this.seq2 = seq2;
 		this.ontology = ontology;
@@ -71,12 +86,14 @@ public class NeedlemanWunsch {
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
+				/*
 				if (d == match) {
 					String s = seq1.get(i - 1).getHashMap().get("verb");
 					if (s.equals("none")) {
 						score1 -= 0.5;
 					}
 				}
+				*/
 				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
@@ -96,7 +113,9 @@ public class NeedlemanWunsch {
 				}
 			}
 		}
-		this.countNothing(m, n);
+		
+		//this.countNothing(m, n);
+		
 	}
 	
 	private double Compare1(ActionElement a1, ActionElement a2){
@@ -222,8 +241,8 @@ public class NeedlemanWunsch {
 			calculateAlignmentRecursive(m, n);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
-			String s1 = alignments[1][i];
-			String s2 = alignments[0][i];
+			String s1 = alignments[0][i];
+			String s2 = alignments[1][i];
 			//maximum of 50 characters
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");

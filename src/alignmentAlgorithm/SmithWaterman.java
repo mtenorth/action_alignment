@@ -2,9 +2,9 @@ package alignmentAlgorithm;
 
 import java.util.ArrayList;
 
-import fileReader.Translater;
 
 import ontology.Ontology;
+import ontology.Translater;
 
 import sequenceElement.ActionElement;
 

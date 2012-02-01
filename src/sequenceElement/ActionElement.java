@@ -19,6 +19,10 @@ public class ActionElement {
 		return hashMap;
 	}
 	
+	public void setHashMap(HashMap<String, String> newHashMap) {
+		hashMap = new HashMap<String, String>(newHashMap);
+	}
+	
 	public void put(String key, String value){
 		hashMap.put(key, value);
 	}

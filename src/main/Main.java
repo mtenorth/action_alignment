@@ -1,6 +1,9 @@
 package main;
 
+import hierarchicStructure.HierarchicStructure;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 import alignmentAlgorithm.NeedlemanWunsch;
@@ -8,8 +11,9 @@ import alignmentAlgorithm.SmithWaterman;
 
 import evaluation.ConfusionMatrix;
 import fileReader.DataFileReader;
-import fileReader.Translater;
+import fileReader.SequenceFileReader;
 import ontology.Ontology;
+import ontology.Translater;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
@@ -21,8 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
-		Ontology ontology = new Ontology(url);
+		//String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+		//Ontology ontology = new Ontology(url);
 		
 		/*
 		Translater t = new Translater();
@@ -264,6 +268,26 @@ public class Main {
 		//smt2.printTraceback();
 		//smt2.printMatrix();
 		
+		
+		SequenceFileReader r1 = new SequenceFileReader();
+		SequenceFileReader r2 = new SequenceFileReader();
+		SequenceFileReader r3 = new SequenceFileReader();
+		SequenceFileReader r4 = new SequenceFileReader();
+		
+		ArrayList<ActionElement> seqLeft02 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-2-condensed.csv");
+		ArrayList<ActionElement> seqLeft011 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-11-condensed.csv");
+		
+		ArrayList<ActionElement> seqX1 = r3.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example1.csv");
+		ArrayList<ActionElement> seqX2 = r4.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example2.csv");
+		
+		ActionSequence aLeft02 = new ActionSequence("lefthand-0-2", seqLeft02);
+		ActionSequence aLeft011 = new ActionSequence("lefthand-0-11", seqLeft011);
+		
+		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqLeft011, 1, null);
+		
+		//ndl.printMatrix();
+		//ndl.printTraceback();
+		//ndl.printAlignment();
 		
 	}
 
