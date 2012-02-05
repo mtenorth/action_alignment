@@ -2,13 +2,9 @@ package alignmentAlgorithm;
 
 import hierarchicStructure.HierarchicStructure;
 import hierarchicStructure.Transformer;
-
 import java.util.ArrayList;
-
-
 import ontology.Ontology;
 import ontology.Translater;
-
 import sequenceElement.ActionElement;
 
 public class NeedlemanWunsch {
@@ -25,6 +21,9 @@ public class NeedlemanWunsch {
 	
 	private double exponent = 3;
 	
+	HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+	Transformer transformer = new Transformer(hierarchy);
+	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
 	
@@ -35,24 +34,14 @@ public class NeedlemanWunsch {
 	
 	private double[][] matrix;
 	private String[][] traceback;
-	private String[][] alignments;
+	private ActionElement[][] alignments;
 	
 	private int pointer = 0;
 	private int nothingCount = 0;
 	
 	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
-		HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
-		Transformer transformer = new Transformer(hierarchy);
-		for (ActionElement a : seq1) {
-			System.out.println(a.getName());
-		}
-		System.out.println();
 		seq1 = transformer.transform(seq1);
-		for (ActionElement a : seq1) {
-			System.out.println(a.getName());
-		}
-		System.out.println();
-		//transformer.transform(seq2);
+		seq2 = transformer.transform(seq2);
 		this.seq1 = seq1;
 		this.seq2 = seq2;
 		this.ontology = ontology;
@@ -60,7 +49,7 @@ public class NeedlemanWunsch {
 		n = seq2.size();
 		matrix = new double[m+1][n+1];
 		traceback = new String[m+1][n+1];
-		alignments = new String[2][m+n];
+		alignments = new ActionElement[2][m+n];
 		//initialisation of the matrix + traceback
 		matrix[0][0] = 0;
 		traceback[0][0] = "done";
@@ -239,15 +228,16 @@ public class NeedlemanWunsch {
 	public void printAlignment(){
 		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
+			alignments = transformer.retransform(alignments);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
-			String s1 = alignments[0][i];
-			String s2 = alignments[1][i];
+			String s1 = alignments[0][i].getName();
+			String s2 = alignments[1][i].getName();
 			//maximum of 50 characters
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
-			System.out.println(s1 + " & - & " + s2);
+			System.out.println(s1 + " & - & " + s2 + "\\\\");
 		}
 		System.out.println();
 		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);
@@ -259,30 +249,18 @@ public class NeedlemanWunsch {
 	private void calculateAlignmentRecursive(int m, int n){
 		String s = traceback[m][n];
 		if (s.equals("diag")) {
-			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
-			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
-			alignments[0][pointer] = name1;
-			alignments[1][pointer] = name2;
+			alignments[0][pointer] = seq1.get(m - 1);
+			alignments[1][pointer] = seq2.get(n - 1);
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")) {
-			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
-			alignments[0][pointer] = "$|$";
-			alignments[1][pointer] = name2;
+			alignments[0][pointer] = new ActionElement("$|$");
+			alignments[1][pointer] = seq2.get(n - 1);
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")) {
-			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
-			alignments[0][pointer] = name1;
-			alignments[1][pointer] = "$|$";
+			alignments[0][pointer] = seq1.get(m - 1);
+			alignments[1][pointer] = new ActionElement("$|$");
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		}

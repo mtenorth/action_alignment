@@ -268,7 +268,7 @@ public class Main {
 		//smt2.printTraceback();
 		//smt2.printMatrix();
 		
-		
+		/*
 		SequenceFileReader r1 = new SequenceFileReader();
 		SequenceFileReader r2 = new SequenceFileReader();
 		SequenceFileReader r3 = new SequenceFileReader();
@@ -283,11 +283,12 @@ public class Main {
 		ActionSequence aLeft02 = new ActionSequence("lefthand-0-2", seqLeft02);
 		ActionSequence aLeft011 = new ActionSequence("lefthand-0-11", seqLeft011);
 		
-		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqLeft011, 1, null);
+		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqLeft02, 1, null);
 		
 		//ndl.printMatrix();
 		//ndl.printTraceback();
-		//ndl.printAlignment();
+		ndl.printAlignment();
+		*/
 		
 	}
 

@@ -38,4 +38,63 @@ public class Transformer {
 		}
 	}
 	
+	public ActionElement[][] retransform(ActionElement[][] alignments) {
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < alignments[i].length; j++) {
+				ActionElement element = alignments[i][j];
+				if (element != null) {
+					while (element.getHashMap().containsKey(element.getName())) {
+						String name = element.getName();
+						String newName = element.getHashMap().get(name);
+						element.setName(newName);
+						element.getHashMap().remove(name);
+					}
+				}
+			}
+		}
+		
+		int steps = 0;
+		for (int i = 0; i < 2; i++) {
+			for (int j = alignments[i].length - 1; j >= 0; j--) {
+				ActionElement element = alignments[i][j];
+				if (steps == 0) {
+					if (element != null) {
+						if (hierarchy.getHierarchyMap().containsKey(element.getName())) {
+							steps = getNumberOfSubEvents(element.getName()) - 1;
+							System.out.println(steps);
+						}
+					}
+				} else {
+					if (!element.getName().equals("$|$")) {
+						element.setName("()");
+						steps--;
+					}
+				}
+				/*else {
+					if (element.getName().equals("$|$")) {
+						element.setName("");
+					} else {
+						element.setName("()");
+						steps--;
+					}
+				}*/
+			}
+		}
+		
+		return alignments;
+	}
+
+	private int getNumberOfSubEvents(String name) {
+		int number = 0;
+		String[] subEvents = hierarchy.getHierarchyMap().get(name);
+		for (String subEvent : subEvents) {
+			if (hierarchy.getHierarchyMap().containsKey(subEvent)) {
+				number += getNumberOfSubEvents(subEvent);
+			} else {
+				number++;
+			}
+		}
+		return number;
+	}
+	
 }
