@@ -61,7 +61,6 @@ public class Transformer {
 					if (element != null) {
 						if (hierarchy.getHierarchyMap().containsKey(element.getName())) {
 							steps = getNumberOfSubEvents(element.getName()) - 1;
-							System.out.println(steps);
 						}
 					}
 				} else {
