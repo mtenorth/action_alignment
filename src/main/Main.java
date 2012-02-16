@@ -25,8 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		//String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
-		//Ontology ontology = new Ontology(url);
+		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+		Ontology ontology = new Ontology(url);
 		
 		/*
 		Translater t = new Translater();
@@ -195,7 +195,6 @@ public class Main {
 		aList.add(aBro08);
 		aList.add(aBro09);
 		aList.add(aBro10);
-		/*
 		aList.add(aBro12);
 		aList.add(aBro13);
 		aList.add(aBro14);
@@ -207,7 +206,7 @@ public class Main {
 		aList.add(aBro22);
 		aList.add(aBro23);
 		aList.add(aBro24);
-		/*
+		
 		aList.add(aEgg06);
 		aList.add(aEgg07);
 		aList.add(aEgg08);
@@ -232,7 +231,7 @@ public class Main {
 		aList.add(aExample4);
 		*/
 		
-		/*
+		
 		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
 		cm1.printConfusionMatrix();
 		
@@ -240,7 +239,7 @@ public class Main {
 		
 		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
 		cm2.printConfusionMatrix();
-		*/
+		
 		
 		/*
 		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, null);
@@ -283,11 +282,11 @@ public class Main {
 		ActionSequence aLeft02 = new ActionSequence("lefthand-0-2", seqLeft02);
 		ActionSequence aLeft011 = new ActionSequence("lefthand-0-11", seqLeft011);
 		
-		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqX2, 1, null);
+		//NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqX2, 1, null);
 		
 		//ndl.printMatrix();
 		//ndl.printTraceback();
-		ndl.printAlignment();
+		//ndl.printAlignment();
 		
 		
 	}

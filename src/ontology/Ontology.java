@@ -1,5 +1,6 @@
 package ontology;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import org.semanticweb.HermiT.Reasoner;
@@ -20,6 +21,7 @@ public class Ontology {
 	private OWLOntology ontology;
 	private OWLDataFactory dataFactory;
 	private OWLReasoner reasoner;
+	private HashMap<String, Double> wupMap = new HashMap<String, Double>();
 	
 	public Ontology(String url){
 		long start = System.currentTimeMillis();
@@ -44,14 +46,30 @@ public class Ontology {
 	
 	public double getWupSimilarity(String entity1, String entity2){
 		
+		if (wupMap.containsKey(entity1+entity2)) {
+			return wupMap.get(entity1+entity2);
+		}
+		
 		//long start = System.currentTimeMillis();
 		
 		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
 		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
 		OWLClass predecessor = this.getLowestCommonPredecessorOf(class1, class2);
 		double depth1 = (double) this.getDepthOf(predecessor);
-		double depth2 = (double) this.getDepthOf(class1);
-		double depth3 = (double) this.getDepthOf(class2);
+		double depth2;
+		double depth3;
+		if (wupMap.containsKey(entity1)) {
+			depth2 = wupMap.get(entity1);
+		} else {
+			depth2 = (double) this.getDepthOf(class1);
+			wupMap.put(entity1, depth2);
+		}
+		if (wupMap.containsKey(entity2)) {
+			depth3 = wupMap.get(entity2);
+		} else {
+			depth3 = (double) this.getDepthOf(class2);
+			wupMap.put(entity2, depth3);
+		}
 		//System.out.println(predecessor + " depth: " + depth1);
 		//System.out.println(class1 + " depth: " + depth2);
 		//System.out.println(class2 + " depth: " + depth3);
@@ -63,6 +81,9 @@ public class Ontology {
 		//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
 		
 		//System.out.println("  " + entity1 + " : " + entity2 + "  |  " + wup);
+		
+		wupMap.put(entity1+entity2, wup);
+		wupMap.put(entity2+entity1, wup);
 		
 		return wup;
 	}
