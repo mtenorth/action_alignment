@@ -75,14 +75,16 @@ public class NeedlemanWunsch {
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
-				/*
+				
 				if (d == match) {
 					String s = seq1.get(i - 1).getHashMap().get("verb");
-					if (s.equals("none")) {
-						score1 -= 0.5;
+					if (s != null) {
+						if (s.equals("none")) {
+							score1 -= 0.5;
+						}
 					}
 				}
-				*/
+				
 				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
@@ -103,7 +105,7 @@ public class NeedlemanWunsch {
 			}
 		}
 		
-		//this.countNothing(m, n);
+		this.countNothing(m, n);
 		
 	}
 	
@@ -237,6 +239,7 @@ public class NeedlemanWunsch {
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
+			//System.out.println(s1 + " & - & " + s2);
 			System.out.println(s1 + " & - & " + s2 + "\\\\");
 		}
 		System.out.println();
@@ -271,9 +274,11 @@ public class NeedlemanWunsch {
 		if (s.equals("diag")){
 			String s1 = seq1.get(m - 1).getHashMap().get("verb");
 			String s2 = seq2.get(n - 1).getHashMap().get("verb");
-			if (s1.equals("none") && s2.equals("none")) {
-				//System.out.println("++");
-				nothingCount++;
+			if (s1 != null && s2 != null) {
+				if (s1.equals("none") && s2.equals("none")) {
+					//System.out.println("++");
+					nothingCount++;
+				}
 			}
 			countNothing(m - 1, n - 1);
 		} else if (s.equals("left")){
@@ -284,7 +289,7 @@ public class NeedlemanWunsch {
 	}
 	
 	public double getScore(){
-		//System.out.println(matrix[m][n] + " + 2 * " + nothingCount + " / 2 * (" + m + " + " + n + ")");
+		//System.out.println(matrix[m][n] + " + 0.5 * " + nothingCount + " / ((" + m + " + " + n + ") / 2)");
 		double score = (matrix[m][n] + 0.5 * nothingCount) / ((m + n) / 2);
 		//score = (score + 0.5) / 1.5;
 		return Math.round(score * 100.0) / 100.0;

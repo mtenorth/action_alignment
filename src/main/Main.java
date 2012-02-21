@@ -25,8 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
-		Ontology ontology = new Ontology(url);
+		//String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+		//Ontology ontology = new Ontology(url);
 		
 		/*
 		Translater t = new Translater();
@@ -231,7 +231,7 @@ public class Main {
 		aList.add(aExample4);
 		*/
 		
-		
+		/*
 		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
 		cm1.printConfusionMatrix();
 		
@@ -239,7 +239,7 @@ public class Main {
 		
 		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
 		cm2.printConfusionMatrix();
-		
+		*/
 		
 		/*
 		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, null);
@@ -272,17 +272,19 @@ public class Main {
 		SequenceFileReader r2 = new SequenceFileReader();
 		SequenceFileReader r3 = new SequenceFileReader();
 		SequenceFileReader r4 = new SequenceFileReader();
+		SequenceFileReader r5 = new SequenceFileReader();
 		
 		ArrayList<ActionElement> seqLeft02 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-2-condensed.csv");
 		ArrayList<ActionElement> seqLeft011 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-11-condensed.csv");
+		ArrayList<ActionElement> seqRight00 = r3.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/righthand-0-0-condensed.csv");
 		
-		ArrayList<ActionElement> seqX1 = r3.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example1.csv");
-		ArrayList<ActionElement> seqX2 = r4.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example2.csv");
+		ArrayList<ActionElement> seqX1 = r4.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example1.csv");
+		ArrayList<ActionElement> seqX2 = r5.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example2.csv");
 		
 		ActionSequence aLeft02 = new ActionSequence("lefthand-0-2", seqLeft02);
 		ActionSequence aLeft011 = new ActionSequence("lefthand-0-11", seqLeft011);
 		
-		//NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqX2, 1, null);
+		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqLeft011, 1, null);
 		
 		//ndl.printMatrix();
 		//ndl.printTraceback();
