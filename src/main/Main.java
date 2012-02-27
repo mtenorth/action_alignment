@@ -1,6 +1,7 @@
 package main;
 
 import hierarchicStructure.HierarchicStructure;
+import hierarchicStructure.Transformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +32,10 @@ public class Main {
 		/*
 		Translater t = new Translater();
 		
-		String s1 = t.getTranslateMap().get("twist_off");
-		String s2 = t.getTranslateMap().get("open");
-		String s3 = t.getTranslateMap().get("cap");
-		String s4 = t.getTranslateMap().get("oil");
+		String s1 = t.getTranslateMap().get("stir");
+		String s2 = t.getTranslateMap().get("put");
+		String s3 = t.getTranslateMap().get("fork");
+		String s4 = t.getTranslateMap().get("plate");
 		
 		/*
 		String s1 = t.getTranslateMap().get("salt");
@@ -55,7 +56,8 @@ public class Main {
 		String object10 = "Nothing";
 		String object11 = "Cupboard";
 		String object12 = "Cupboard";
-		
+		*/
+		/*
 		ontology.getWupSimilarity(s1, s2);
 		ontology.getWupSimilarity(s3, s4);
 		/*
@@ -242,12 +244,12 @@ public class Main {
 		*/
 		
 		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg07, 1, null);
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(example3, example4, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg07, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(example3, example4, 2, ontology);
 		ndl2.printAlignment();
 		*/
 		
@@ -289,6 +291,20 @@ public class Main {
 		//ndl.printMatrix();
 		//ndl.printTraceback();
 		//ndl.printAlignment();
+		
+		
+		for (ActionElement e : seqX1) {
+			System.out.println(seqX1.indexOf(e) + ": " + e.getName());
+		}
+		System.out.println();
+		
+		HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+		Transformer transformer = new Transformer(hierarchy);
+		
+		ArrayList<ActionElement> newSeq = transformer.toplevel(seqX1);
+		for (ActionElement e : newSeq) {
+			System.out.println(newSeq.indexOf(e) + ": " + e.getName());
+		}
 		
 		
 	}

@@ -9,7 +9,8 @@ import java.util.HashMap;
 
 public class HierarchicStructure {
 
-	private HashMap<String, String[]> hierarchyMap = new HashMap<String, String[]>();
+	private HashMap<String, String[]> subEventsMap = new HashMap<String, String[]>();
+	private HashMap<String, String> superEventsMap = new HashMap<String, String>();
 	
 	public HierarchicStructure(String file) {
 		try {
@@ -20,7 +21,10 @@ public class HierarchicStructure {
 				String[] tokens = line.split(regex);
 				regex = "-";
 				String[] subEvents = tokens[1].split(regex);
-				hierarchyMap.put(tokens[0], subEvents);
+				subEventsMap.put(tokens[0], subEvents);
+				for (String subEvent : subEvents) {
+					superEventsMap.put(subEvent, tokens[0]);
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -28,8 +32,12 @@ public class HierarchicStructure {
 		}
 	}
 	
-	public HashMap<String, String[]> getHierarchyMap() {
-		return hierarchyMap;
+	public HashMap<String, String[]> getSubEventsMap() {
+		return subEventsMap;
+	}
+	
+	public HashMap<String, String> getSuperEventsMap() {
+		return superEventsMap;
 	}
 	
 }
