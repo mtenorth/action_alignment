@@ -132,56 +132,58 @@ public class NeedlemanWunsch {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
-			double a = 0;
+			String translated1;
+			String translated2;
+			double a = 0.5;
 			if (!verb1.equals(verb2)) {
 				if (verb1.isEmpty() || verb2.isEmpty()) {
-					a = mismatch;
+					a = 0;
 				} else {
-					verb1 = translater.getTranslateMap().get(verb1);
-					verb2 = translater.getTranslateMap().get(verb2);
-					a = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(verb1, verb2), exponent);
+					translated1 = translater.getTranslateMap().get(verb1);
+					translated2 = translater.getTranslateMap().get(verb2);
+					a = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				a = match;
 			}
 			//System.out.println(verb1 + " - " + verb2 + "; a = " + a);
 			
-			double b = 0;
+			double b = 0.5;
 			if (!firstObject1.equals(firstObject2)) {
 				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
-					b = mismatch;
+					b = 0;
 				} else {
-					firstObject1 = translater.getTranslateMap().get(firstObject1);
-					firstObject2 = translater.getTranslateMap().get(firstObject2);
-					b = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(firstObject1, firstObject2), exponent);
+					translated1 = translater.getTranslateMap().get(firstObject1);
+					translated2 = translater.getTranslateMap().get(firstObject2);
+					b = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				b = match;
 			}
 			//System.out.println(firstObject1 + " - " + firstObject2 + "; b = " + b);
 			
-			double c = 0;
+			double c = 0.5;
 			if (!preposition1.equals(preposition2)) {
 				if (preposition1.isEmpty() || preposition2.isEmpty()) {
-					c = mismatch;
+					c = 0;
 				} else {
-					preposition1 = translater.getTranslateMap().get(preposition1);
-					preposition2 = translater.getTranslateMap().get(preposition2);
-					c = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(preposition1, preposition2), exponent);
+					translated1 = translater.getTranslateMap().get(preposition1);
+					translated2 = translater.getTranslateMap().get(preposition2);
+					c = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				c = match;
 			}
 			//System.out.println(preposition1 + " - " + preposition2 + "; c = " + c);
 			
-			double d = 0;
+			double d = 0.5;
 			if (!secondObject1.equals(secondObject2)) {
 				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
-					d = mismatch;
+					d = 0;
 				} else {
-					secondObject1 = translater.getTranslateMap().get(secondObject1);
-					secondObject2 = translater.getTranslateMap().get(secondObject2);
-					d = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(secondObject1, secondObject2), exponent);
+					translated1 = translater.getTranslateMap().get(secondObject1);
+					translated2 = translater.getTranslateMap().get(secondObject2);
+					d = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				d = match;
@@ -190,6 +192,7 @@ public class NeedlemanWunsch {
 			
 			// a, b, c and d are element of [mismatch;match]
 			compare = alpha * a + beta * b + gamma * c + delta * d;
+			compare = -1.0 + 2.0 * compare;
 			//System.out.println("--> " + alpha + "*" + a + " + " + beta + "*" + b + " + " + gamma + "*" + c + " + " + delta + "*" + d + " = " + compare );
 			//System.out.println();
 			return compare;
@@ -230,6 +233,7 @@ public class NeedlemanWunsch {
 	public void printAlignment(){
 		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
+			System.out.println("test");
 			alignments = transformer.retransform(alignments);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
@@ -290,7 +294,7 @@ public class NeedlemanWunsch {
 	
 	public double getScore(){
 		//System.out.println(matrix[m][n] + " + 0.5 * " + nothingCount + " / ((" + m + " + " + n + ") / 2)");
-		double score = (matrix[m][n] + 0.5 * nothingCount) / ((m + n) / 2);
+		double score = (matrix[m][n] + 0.5 * nothingCount) / ((m + n) / 2.0);
 		//score = (score + 0.5) / 1.5;
 		return Math.round(score * 100.0) / 100.0;
 	}

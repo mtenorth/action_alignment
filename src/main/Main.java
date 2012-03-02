@@ -32,8 +32,8 @@ public class Main {
 		/*
 		Translater t = new Translater();
 		
-		String s1 = t.getTranslateMap().get("stir");
-		String s2 = t.getTranslateMap().get("put");
+		String s1 = t.getTranslateMap().get("crack");
+		String s2 = t.getTranslateMap().get("take");
 		String s3 = t.getTranslateMap().get("fork");
 		String s4 = t.getTranslateMap().get("plate");
 		
@@ -244,12 +244,12 @@ public class Main {
 		*/
 		
 		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(example3, example4, 1, null);
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg13, seqEgg16, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(example3, example4, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg13, seqEgg16, 2, ontology);
 		ndl2.printAlignment();
 		*/
 		
@@ -276,23 +276,19 @@ public class Main {
 		SequenceFileReader r4 = new SequenceFileReader();
 		SequenceFileReader r5 = new SequenceFileReader();
 		
-		ArrayList<ActionElement> seqLeft02 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-2-condensed.csv");
-		ArrayList<ActionElement> seqLeft011 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-11-condensed.csv");
+		ArrayList<ActionElement> seqX3 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example3.csv");
+		ArrayList<ActionElement> seqX4 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example4.csv");
 		ArrayList<ActionElement> seqRight00 = r3.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/righthand-0-0-condensed.csv");
-		
 		ArrayList<ActionElement> seqX1 = r4.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example1.csv");
 		ArrayList<ActionElement> seqX2 = r5.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example2.csv");
 		
-		ActionSequence aLeft02 = new ActionSequence("lefthand-0-2", seqLeft02);
-		ActionSequence aLeft011 = new ActionSequence("lefthand-0-11", seqLeft011);
+		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX3, seqX4, 1, null);
 		
-		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX1, seqLeft011, 1, null);
-		
-		//ndl.printMatrix();
+		ndl.printMatrix();
 		//ndl.printTraceback();
-		//ndl.printAlignment();
+		ndl.printAlignment();
 		
-		
+		/*
 		for (ActionElement e : seqX1) {
 			System.out.println(seqX1.indexOf(e) + ": " + e.getName());
 		}
@@ -305,7 +301,7 @@ public class Main {
 		for (ActionElement e : newSeq) {
 			System.out.println(newSeq.indexOf(e) + ": " + e.getName());
 		}
-		
+		*/
 		
 	}
 
