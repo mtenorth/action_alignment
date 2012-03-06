@@ -11,8 +11,8 @@ import sequenceElement.ActionElement;
 public class SmithWaterman {
 
 	double match = 1.0;
-	double mismatch = -1.0;
-	double gap = -0.5;
+	double mismatch = -1.5;
+	double gap = -0.75;
 	
 	//the sum of alpha, beta, gamma and delta must be 1
 	private double alpha = 0.3;
@@ -165,14 +165,16 @@ public class SmithWaterman {
 			String secondObject1 = a1.getHashMap().get("object2");
 			String secondObject2 = a2.getHashMap().get("object2");
 			
+			String translated1;
+			String translated2;
 			double a = 0;
 			if (!verb1.equals(verb2)) {
 				if (verb1.isEmpty() || verb2.isEmpty()) {
-					a = mismatch;
+					a = 0;
 				} else {
-					verb1 = translater.getTranslateMap().get(verb1);
-					verb2 = translater.getTranslateMap().get(verb2);
-					a = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(verb1, verb2), exponent);
+					translated1 = translater.getTranslateMap().get(verb1);
+					translated2 = translater.getTranslateMap().get(verb2);
+					a = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				a = match;
@@ -182,11 +184,11 @@ public class SmithWaterman {
 			double b = 0;
 			if (!firstObject1.equals(firstObject2)) {
 				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
-					b = mismatch;
+					b = 0;
 				} else {
-					firstObject1 = translater.getTranslateMap().get(firstObject1);
-					firstObject2 = translater.getTranslateMap().get(firstObject2);
-					b = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(firstObject1, firstObject2), exponent);
+					translated1 = translater.getTranslateMap().get(firstObject1);
+					translated2 = translater.getTranslateMap().get(firstObject2);
+					b = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				b = match;
@@ -196,11 +198,11 @@ public class SmithWaterman {
 			double c = 0;
 			if (!preposition1.equals(preposition2)) {
 				if (preposition1.isEmpty() || preposition2.isEmpty()) {
-					c = mismatch;
+					c = 0;
 				} else {
-					preposition1 = translater.getTranslateMap().get(preposition1);
-					preposition2 = translater.getTranslateMap().get(preposition2);
-					c = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(preposition1, preposition2), exponent);
+					translated1 = translater.getTranslateMap().get(preposition1);
+					translated2 = translater.getTranslateMap().get(preposition2);
+					c = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				c = match;
@@ -210,11 +212,11 @@ public class SmithWaterman {
 			double d = 0;
 			if (!secondObject1.equals(secondObject2)) {
 				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
-					d = mismatch;
+					d = 0;
 				} else {
-					secondObject1 = translater.getTranslateMap().get(secondObject1);
-					secondObject2 = translater.getTranslateMap().get(secondObject2);
-					d = mismatch + 2.0 * match * Math.pow(ontology.getWupSimilarity(secondObject1, secondObject2), exponent);
+					translated1 = translater.getTranslateMap().get(secondObject1);
+					translated2 = translater.getTranslateMap().get(secondObject2);
+					d = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
 				}
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				d = match;
@@ -223,9 +225,14 @@ public class SmithWaterman {
 			
 			// a, b, c and d are element of [mismatch;match]
 			compare = alpha * a + beta * b + gamma * c + delta * d;
+			compare = -1.0 + 2.0 * compare;
 			//System.out.println("--> " + alpha + "*" + a + " + " + beta + "*" + b + " + " + gamma + "*" + c + " + " + delta + "*" + d + " = " + compare );
 			//System.out.println();
-			return compare;
+			if (compare > 0) {
+				return compare;
+			} else {
+				return mismatch;
+			}
 		}
 	}
 	
@@ -277,6 +284,7 @@ public class SmithWaterman {
 				calculateAlignmentRecursive(m, n);
 			}
 		}
+		System.out.println("globale Alignments:");
 		for (int i = pointer - 1; i >= 0; i--){
 			// if "ln" println for next local alignment
 			if (!alignments[0][i].equals("ln")) {
@@ -298,29 +306,31 @@ public class SmithWaterman {
 		String s = traceback[m][n];
 		if (s.equals("diag")){
 			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
+			//name1 = name1.replaceAll("-", " ");
+			//name1 = name1.replaceAll("_", "-");
 			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
+			//name2 = name2.replaceAll("-", " ");
+			//name2 = name2.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")){
 			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
-			alignments[0][pointer] = "$|$";
+			//name2 = name2.replaceAll("-", " ");
+			//name2 = name2.replaceAll("_", "-");
+			//alignments[0][pointer] = "$|$";
+			alignments[0][pointer] = "|";
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")){
 			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
+			//name1 = name1.replaceAll("-", " ");
+			//name1 = name1.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
-			alignments[1][pointer] = "$|$";
+			//alignments[1][pointer] = "$|$";
+			alignments[1][pointer] = "|";
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		} else {

@@ -26,17 +26,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		//String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
-		//Ontology ontology = new Ontology(url);
+		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+		Ontology ontology = new Ontology(url);
 		
 		/*
 		Translater t = new Translater();
 		
-		String s1 = t.getTranslateMap().get("crack");
-		String s2 = t.getTranslateMap().get("take");
-		String s3 = t.getTranslateMap().get("fork");
-		String s4 = t.getTranslateMap().get("plate");
-		
+		String s1 = t.getTranslateMap().get("pam");
+		String s2 = t.getTranslateMap().get("baking_pan");
+		String s3 = t.getTranslateMap().get("cupboard_bottom_right");
+		String s4 = t.getTranslateMap().get("big_bowl");
+		*/
 		/*
 		String s1 = t.getTranslateMap().get("salt");
 		String s2 = t.getTranslateMap().get("frying_pan");
@@ -57,9 +57,10 @@ public class Main {
 		String object11 = "Cupboard";
 		String object12 = "Cupboard";
 		*/
-		/*
-		ontology.getWupSimilarity(s1, s2);
-		ontology.getWupSimilarity(s3, s4);
+		
+		//ontology.getWupSimilarityInfo(s1, s2);
+		//ontology.getWupSimilarityInfo(s3, s4);
+		
 		/*
 		ontology.getWupSimilarity(object1, object2);
 		ontology.getWupSimilarity(object11, object12);
@@ -243,23 +244,23 @@ public class Main {
 		cm2.printConfusionMatrix();
 		*/
 		
-		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg13, seqEgg16, 1, null);
+		
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg13, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg13, seqEgg16, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg13, 2, ontology);
 		ndl2.printAlignment();
-		*/
+		
 		
 		/*
-		SmithWaterman smt1 = new SmithWaterman(seqBro06, seqEgg07, 1, ontology);
+		SmithWaterman smt1 = new SmithWaterman(seqEgg06, seqEgg09, 1, null);
 		smt1.printAlignment();
 		
 		
 		
-		SmithWaterman smt2 = new SmithWaterman(seqBro06, seqEgg07, 2, ontology);
+		SmithWaterman smt2 = new SmithWaterman(seqEgg06, seqEgg13, 2, ontology);
 		smt2.printAlignment();
 		*/
 		
@@ -284,9 +285,9 @@ public class Main {
 		
 		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX3, seqX4, 1, null);
 		
-		ndl.printMatrix();
+		//ndl.printMatrix();
 		//ndl.printTraceback();
-		ndl.printAlignment();
+		//ndl.printAlignment();
 		
 		/*
 		for (ActionElement e : seqX1) {

@@ -1,5 +1,6 @@
 package evaluation;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import ontology.Ontology;
@@ -74,10 +75,12 @@ public class ConfusionMatrix {
 			System.out.print(identifier + "  ");
 			for (int k = 0; k < number; k++){
 				double score = confusionMatrix[i][k];
-				for (int l = 0; l < 6 - String.valueOf(score).length(); l++) {
+				DecimalFormat df = new DecimalFormat("0.00");
+				String s = df. format(score);
+				for (int l = 0; l < 6 - s.length(); l++) {
 					System.out.print(" ");
 				}
-				System.out.print(String.valueOf(score));
+				System.out.print(s);
 			}
 			System.out.println();
 		}

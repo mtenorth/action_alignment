@@ -44,6 +44,21 @@ public class Ontology {
 		System.out.println();
 	}
 	
+	public void getWupSimilarityInfo(String entity1, String entity2) {
+		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
+		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
+		OWLClass predecessor = this.getLowestCommonPredecessorOf(class1, class2);
+		double depth1 = (double) this.getDepthOf(predecessor);
+		double depth2 = (double) this.getDepthOf(class1);
+		double depth3 = (double) this.getDepthOf(class2);
+		System.out.println(predecessor + " depth: " + depth1);
+		System.out.println(class1 + " depth: " + depth2);
+		System.out.println(class2 + " depth: " + depth3);
+		double wup = (2 * depth1) / (depth2 + depth3);
+		System.out.println("wup = " + wup);
+		System.out.println();
+	}
+	
 	public double getWupSimilarity(String entity1, String entity2){
 		
 		if (wupMap.containsKey(entity1+entity2)) {
