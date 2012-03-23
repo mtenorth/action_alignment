@@ -247,8 +247,8 @@ public class NeedlemanWunsch {
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
-			System.out.println(s1 + " & - & " + s2);
-			//System.out.println(s1 + " & - & " + s2 + "\\\\");
+			//System.out.println(s1 + " & - & " + s2);
+			System.out.println(s1 + " & - & " + s2 + "\\\\");
 		}
 		System.out.println();
 		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);
@@ -265,13 +265,13 @@ public class NeedlemanWunsch {
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")) {
-			alignments[0][pointer] = new ActionElement("|");
+			alignments[0][pointer] = new ActionElement("$ | $");
 			alignments[1][pointer] = seq2.get(n - 1);
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")) {
 			alignments[0][pointer] = seq1.get(m - 1);
-			alignments[1][pointer] = new ActionElement("|");
+			alignments[1][pointer] = new ActionElement("$ | $");
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		}

@@ -288,13 +288,13 @@ public class SmithWaterman {
 		for (int i = pointer - 1; i >= 0; i--){
 			// if "ln" println for next local alignment
 			if (!alignments[0][i].equals("ln")) {
-				String s1 = alignments[1][i];
-				String s2 = alignments[0][i];
+				String s1 = alignments[0][i];
+				String s2 = alignments[1][i];
 				//maximum of 50 characters
 				for (int k = 50 - s1.length(); k > 0; k--) {
 					System.out.print(" ");
 				}
-				System.out.println(s1 + " & - & " + s2);
+				System.out.println(s1 + " & - & " + s2 + "\\\\");
 			} else {
 				System.out.println();
 			}
@@ -306,31 +306,31 @@ public class SmithWaterman {
 		String s = traceback[m][n];
 		if (s.equals("diag")){
 			String name1 = seq1.get(m - 1).getName();
-			//name1 = name1.replaceAll("-", " ");
-			//name1 = name1.replaceAll("_", "-");
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
 			String name2 = seq2.get(n - 1).getName();
-			//name2 = name2.replaceAll("-", " ");
-			//name2 = name2.replaceAll("_", "-");
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")){
 			String name2 = seq2.get(n - 1).getName();
-			//name2 = name2.replaceAll("-", " ");
-			//name2 = name2.replaceAll("_", "-");
-			//alignments[0][pointer] = "$|$";
-			alignments[0][pointer] = "|";
+			name2 = name2.replaceAll("-", " ");
+			name2 = name2.replaceAll("_", "-");
+			alignments[0][pointer] = "$|$";
+			//alignments[0][pointer] = "|";
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")){
 			String name1 = seq1.get(m - 1).getName();
-			//name1 = name1.replaceAll("-", " ");
-			//name1 = name1.replaceAll("_", "-");
+			name1 = name1.replaceAll("-", " ");
+			name1 = name1.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
-			//alignments[1][pointer] = "$|$";
-			alignments[1][pointer] = "|";
+			alignments[1][pointer] = "$|$";
+			//alignments[1][pointer] = "|";
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		} else {

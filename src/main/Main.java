@@ -32,10 +32,10 @@ public class Main {
 		/*
 		Translater t = new Translater();
 		
-		String s1 = t.getTranslateMap().get("pam");
-		String s2 = t.getTranslateMap().get("baking_pan");
-		String s3 = t.getTranslateMap().get("cupboard_bottom_right");
-		String s4 = t.getTranslateMap().get("big_bowl");
+		String s1 = t.getTranslateMap().get("with");
+		String s2 = t.getTranslateMap().get("on");
+		String s3 = t.getTranslateMap().get("fork");
+		String s4 = t.getTranslateMap().get("plate");
 		*/
 		/*
 		String s1 = t.getTranslateMap().get("salt");
@@ -111,6 +111,9 @@ public class Main {
 		DataFileReader reader36 = new DataFileReader();
 		DataFileReader reader37 = new DataFileReader();
 		
+		SequenceFileReader reader38 = new SequenceFileReader();
+		SequenceFileReader reader39 = new SequenceFileReader();
+		
 		ArrayList<ActionElement> seqEgg06 = reader1.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S06/labels.dat");
 		ArrayList<ActionElement> seqEgg07 = reader2.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S07/labels.dat");
 		ArrayList<ActionElement> seqEgg08 = reader3.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S08/labels.dat");
@@ -150,6 +153,9 @@ public class Main {
 		ArrayList<ActionElement> example2 = reader35.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example2.dat");
 		ArrayList<ActionElement> example3 = reader36.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example3.dat");
 		ArrayList<ActionElement> example4 = reader37.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example4.dat");
+		
+		ArrayList<ActionElement> thesis1 = reader38.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/thesis1.csv");
+		ArrayList<ActionElement> thesis2 = reader39.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/thesis2.csv");
 		
 		ActionSequence aEgg06 = new ActionSequence("Egg_S06", seqEgg06);
 		ActionSequence aEgg07 = new ActionSequence("Egg_S07", seqEgg07);
@@ -244,31 +250,25 @@ public class Main {
 		cm2.printConfusionMatrix();
 		*/
 		
-		
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg06, seqEgg13, 1, null);
+		/*
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg55, seqEgg25, 1, null);
 		ndl1.printAlignment();
 		
 		
 		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg06, seqEgg13, 2, ontology);
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg53, seqEgg54, 2, ontology);
 		ndl2.printAlignment();
+		*/
 		
 		
-		/*
-		SmithWaterman smt1 = new SmithWaterman(seqEgg06, seqEgg09, 1, null);
+		SmithWaterman smt1 = new SmithWaterman(seqBro06, seqEgg07, 1, null);
 		smt1.printAlignment();
 		
 		
 		
-		SmithWaterman smt2 = new SmithWaterman(seqEgg06, seqEgg13, 2, ontology);
+		SmithWaterman smt2 = new SmithWaterman(seqBro06, seqEgg07, 2, ontology);
 		smt2.printAlignment();
-		*/
 		
-		
-		//SmithWaterman smt2 = new SmithWaterman(example1, example2, 2, ontology);
-		//smt2.printAlignment();
-		//smt2.printTraceback();
-		//smt2.printMatrix();
 		
 		
 		SequenceFileReader r1 = new SequenceFileReader();

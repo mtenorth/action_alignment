@@ -19,11 +19,11 @@ public class DataFileReader {
 			while ((line = reader.readLine()) != null) {
 				String regex = "[ -]";
 				String[] tokens = line.split(regex, -1);
-/*				for (int i = 2; i < tokens.length; i++) {
+				for (int i = 2; i < tokens.length; i++) {
 					tokens[i] = tokens[i].replaceAll("_", "-");
 				}
-*/				//String name = tokens[2] + "-" + tokens[3] + "-" + tokens[4] + "-" + tokens[5];
-				String name = tokens[2] + "-" + tokens[3] + "-" + tokens[4] + "-" + tokens[5];
+				//String name = tokens[2] + "-" + tokens[3] + "-" + tokens[4] + "-" + tokens[5];
+				String name = tokens[2] + " " + tokens[3] + " " + tokens[4] + " " + tokens[5];
 				/*Translater translater = new Translater();
 				for (int i = 2; i < 6; i++) {
 					String s = translater.getTranslateMap().get(tokens[i]);
