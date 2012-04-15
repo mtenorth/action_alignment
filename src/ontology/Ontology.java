@@ -15,6 +15,10 @@ import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
+/**
+ * @author Administrator
+ *
+ */
 public class Ontology {
 
 	private String url;
@@ -23,6 +27,9 @@ public class Ontology {
 	private OWLReasoner reasoner;
 	private HashMap<String, Double> wupMap = new HashMap<String, Double>();
 	
+	/**
+	 * @param url url of the ontology
+	 */
 	public Ontology(String url){
 		long start = System.currentTimeMillis();
 		this.url = url;
@@ -44,7 +51,7 @@ public class Ontology {
 		System.out.println();
 	}
 	
-	public void getWupSimilarityInfo(String entity1, String entity2) {
+	/*public void getWupSimilarityInfo(String entity1, String entity2) {
 		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
 		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
 		OWLClass predecessor = this.getLowestCommonPredecessorOf(class1, class2);
@@ -57,15 +64,18 @@ public class Ontology {
 		double wup = (2 * depth1) / (depth2 + depth3);
 		System.out.println("wup = " + wup);
 		System.out.println();
-	}
+	}*/
 	
+	/**
+	 * @param entity1 entity of the first verb/object
+	 * @param entity2 entity of the second verb/object
+	 * @return the WUP-similarity of the two entities
+	 */
 	public double getWupSimilarity(String entity1, String entity2){
 		
 		if (wupMap.containsKey(entity1+entity2)) {
 			return wupMap.get(entity1+entity2);
 		}
-		
-		//long start = System.currentTimeMillis();
 		
 		OWLClass class1 = dataFactory.getOWLClass(IRI.create(url + "#" + entity1));
 		OWLClass class2 = dataFactory.getOWLClass(IRI.create(url + "#" + entity2));
@@ -85,17 +95,9 @@ public class Ontology {
 			depth3 = (double) this.getDepthOf(class2);
 			wupMap.put(entity2, depth3);
 		}
-		//System.out.println(predecessor + " depth: " + depth1);
-		//System.out.println(class1 + " depth: " + depth2);
-		//System.out.println(class2 + " depth: " + depth3);
+		
+		//calculation of the WUP-similarity
 		double wup = (2 * depth1) / (depth2 + depth3);
-		//System.out.println("wup = " + wup);
-		//System.out.println();
-		
-		//long ende = System.currentTimeMillis();
-		//System.out.println("Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
-		
-		//System.out.println("  " + entity1 + " : " + entity2 + "  |  " + wup);
 		
 		wupMap.put(entity1+entity2, wup);
 		wupMap.put(entity2+entity1, wup);
@@ -104,8 +106,6 @@ public class Ontology {
 	}
 	
 	private OWLClass getLowestCommonPredecessorOf(OWLClass class1, OWLClass class2){
-		
-		//long start = System.currentTimeMillis();
 		
 		OWLClass predecessor = null;
 		Set<Node<OWLClass>> superClasses1 = reasoner.getSuperClasses(class1, true).getNodes();
@@ -153,16 +153,10 @@ public class Ontology {
 			}
 		}
 		
-		//long ende = System.currentTimeMillis();
-		//System.out.println("--> -->getLowestCommonPredecessorOf" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
-		
 		return predecessor;
 	}
 	
 	private int getDepthOf(OWLClass cls){
-		
-		//long start = System.currentTimeMillis();
-		
 		int depth = 0;
 		if (cls.equals(dataFactory.getOWLThing())){
 			return depth;
@@ -172,10 +166,6 @@ public class Ontology {
 			depth = depth + 1;
 			for (Node<OWLClass> node : superClasses){
 				if (node.getRepresentativeElement().equals(dataFactory.getOWLThing())){
-					
-					//long ende = System.currentTimeMillis();
-					//System.out.println("-->getDepthOf" + " - Zeit benötigt: " + ((ende - start)/1000.0) + " sec");
-					
 					return depth;
 				}
 			}

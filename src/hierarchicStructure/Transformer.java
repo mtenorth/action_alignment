@@ -5,14 +5,25 @@ import java.util.ArrayList;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
+/**
+ * @author Johannes Ziegltrum
+ *
+ */
 public class Transformer {
 
 	HierarchicStructure hierarchy;
 	
+	/**
+	 * @param hierarchy HierarchicStructure
+	 */
 	public Transformer(HierarchicStructure hierarchy) {
 		this.hierarchy = hierarchy;
 	}
 	
+	/**
+	 * @param seq the sequence to be transformed
+	 * @return the sequence which has been transformed to the lowest hierarchy level
+	 */
 	public ArrayList<ActionElement> transform(ArrayList<ActionElement> seq) {
 		ArrayList<ActionElement> newSeq = new ArrayList<ActionElement>();
 		boolean change = false;
@@ -39,6 +50,10 @@ public class Transformer {
 		}
 	}
 	
+	/**
+	 * @param alignments array that contains the aligned low-level-sequences
+	 * @return array that contains the aligned sequences in their original form
+	 */
 	public ActionElement[][] retransform(ActionElement[][] alignments) {
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < alignments[i].length; j++) {
@@ -65,25 +80,21 @@ public class Transformer {
 						}
 					}
 				} else {
-					if (!element.getName().equals("$|$")) {
+					if (!element.getName().equals("|")) {
 						element.setName("()");
 						steps--;
 					}
 				}
-				/*else {
-					if (element.getName().equals("$|$")) {
-						element.setName("");
-					} else {
-						element.setName("()");
-						steps--;
-					}
-				}*/
 			}
 		}
 		
 		return alignments;
 	}
 	
+	/**
+	 * @param seq the sequence to be abstracted to the highest level
+	 * @return the abstract sequence
+	 */
 	public ArrayList<ActionElement> toplevel(ArrayList<ActionElement> seq) {
 		boolean change = false;
 		ArrayList<ActionElement> newSeq = new ArrayList<ActionElement>();

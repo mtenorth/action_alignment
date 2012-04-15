@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import ontology.Ontology;
 import ontology.Translater;
 
+import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
+/**
+ * @author Johannes Ziegltrum
+ *
+ */
 public class SmithWaterman {
 
 	double match = 1.0;
@@ -39,9 +44,28 @@ public class SmithWaterman {
 	
 	private Ontology ontology;
 	
-	public SmithWaterman(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
-		this.seq1 = seq1;
-		this.seq2 = seq2;
+	/**
+	 * @param aSeq1 first ActionSequence
+	 * @param aSeq2 second ActionSequence
+	 */
+	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2) {
+		calculate(aSeq1, aSeq2, 1, null);
+	}
+	
+	/**
+	 * 
+	 * @param aSeq1 first ActionSequence
+	 * @param aSeq2 second ActionSequence
+	 * @param ontology the used Ontology for the WUP-similarity-calculation
+	 */
+	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
+		calculate(aSeq1, aSeq2, 2, ontology);
+	}
+	
+	//implementation of the smith-waterman-algorithm
+	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, int function, Ontology ontology){
+		this.seq1 = aSeq1.getSequence();
+		this.seq2 = aSeq2.getSequence();
 		this.ontology = ontology;
 		m = seq1.size();
 		n = seq2.size();
@@ -102,46 +126,12 @@ public class SmithWaterman {
 					matrix[i][j] = 0;
 					traceback[i][j] = "done";
 				}
-				
-				/*
-				if (score1 > 0 || score2 > 0 || score3 > 0){
-					if (score1 >= score2){
-						if (score1 >= score3){
-							matrix[i][j] = score1;
-							traceback[i][j] = "diag";
-							if (score1 > maxScore){
-								maxScore = score1;
-							}
-						} else {
-							matrix[i][j] = score3;
-							traceback[i][j] = "left";
-							if (score3 > maxScore){
-								maxScore = score3;
-							}
-						}
-					} else if (score2 >= score3){
-						matrix[i][j] = score2;
-						traceback[i][j] = "up";
-						if (score2 > maxScore){
-							maxScore = score2;
-						}
-					} else {
-						matrix[i][j] = score3;
-						traceback[i][j] = "left";
-						if (score3 > maxScore){
-							maxScore = score3;
-						}
-					}
-				} else {
-					matrix[i][j] = 0;
-					traceback[i][j] = "done";
-				}
-				*/
 			}
 		}
 		
 	}
 	
+	//simple match-mismatch-comparison
 	private double Compare1(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
 			return match;
@@ -150,6 +140,7 @@ public class SmithWaterman {
 		}
 	}
 	
+	//comparison with WUP-similarity
 	private double Compare2(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
 			return match;
@@ -179,7 +170,6 @@ public class SmithWaterman {
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				a = match;
 			}
-			//System.out.println(verb1 + " - " + verb2 + "; a = " + a);
 			
 			double b = 0;
 			if (!firstObject1.equals(firstObject2)) {
@@ -193,7 +183,6 @@ public class SmithWaterman {
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				b = match;
 			}
-			//System.out.println(firstObject1 + " - " + firstObject2 + "; b = " + b);
 			
 			double c = 0;
 			if (!preposition1.equals(preposition2)) {
@@ -207,7 +196,6 @@ public class SmithWaterman {
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				c = match;
 			}
-			//System.out.println(preposition1 + " - " + preposition2 + "; c = " + c);
 			
 			double d = 0;
 			if (!secondObject1.equals(secondObject2)) {
@@ -221,13 +209,10 @@ public class SmithWaterman {
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				d = match;
 			}
-			//System.out.println(secondObject1 + " - " + secondObject2 + "; d = " + d);
 			
-			// a, b, c and d are element of [mismatch;match]
 			compare = alpha * a + beta * b + gamma * c + delta * d;
+			//standardize on [-1;1]
 			compare = -1.0 + 2.0 * compare;
-			//System.out.println("--> " + alpha + "*" + a + " + " + beta + "*" + b + " + " + gamma + "*" + c + " + " + delta + "*" + d + " = " + compare );
-			//System.out.println();
 			if (compare > 0) {
 				return compare;
 			} else {
@@ -236,6 +221,9 @@ public class SmithWaterman {
 		}
 	}
 	
+	/**
+	 * prints the calculation-matrix
+	 */
 	public void printMatrix(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
@@ -252,6 +240,9 @@ public class SmithWaterman {
 		System.out.println();
 	}
 	
+	/**
+	 * prints the traceback-matrix
+	 */
 	public void printTraceback(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
@@ -267,6 +258,9 @@ public class SmithWaterman {
 		System.out.println();
 	}
 	
+	/**
+	 * prints the local alignments of the two sequences
+	 */
 	public void printAlignment(){
 		if (pointer == 0) {
 			for (int i = 1; i <= m; i++) {
@@ -286,7 +280,7 @@ public class SmithWaterman {
 		}
 		System.out.println("globale Alignments:");
 		for (int i = pointer - 1; i >= 0; i--){
-			// if "ln" println for next local alignment
+			// if "ln" println for a space between the next local alignment
 			if (!alignments[0][i].equals("ln")) {
 				String s1 = alignments[0][i];
 				String s2 = alignments[1][i];
@@ -294,7 +288,7 @@ public class SmithWaterman {
 				for (int k = 50 - s1.length(); k > 0; k--) {
 					System.out.print(" ");
 				}
-				System.out.println(s1 + " & - & " + s2 + "\\\\");
+				System.out.println(s1 + " - " + s2);
 			} else {
 				System.out.println();
 			}
@@ -306,31 +300,21 @@ public class SmithWaterman {
 		String s = traceback[m][n];
 		if (s.equals("diag")){
 			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
 			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")){
 			String name2 = seq2.get(n - 1).getName();
-			name2 = name2.replaceAll("-", " ");
-			name2 = name2.replaceAll("_", "-");
-			alignments[0][pointer] = "$|$";
-			//alignments[0][pointer] = "|";
+			alignments[0][pointer] = "|";
 			alignments[1][pointer] = name2;
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")){
 			String name1 = seq1.get(m - 1).getName();
-			name1 = name1.replaceAll("-", " ");
-			name1 = name1.replaceAll("_", "-");
 			alignments[0][pointer] = name1;
-			alignments[1][pointer] = "$|$";
-			//alignments[1][pointer] = "|";
+			alignments[1][pointer] = "|";
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		} else {
@@ -339,6 +323,10 @@ public class SmithWaterman {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the best local score in the matrix
+	 */
 	public double getScore() {
 		return maxScore;
 	}

@@ -7,8 +7,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import ontology.Ontology;
 import ontology.Translater;
+import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
+/**
+ * 
+ * @author Johannes Ziegltrum
+ *
+ */
 public class NeedlemanWunsch {
 	
 	private double match = 1;
@@ -23,8 +29,8 @@ public class NeedlemanWunsch {
 	
 	private double exponent = 3;
 	
-	HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
-	Transformer transformer = new Transformer(hierarchy);
+	//HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+	//Transformer transformer = new Transformer(hierarchy);
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
@@ -39,13 +45,31 @@ public class NeedlemanWunsch {
 	private ActionElement[][] alignments;
 	
 	private int pointer = 0;
-	private int nothingCount = 0;
+	private int noneCount = 0;
 	
-	public NeedlemanWunsch(ArrayList<ActionElement> seq1, ArrayList<ActionElement> seq2, int function, Ontology ontology){
-		seq1 = transformer.transform(seq1);
-		seq2 = transformer.transform(seq2);
-		this.seq1 = seq1;
-		this.seq2 = seq2;
+	/**
+	 * @param aSeq1 first ActionSequence
+	 * @param aSeq2 second ActionSequence
+	 */
+	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2) {
+		calculate(aSeq1, aSeq2, 1, null);
+	}
+	
+	/**
+	 * @param aSeq1 first ActionSequence
+	 * @param aSeq2 second ActionSequence
+	 * @param ontology the used Ontology for the WUP-similarity-calculation
+	 */
+	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
+		calculate(aSeq1, aSeq2, 2, ontology);
+	}
+	
+	//implementation of the needleman-wunsch-algorithm
+	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, int function, Ontology ontology){
+		seq1 = aSeq1.getSequence();
+		seq2 = aSeq2.getSequence();
+		//seq1 = transformer.transform(aSeq1.getSequence());
+		//seq2 = transformer.transform(aSeq2.getSequence());
 		this.ontology = ontology;
 		m = seq1.size();
 		n = seq2.size();
@@ -77,7 +101,6 @@ public class NeedlemanWunsch {
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
-				
 				if (d == match) {
 					String s = seq1.get(i - 1).getHashMap().get("verb");
 					if (s != null) {
@@ -87,12 +110,8 @@ public class NeedlemanWunsch {
 					}
 				}
 				
-				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
-				
-				//System.out.println(seq1.get(i - 1).getName() + " - " + seq2.get(j - 1).getName());
-				//System.out.println(d);
 				
 				if (score1 > score2 && score1 > score3){
 					matrix[i][j] = score1;
@@ -107,10 +126,11 @@ public class NeedlemanWunsch {
 			}
 		}
 		
-		this.countNothing(m, n);
+		this.countNoneMatchings(m, n);
 		
 	}
 	
+	//simple match-mismatch-comparison
 	private double Compare1(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
 			return match;
@@ -119,6 +139,7 @@ public class NeedlemanWunsch {
 		}
 	}
 	
+	//comparison with WUP-similarity
 	private double Compare2(ActionElement a1, ActionElement a2){
 		if (a1.getName().equals(a2.getName())) {
 			return match;
@@ -148,7 +169,6 @@ public class NeedlemanWunsch {
 			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
 				a = match;
 			}
-			//System.out.println(verb1 + " - " + verb2 + "; a = " + a);
 			
 			double b = 0.5;
 			if (!firstObject1.equals(firstObject2)) {
@@ -162,7 +182,6 @@ public class NeedlemanWunsch {
 			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
 				b = match;
 			}
-			//System.out.println(firstObject1 + " - " + firstObject2 + "; b = " + b);
 			
 			double c = 0.5;
 			if (!preposition1.equals(preposition2)) {
@@ -176,7 +195,6 @@ public class NeedlemanWunsch {
 			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
 				c = match;
 			}
-			//System.out.println(preposition1 + " - " + preposition2 + "; c = " + c);
 			
 			double d = 0.5;
 			if (!secondObject1.equals(secondObject2)) {
@@ -190,25 +208,23 @@ public class NeedlemanWunsch {
 			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
 				d = match;
 			}
-			//System.out.println(secondObject1 + " - " + secondObject2 + "; d = " + d);
 			
-			// a, b, c and d are element of [mismatch;match]
 			compare = alpha * a + beta * b + gamma * c + delta * d;
+			//standardize on [-1;1]
 			compare = -1.0 + 2.0 * compare;
-			//System.out.println("--> " + alpha + "*" + a + " + " + beta + "*" + b + " + " + gamma + "*" + c + " + " + delta + "*" + d + " = " + compare );
-			//System.out.println();
 			return compare;
 		}
 	}
 	
+	/**
+	 * prints the calculation-matrix
+	 */
 	public void printMatrix(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
 				double d = matrix[i][j];
 				DecimalFormat df = new DecimalFormat("0.00");
 				String s = df. format(d);
-				//double x = Math.round(matrix[i][j] * 100.0) / 100.0;
-				//String s = String.valueOf(x);
 				//maximum of 8 characters
 				for (int k = 8 - s.length(); k > 0; k--){
 					System.out.print(" ");
@@ -220,6 +236,9 @@ public class NeedlemanWunsch {
 		System.out.println();
 	}
 	
+	/**
+	 * prints the traceback-matrix
+	 */
 	public void printTraceback(){
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
@@ -235,10 +254,13 @@ public class NeedlemanWunsch {
 		System.out.println();
 	}
 	
+	/**
+	 * prints the alignment of the two sequences
+	 */
 	public void printAlignment(){
 		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
-			alignments = transformer.retransform(alignments);
+			//alignments = transformer.retransform(alignments);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
 			String s1 = alignments[0][i].getName();
@@ -247,8 +269,7 @@ public class NeedlemanWunsch {
 			for (int k = 50 - s1.length(); k > 0; k--){
 				System.out.print(" ");
 			}
-			//System.out.println(s1 + " & - & " + s2);
-			System.out.println(s1 + " & - & " + s2 + "\\\\");
+			System.out.println(s1 + " - " + s2);
 		}
 		System.out.println();
 		System.out.println("Länge seq1 = " + m + "; Länge seq2 = " + n);
@@ -265,41 +286,41 @@ public class NeedlemanWunsch {
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n - 1);
 		} else if (s.equals("left")) {
-			alignments[0][pointer] = new ActionElement("$ | $");
+			alignments[0][pointer] = new ActionElement("|");
 			alignments[1][pointer] = seq2.get(n - 1);
 			pointer++;
 			calculateAlignmentRecursive(m, n - 1);
 		} else if (s.equals("up")) {
 			alignments[0][pointer] = seq1.get(m - 1);
-			alignments[1][pointer] = new ActionElement("$ | $");
+			alignments[1][pointer] = new ActionElement("|");
 			pointer++;
 			calculateAlignmentRecursive(m - 1, n);
 		}
 	}
 	
-	private void countNothing(int m, int n) {
+	private void countNoneMatchings(int m, int n) {
 		String s = traceback[m][n];
 		if (s.equals("diag")){
 			String s1 = seq1.get(m - 1).getHashMap().get("verb");
 			String s2 = seq2.get(n - 1).getHashMap().get("verb");
 			if (s1 != null && s2 != null) {
 				if (s1.equals("none") && s2.equals("none")) {
-					//System.out.println("++");
-					nothingCount++;
+					noneCount++;
 				}
 			}
-			countNothing(m - 1, n - 1);
+			countNoneMatchings(m - 1, n - 1);
 		} else if (s.equals("left")){
-			countNothing(m, n - 1);
+			countNoneMatchings(m, n - 1);
 		} else if (s.equals("up")){
-			countNothing(m - 1, n);
+			countNoneMatchings(m - 1, n);
 		}
 	}
 	
+	/**
+	 * @return the similarity-score of the two sequences
+	 */
 	public double getScore(){
-		//System.out.println(matrix[m][n] + " + 0.5 * " + nothingCount + " / ((" + m + " + " + n + ") / 2)");
-		double score = (matrix[m][n] + 0.5 * nothingCount) / ((m + n) / 2.0);
-		//score = (score + 0.5) / 1.5;
+		double score = (matrix[m][n] + 0.5 * noneCount) / ((m + n) / 2.0);
 		return Math.round(score * 100.0) / 100.0;
 	}
 	

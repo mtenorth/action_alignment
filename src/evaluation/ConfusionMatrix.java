@@ -9,6 +9,11 @@ import alignmentAlgorithm.NeedlemanWunsch;
 
 import sequence.ActionSequence;
 
+/**
+ * 
+ * @author Johannes Ziegltrum
+ *
+ */
 public class ConfusionMatrix {
 
 	private ArrayList<ActionSequence> seqList;
@@ -17,24 +22,43 @@ public class ConfusionMatrix {
 	private int number;
 	private double[][] confusionMatrix;
 	
-	public ConfusionMatrix(ArrayList<ActionSequence> seqList, int compare, Ontology ontology){
+	/**
+	 * 
+	 * @param seqList a list of ActionSequences
+	 */
+	public ConfusionMatrix(ArrayList<ActionSequence> seqList) {
+		calculate(seqList, 1, null);
+	}
+	
+	/**
+	 * 
+	 * @param seqList a list of ActionSequences
+	 * @param ontology the used Ontology for the WUP-similarity-calculation
+	 */
+	public ConfusionMatrix(ArrayList<ActionSequence> seqList, Ontology ontology) {
+		calculate(seqList, 2, ontology);
+	}
+	
+	private void calculate(ArrayList<ActionSequence> seqList, int compare, Ontology ontology){
 		this.seqList = seqList;
 		this.compare = compare;
 		this.ontology = ontology;
 		number = seqList.size();
 	}
 	
+	//pairwise calculation of the similarity-score of all sequences in the list
 	private void calculateConfusionMatrix(){
 		confusionMatrix = new double[number][number];
 		for (int i = 0; i < number; i++) {
 			for (int j = 0; j < number; j++) {
 				if (i <= j) {
-					//System.out.println("i = " + i + "; j = " + j + ";");
-					//long start = System.currentTimeMillis();
-					NeedlemanWunsch ndl = new NeedlemanWunsch(seqList.get(i).getSequence(), seqList.get(j).getSequence(), compare, ontology);
+					NeedlemanWunsch ndl;
+					if (compare == 1) {
+						ndl = new NeedlemanWunsch(seqList.get(i), seqList.get(j));
+					} else {
+						ndl = new NeedlemanWunsch(seqList.get(i), seqList.get(j), ontology);
+					}
 					confusionMatrix[i][j] = ndl.getScore();
-					//long ende = System.currentTimeMillis();
-					//System.out.println("Berechnungszeit: " + ((ende - start)/1000.0) + " Sek.");
 				} else {
 					confusionMatrix[i][j] = confusionMatrix[j][i];
 				}
@@ -42,6 +66,9 @@ public class ConfusionMatrix {
 		}
 	}
 	
+	/**
+	 * prints the confusion-matrix
+	 */
 	public void printConfusionMatrix(){
 		long start = System.currentTimeMillis();
 		this.calculateConfusionMatrix();

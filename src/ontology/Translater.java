@@ -2,10 +2,17 @@ package ontology;
 
 import java.util.HashMap;
 
+/**
+ * @author Johannes Ziegltrum
+ *
+ */
 public class Translater {
 
 	private HashMap<String, String> translateMap = new HashMap<String, String>();
 	
+	/**
+	 * transforms the label into the corresponding entities of the ontology
+	 */
 	public Translater() {
 		
 		translateMap.put("none", "Nothing");
@@ -73,6 +80,9 @@ public class Translater {
 		
 	}
 	
+	/**
+	 * @return translateMap
+	 */
 	public HashMap<String, String> getTranslateMap() {
 		return translateMap;
 	}

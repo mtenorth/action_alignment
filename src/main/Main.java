@@ -11,8 +11,8 @@ import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
 
 import evaluation.ConfusionMatrix;
-import fileReader.DataFileReader;
-import fileReader.SequenceFileReader;
+import fileReader.LabelsDATFileReader;
+import fileReader.LabelsCSVFileReader;
 import ontology.Ontology;
 import ontology.Translater;
 import sequence.ActionSequence;
@@ -25,94 +25,56 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		LabelsCSVFileReader r1 = new LabelsCSVFileReader();
+		LabelsCSVFileReader r2 = new LabelsCSVFileReader();
+		
+		ArrayList<ActionElement> seqLeft00 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-0-condensed.csv");
+		ArrayList<ActionElement> seqRight00 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/righthand-0-0-condensed.csv");
+		
+		ActionSequence aLeft00 = new ActionSequence("lefthand-0-0", seqLeft00);
+		ActionSequence aRight00 = new ActionSequence("righthand-0-0", seqRight00);
+		
+		NeedlemanWunsch ndl = new NeedlemanWunsch(aLeft00, aRight00);
+		ndl.printMatrix();
+		ndl.printTraceback();
+		ndl.printAlignment();
 		
 		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
 		Ontology ontology = new Ontology(url);
 		
-		/*
-		Translater t = new Translater();
-		
-		String s1 = t.getTranslateMap().get("with");
-		String s2 = t.getTranslateMap().get("on");
-		String s3 = t.getTranslateMap().get("fork");
-		String s4 = t.getTranslateMap().get("plate");
-		*/
-		/*
-		String s1 = t.getTranslateMap().get("salt");
-		String s2 = t.getTranslateMap().get("frying_pan");
-		String s3 = t.getTranslateMap().get("cupboard_bottom_left");
-		String s4 = t.getTranslateMap().get("counter");
-		*/
-		/*
-		String object1 = "Reading";
-		String object2 = "ClosingSomething";
-		String object3 = "Refrigerator";
-		String object4 = "ClosingADoor";
-		String object5 = "B21";
-		String object6 = "Box";
-		String object7 = "ObjectType";
-		String object8 = "Color";
-		String object9 = "ColoredThing";
-		String object10 = "Nothing";
-		String object11 = "Cupboard";
-		String object12 = "Cupboard";
-		*/
-		
-		//ontology.getWupSimilarityInfo(s1, s2);
-		//ontology.getWupSimilarityInfo(s3, s4);
-		
-		/*
-		ontology.getWupSimilarity(object1, object2);
-		ontology.getWupSimilarity(object11, object12);
-		ontology.getWupSimilarity(object5, object6);
-		ontology.getWupSimilarity(object6, object7);
-		ontology.getWupSimilarity(object7, object8);
-		ontology.getWupSimilarity(object8, object9);
-		*/
-		
-		
-		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
-		
-		DataFileReader reader1 = new DataFileReader();
-		DataFileReader reader2 = new DataFileReader();
-		DataFileReader reader3 = new DataFileReader();
-		DataFileReader reader4 = new DataFileReader();
-		DataFileReader reader5 = new DataFileReader();
-		DataFileReader reader6 = new DataFileReader();
-		DataFileReader reader7 = new DataFileReader();
-		DataFileReader reader8 = new DataFileReader();
-		DataFileReader reader9 = new DataFileReader();
-		DataFileReader reader10 = new DataFileReader();
-		DataFileReader reader11 = new DataFileReader();
-		DataFileReader reader12 = new DataFileReader();
-		DataFileReader reader13 = new DataFileReader();
-		DataFileReader reader14 = new DataFileReader();
-		DataFileReader reader15 = new DataFileReader();
-		DataFileReader reader16 = new DataFileReader();
-		DataFileReader reader17 = new DataFileReader();
-		DataFileReader reader18 = new DataFileReader();
-		DataFileReader reader19 = new DataFileReader();
-		DataFileReader reader20 = new DataFileReader();
-		DataFileReader reader21 = new DataFileReader();
-		DataFileReader reader22 = new DataFileReader();
-		DataFileReader reader23 = new DataFileReader();
-		DataFileReader reader24 = new DataFileReader();
-		DataFileReader reader25 = new DataFileReader();
-		DataFileReader reader26 = new DataFileReader();
-		DataFileReader reader27 = new DataFileReader();
-		DataFileReader reader28 = new DataFileReader();
-		DataFileReader reader29 = new DataFileReader();
-		DataFileReader reader30 = new DataFileReader();
-		DataFileReader reader31 = new DataFileReader();
-		DataFileReader reader32 = new DataFileReader();
-		DataFileReader reader33 = new DataFileReader();
-		DataFileReader reader34 = new DataFileReader();
-		DataFileReader reader35 = new DataFileReader();
-		DataFileReader reader36 = new DataFileReader();
-		DataFileReader reader37 = new DataFileReader();
-		
-		SequenceFileReader reader38 = new SequenceFileReader();
-		SequenceFileReader reader39 = new SequenceFileReader();
+		LabelsDATFileReader reader1 = new LabelsDATFileReader();
+		LabelsDATFileReader reader2 = new LabelsDATFileReader();
+		LabelsDATFileReader reader3 = new LabelsDATFileReader();
+		LabelsDATFileReader reader4 = new LabelsDATFileReader();
+		LabelsDATFileReader reader5 = new LabelsDATFileReader();
+		LabelsDATFileReader reader6 = new LabelsDATFileReader();
+		LabelsDATFileReader reader7 = new LabelsDATFileReader();
+		LabelsDATFileReader reader8 = new LabelsDATFileReader();
+		LabelsDATFileReader reader9 = new LabelsDATFileReader();
+		LabelsDATFileReader reader10 = new LabelsDATFileReader();
+		LabelsDATFileReader reader11 = new LabelsDATFileReader();
+		LabelsDATFileReader reader12 = new LabelsDATFileReader();
+		LabelsDATFileReader reader13 = new LabelsDATFileReader();
+		LabelsDATFileReader reader14 = new LabelsDATFileReader();
+		LabelsDATFileReader reader15 = new LabelsDATFileReader();
+		LabelsDATFileReader reader16 = new LabelsDATFileReader();
+		LabelsDATFileReader reader17 = new LabelsDATFileReader();
+		LabelsDATFileReader reader18 = new LabelsDATFileReader();
+		LabelsDATFileReader reader19 = new LabelsDATFileReader();
+		LabelsDATFileReader reader20 = new LabelsDATFileReader();
+		LabelsDATFileReader reader21 = new LabelsDATFileReader();
+		LabelsDATFileReader reader22 = new LabelsDATFileReader();
+		LabelsDATFileReader reader23 = new LabelsDATFileReader();
+		LabelsDATFileReader reader24 = new LabelsDATFileReader();
+		LabelsDATFileReader reader25 = new LabelsDATFileReader();
+		LabelsDATFileReader reader26 = new LabelsDATFileReader();
+		LabelsDATFileReader reader27 = new LabelsDATFileReader();
+		LabelsDATFileReader reader28 = new LabelsDATFileReader();
+		LabelsDATFileReader reader29 = new LabelsDATFileReader();
+		LabelsDATFileReader reader30 = new LabelsDATFileReader();
+		LabelsDATFileReader reader31 = new LabelsDATFileReader();
+		LabelsDATFileReader reader32 = new LabelsDATFileReader();
+		LabelsDATFileReader reader33 = new LabelsDATFileReader();
 		
 		ArrayList<ActionElement> seqEgg06 = reader1.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S06/labels.dat");
 		ArrayList<ActionElement> seqEgg07 = reader2.getSequence("C:/Users/Administrator/Desktop/Data/MakingEggs/S07/labels.dat");
@@ -149,14 +111,6 @@ public class Main {
 		ArrayList<ActionElement> seqBro23 = reader32.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S23/labels.dat");
 		ArrayList<ActionElement> seqBro24 = reader33.getSequence("C:/Users/Administrator/Desktop/Data/MakingBrownie/S24/labels.dat");
 		
-		ArrayList<ActionElement> example1 = reader34.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example1.dat");
-		ArrayList<ActionElement> example2 = reader35.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example2.dat");
-		ArrayList<ActionElement> example3 = reader36.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example3.dat");
-		ArrayList<ActionElement> example4 = reader37.getSequence("C:/Users/Administrator/Desktop/Data/MakingExample/example4.dat");
-		
-		ArrayList<ActionElement> thesis1 = reader38.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/thesis1.csv");
-		ArrayList<ActionElement> thesis2 = reader39.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/thesis2.csv");
-		
 		ActionSequence aEgg06 = new ActionSequence("Egg_S06", seqEgg06);
 		ActionSequence aEgg07 = new ActionSequence("Egg_S07", seqEgg07);
 		ActionSequence aEgg08 = new ActionSequence("Egg_S08", seqEgg08);
@@ -192,12 +146,27 @@ public class Main {
 		ActionSequence aBro23 = new ActionSequence("Bro_S23", seqBro23);
 		ActionSequence aBro24 = new ActionSequence("Bro_S24", seqBro24);
 		
-		ActionSequence aExample1 = new ActionSequence("example1", example1);
-		ActionSequence aExample2 = new ActionSequence("example2", example2);
-		ActionSequence aExample3 = new ActionSequence("example3", example3);
-		ActionSequence aExample4 = new ActionSequence("example4", example4);
+		NeedlemanWunsch ndl1 = new NeedlemanWunsch(aEgg06, aBro06);
+		ndl1.printMatrix();
+		ndl1.printTraceback();
+		ndl1.printAlignment();
 		
+		NeedlemanWunsch ndl2 = new NeedlemanWunsch(aEgg06, aBro06, ontology);
+		ndl2.printMatrix();
+		ndl2.printTraceback();
+		ndl2.printAlignment();
 		
+		SmithWaterman smt1 = new SmithWaterman(aEgg06, aBro06);
+		smt1.printMatrix();
+		smt1.printTraceback();
+		smt1.printAlignment();
+		
+		SmithWaterman smt2 = new SmithWaterman(aEgg06, aBro06, ontology);
+		smt2.printMatrix();
+		smt2.printTraceback();
+		smt2.printAlignment();
+		
+		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
 		
 		aList.add(aBro06);
 		aList.add(aBro07);
@@ -233,76 +202,12 @@ public class Main {
 		aList.add(aEgg53);
 		aList.add(aEgg54);
 		aList.add(aEgg55);
-		/*
-		aList.add(aExample1);
-		aList.add(aExample2);
-		aList.add(aExample3);
-		aList.add(aExample4);
-		*/
 		
-		/*
-		ConfusionMatrix cm1 = new ConfusionMatrix(aList, 1, ontology);
+		ConfusionMatrix cm1 = new ConfusionMatrix(aList);
 		cm1.printConfusionMatrix();
 		
-		
-		
-		ConfusionMatrix cm2 = new ConfusionMatrix(aList, 2, ontology);
+		ConfusionMatrix cm2 = new ConfusionMatrix(aList, ontology);
 		cm2.printConfusionMatrix();
-		*/
-		
-		/*
-		NeedlemanWunsch ndl1 = new NeedlemanWunsch(seqEgg55, seqEgg25, 1, null);
-		ndl1.printAlignment();
-		
-		
-		
-		NeedlemanWunsch ndl2 = new NeedlemanWunsch(seqEgg53, seqEgg54, 2, ontology);
-		ndl2.printAlignment();
-		*/
-		
-		
-		SmithWaterman smt1 = new SmithWaterman(seqBro06, seqEgg07, 1, null);
-		smt1.printAlignment();
-		
-		
-		
-		SmithWaterman smt2 = new SmithWaterman(seqBro06, seqEgg07, 2, ontology);
-		smt2.printAlignment();
-		
-		
-		
-		SequenceFileReader r1 = new SequenceFileReader();
-		SequenceFileReader r2 = new SequenceFileReader();
-		SequenceFileReader r3 = new SequenceFileReader();
-		SequenceFileReader r4 = new SequenceFileReader();
-		SequenceFileReader r5 = new SequenceFileReader();
-		
-		ArrayList<ActionElement> seqX3 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example3.csv");
-		ArrayList<ActionElement> seqX4 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example4.csv");
-		ArrayList<ActionElement> seqRight00 = r3.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/righthand-0-0-condensed.csv");
-		ArrayList<ActionElement> seqX1 = r4.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example1.csv");
-		ArrayList<ActionElement> seqX2 = r5.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example2.csv");
-		
-		NeedlemanWunsch ndl = new NeedlemanWunsch(seqX3, seqX4, 1, null);
-		
-		//ndl.printMatrix();
-		//ndl.printTraceback();
-		//ndl.printAlignment();
-		
-		/*
-		for (ActionElement e : seqX1) {
-			System.out.println(seqX1.indexOf(e) + ": " + e.getName());
-		}
-		System.out.println();
-		
-		HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
-		Transformer transformer = new Transformer(hierarchy);
-		
-		ArrayList<ActionElement> newSeq = transformer.toplevel(seqX1);
-		for (ActionElement e : newSeq) {
-			System.out.println(newSeq.indexOf(e) + ": " + e.getName());
-		}
-		*/
 		
 	}
 
