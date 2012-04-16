@@ -31,6 +31,9 @@ public class Main {
 		ArrayList<ActionElement> seqLeft00 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/lefthand-0-0-condensed.csv");
 		ArrayList<ActionElement> seqRight00 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesHands/righthand-0-0-condensed.csv");
 		
+		//ArrayList<ActionElement> seqLeft00 = r1.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example3.csv");
+		//ArrayList<ActionElement> seqRight00 = r2.getSequence("C:/Users/Administrator/Desktop/Data/SequencesExample/example4.csv");
+		
 		ActionSequence aLeft00 = new ActionSequence("lefthand-0-0", seqLeft00);
 		ActionSequence aRight00 = new ActionSequence("righthand-0-0", seqRight00);
 		

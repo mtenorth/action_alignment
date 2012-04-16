@@ -29,8 +29,8 @@ public class NeedlemanWunsch {
 	
 	private double exponent = 3;
 	
-	//HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
-	//Transformer transformer = new Transformer(hierarchy);
+	HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+	Transformer transformer = new Transformer(hierarchy);
 	
 	private ArrayList<ActionElement> seq1;
 	private ArrayList<ActionElement> seq2;
@@ -68,8 +68,8 @@ public class NeedlemanWunsch {
 	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, int function, Ontology ontology){
 		seq1 = aSeq1.getSequence();
 		seq2 = aSeq2.getSequence();
-		//seq1 = transformer.transform(aSeq1.getSequence());
-		//seq2 = transformer.transform(aSeq2.getSequence());
+		seq1 = transformer.transform(aSeq1.getSequence());
+		seq2 = transformer.transform(aSeq2.getSequence());
 		this.ontology = ontology;
 		m = seq1.size();
 		n = seq2.size();
@@ -260,7 +260,7 @@ public class NeedlemanWunsch {
 	public void printAlignment(){
 		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
-			//alignments = transformer.retransform(alignments);
+			alignments = transformer.retransform(alignments);
 		}
 		for (int i = pointer - 1; i >= 0; i--){
 			String s1 = alignments[0][i].getName();
