@@ -2,7 +2,6 @@ package hierarchicStructure;
 
 import java.util.ArrayList;
 
-import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
 /**

@@ -1,11 +1,6 @@
 package main;
 
-import hierarchicStructure.HierarchicStructure;
-import hierarchicStructure.Transformer;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-
 
 import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
@@ -14,7 +9,6 @@ import evaluation.ConfusionMatrix;
 import fileReader.LabelsDATFileReader;
 import fileReader.LabelsCSVFileReader;
 import ontology.Ontology;
-import ontology.Translater;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
