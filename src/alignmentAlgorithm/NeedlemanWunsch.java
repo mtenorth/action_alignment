@@ -45,7 +45,7 @@ public class NeedlemanWunsch {
 	private ActionElement[][] alignments;
 	
 	private int pointer = 0;
-	private int noneCount = 0;
+	//private int noneCount = 0;
 	
 	/**
 	 * @param aSeq1 first ActionSequence
@@ -299,23 +299,23 @@ public class NeedlemanWunsch {
 		}
 	}
 	
-	private void countNoneMatchings(int m, int n) {
-		String s = traceback[m][n];
-		if (s.equals("diag")){
-			String s1 = seq1.get(m - 1).getHashMap().get("verb");
-			String s2 = seq2.get(n - 1).getHashMap().get("verb");
-			if (s1 != null && s2 != null) {
-				if (s1.equals("none") && s2.equals("none")) {
-					noneCount++;
-				}
-			}
-			countNoneMatchings(m - 1, n - 1);
-		} else if (s.equals("left")){
-			countNoneMatchings(m, n - 1);
-		} else if (s.equals("up")){
-			countNoneMatchings(m - 1, n);
-		}
-	}
+//	private void countNoneMatchings(int m, int n) {
+//		String s = traceback[m][n];
+//		if (s.equals("diag")){
+//			String s1 = seq1.get(m - 1).getHashMap().get("verb");
+//			String s2 = seq2.get(n - 1).getHashMap().get("verb");
+//			if (s1 != null && s2 != null) {
+//				if (s1.equals("none") && s2.equals("none")) {
+//					noneCount++;
+//				}
+//			}
+//			countNoneMatchings(m - 1, n - 1);
+//		} else if (s.equals("left")){
+//			countNoneMatchings(m, n - 1);
+//		} else if (s.equals("up")){
+//			countNoneMatchings(m - 1, n);
+//		}
+//	}
 	
 	/**
 	 * @return the similarity-score of the two sequences
