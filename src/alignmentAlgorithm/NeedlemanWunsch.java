@@ -29,7 +29,7 @@ public class NeedlemanWunsch {
 	
 	private double exponent = 3;
 	
-	HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/Data/HierarchicStructure.txt");
+	HierarchicStructure hierarchy = new HierarchicStructure("C:/Users/Administrator/Desktop/eclipse/workspace/action-alignment/Data/HierarchicStructure.txt");
 	Transformer transformer = new Transformer(hierarchy);
 	
 	private ArrayList<ActionElement> seq1;
@@ -101,14 +101,15 @@ public class NeedlemanWunsch {
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
-				if (d == match) {
-					String s = seq1.get(i - 1).getHashMap().get("verb");
-					if (s != null) {
-						if (s.equals("none")) {
-							score1 -= 0.5;
-						}
-					}
-				}
+//				if (d == match) {
+//					String s1 = seq1.get(i - 1).getHashMap().get("verb");
+//					String s2 = seq2.get(j - 1).getHashMap().get("verb");
+//					if (s1 != null && s2 != null) {
+//						if (s1.equals("none") && s2.equals("none")) {
+//							score1 -= 0.5;
+//						}
+//					}
+//				}
 				
 				double score2 = matrix[i-1][j] + gap;
 				double score3 = matrix[i][j-1] + gap;
@@ -126,7 +127,7 @@ public class NeedlemanWunsch {
 			}
 		}
 		
-		this.countNoneMatchings(m, n);
+		//this.countNoneMatchings(m, n);
 		
 	}
 	
@@ -320,7 +321,8 @@ public class NeedlemanWunsch {
 	 * @return the similarity-score of the two sequences
 	 */
 	public double getScore(){
-		double score = (matrix[m][n] + 0.5 * noneCount) / ((m + n) / 2.0);
+		//double score = (matrix[m][n] + 0.5 * noneCount) / ((m + n) / 2.0);
+		double score = (matrix[m][n]) / ((m + n) / 2.0);
 		return Math.round(score * 100.0) / 100.0;
 	}
 	
