@@ -1,12 +1,12 @@
 package alignmentAlgorithm;
 
-import hierarchicStructure.HierarchicStructure;
+import hierarchicStructure.HierarchicalStructure;
 import hierarchicStructure.Transformer;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import ontology.Ontology;
-import ontology.Translater;
+import ontology.Translator;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 
@@ -29,7 +29,7 @@ public class NeedlemanWunsch {
 	
 	private double exponent = 3;
 	
-	HierarchicStructure hierarchy = new HierarchicStructure("Data/HierarchicStructure.txt");
+	HierarchicalStructure hierarchy = new HierarchicalStructure("Data/HierarchicStructure.txt");
 	Transformer transformer = new Transformer(hierarchy);
 	
 	private ArrayList<ActionElement> seq1;
@@ -146,7 +146,7 @@ public class NeedlemanWunsch {
 			return match;
 		} else {
 			double compare = 0;
-			Translater translater = new Translater();
+			Translator translater = new Translator();
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -273,9 +273,9 @@ public class NeedlemanWunsch {
 			System.out.println(s1 + " - " + s2);
 		}
 		System.out.println();
-		System.out.println("L�nge seq1 = " + m + "; L�nge seq2 = " + n);
+		System.out.println("Length seq1 = " + m + "; length seq2 = " + n);
 		double score = this.getScore();
-		System.out.println("Alignment-Score: " + score);
+		System.out.println("alignment score: " + score);
 		System.out.println();
 	}
 	

@@ -10,12 +10,12 @@ import sequenceElement.ActionElement;
  */
 public class Transformer {
 
-	HierarchicStructure hierarchy;
+	HierarchicalStructure hierarchy;
 	
 	/**
 	 * @param hierarchy HierarchicStructure
 	 */
-	public Transformer(HierarchicStructure hierarchy) {
+	public Transformer(HierarchicalStructure hierarchy) {
 		this.hierarchy = hierarchy;
 	}
 	

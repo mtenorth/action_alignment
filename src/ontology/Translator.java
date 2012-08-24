@@ -6,14 +6,14 @@ import java.util.HashMap;
  * @author Johannes Ziegltrum
  *
  */
-public class Translater {
+public class Translator {
 
 	private HashMap<String, String> translateMap = new HashMap<String, String>();
 	
 	/**
 	 * transforms the label into the corresponding entities of the ontology
 	 */
-	public Translater() {
+	public Translator() {
 		
 		translateMap.put("none", "Nothing");
 		

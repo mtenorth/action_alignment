@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 import ontology.Ontology;
-import ontology.Translater;
+import ontology.Translator;
 
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
@@ -146,7 +146,7 @@ public class SmithWaterman {
 			return match;
 		} else {
 			double compare = 0;
-			Translater translater = new Translater();
+			Translator translater = new Translator();
 			String verb1 = a1.getHashMap().get("verb");
 			String verb2 = a2.getHashMap().get("verb");
 			String firstObject1 = a1.getHashMap().get("object1");
@@ -278,7 +278,7 @@ public class SmithWaterman {
 				calculateAlignmentRecursive(m, n);
 			}
 		}
-		System.out.println("globale Alignments:");
+		System.out.println("global alignments:");
 		for (int i = pointer - 1; i >= 0; i--){
 			// if "ln" println for a space between the next local alignment
 			if (!alignments[0][i].equals("ln")) {

@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author Johannes Ziegltrum
  *
  */
-public class HierarchicStructure {
+public class HierarchicalStructure {
 
 	private HashMap<String, String[]> subEventsMap = new HashMap<String, String[]>();
 	private HashMap<String, String> superEventMap = new HashMap<String, String>();
@@ -17,7 +17,7 @@ public class HierarchicStructure {
 	/**
 	 * @param file path to the file that contains the information for the hierarchy
 	 */
-	public HierarchicStructure(String file) {
+	public HierarchicalStructure(String file) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = null;
@@ -32,7 +32,6 @@ public class HierarchicStructure {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
