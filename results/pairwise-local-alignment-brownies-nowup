@@ -1,0 +1,451 @@
+Ontology wurde in 8.213 Sekunden geladen.
+
+
+
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+SMITH-WATERMAN PAIRWISE LOCAL ALIGNMENTS
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S06 WITH Bro_S07
+global alignments:
+
+                                           none    - none   
+                                       take fork   - take fork  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                                 | - crack egg  
+                                                 | - none   
+                                        stir egg   - stir egg  
+                                           none    - none   
+                                                 | - pour water into measuring-cup-big
+                          pour water into big-bowl - pour water into big-bowl
+                                           none    - none   
+                                        take oil   - take oil  
+                                                 | - none   
+                                   twist-off cap   - twist-off cap  
+                                           none    - none   
+                 pour oil into measuring-cup-small - pour oil into measuring-cup-small
+                                                 | - none   
+                                    twist-on cap   - twist-on cap  
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S07 WITH Bro_S08
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - |
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S08 WITH Bro_S09
+global alignments:
+
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                 take baking-pan   - take baking-pan  
+                                                 | - take pam  
+                                           none    - none   
+                                       spray pam   - spray pam  
+                                                 | - none   
+                put pam into cupboard-bottom-right - put pam into cupboard-bottom-right
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+                                           none    - |
+                                      switch-on    - switch-on   
+                                           none    - |
+                          put baking-pan into oven - put baking-pan into oven
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S09 WITH Bro_S10
+global alignments:
+
+                    pour brownie-bag into big-bowl - pour brownie-bag into big-bowl
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                 take baking-pan   - take baking-pan  
+                                        take pam   - |
+                                           none    - none   
+                                       spray pam   - spray pam  
+                                           none    - none   
+                                                 | - put pam into cupboard-bottom-left
+                                                 | - none   
+                put pam into cupboard-bottom-right - put pam into cupboard-bottom-right
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S10 WITH Bro_S12
+global alignments:
+
+                                           none    - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       take fork   - |
+                                           none    - |
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                                 | - take fork  
+                                                 | - none   
+                                        stir egg   - stir egg  
+                                           none    - none   
+                                                 | - take measuring-cup-big  
+                 pour water into measuring-cup-big - pour water into measuring-cup-big
+                          pour water into big-bowl - pour water into big-bowl
+                                           none    - none   
+                                        take pam   - |
+                                        take oil   - |
+                                           none    - |
+                                   twist-off cap   - twist-off cap  
+                                           none    - none   
+                 pour oil into measuring-cup-small - pour oil into measuring-cup-small
+                                           none    - none   
+                                    twist-on cap   - twist-on cap  
+                                           none    - |
+                put oil into cupboard-bottom-right - put oil into cupboard-bottom-right
+                                           none    - none   
+                            pour oil into big-bowl - pour oil into big-bowl
+                                           none    - none   
+                                take brownie-box   - |
+                                                 | - stir big-bowl  
+                                           none    - none   
+                                open brownie-box   - open brownie-box  
+                                           none    - |
+                                open brownie-bag   - open brownie-bag  
+                                           none    - |
+                    pour brownie-bag into big-bowl - pour brownie-bag into big-bowl
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                                 | - read brownie-box  
+                                                 | - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                 take baking-pan   - |
+                                           none    - |
+                                       spray pam   - spray pam  
+                                           none    - |
+                 put pam into cupboard-bottom-left - |
+                                           none    - |
+                put pam into cupboard-bottom-right - put pam into cupboard-bottom-right
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+                     pour big-bowl into baking-pan - |
+                                           none    - |
+                                      switch-on    - switch-on   
+                                           none    - none   
+                          put baking-pan into oven - put baking-pan into oven
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S12 WITH Bro_S13
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       take fork   - take fork  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S13 WITH Bro_S14
+global alignments:
+
+                 pour water into measuring-cup-big - pour water into measuring-cup-big
+                                                 | - pour water into big-bowl
+                                           none    - none   
+                                           none    - none   
+                                read brownie-box   - read brownie-box  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S14 WITH Bro_S16
+global alignments:
+
+                                           none    - none   
+                 pour water into measuring-cup-big - pour water into measuring-cup-big
+                          pour water into big-bowl - pour water into big-bowl
+                                           none    - none   
+                                                 | - twist-off cap  
+                                           none    - none   
+                                read brownie-box   - |
+                                           none    - |
+                                                 | - pour oil into measuring-cup-small
+                            pour oil into big-bowl - pour oil into big-bowl
+                                           none    - none   
+                                    twist-on cap   - twist-on cap  
+                put oil into cupboard-bottom-right - put oil into cupboard-bottom-right
+                                           none    - none   
+                            pour oil into big-bowl - |
+                                                 | - crack egg  
+                                           none    - none   
+                                                 | - crack egg  
+                                                 | - none   
+                                                 | - stir big-bowl  
+                                       take fork   - take fork  
+                          put scissors into drawer - |
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                 take baking-pan   - |
+                                        take pam   - |
+                                                 | - none   
+                                       spray pam   - spray pam  
+                put pam into cupboard-bottom-right - put pam into cupboard-bottom-right
+                                           none    - none   
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S16 WITH Bro_S17
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S17 WITH Bro_S18
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                                 | - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S18 WITH Bro_S19
+global alignments:
+
+                                           none    - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                 pour water into measuring-cup-big - |
+                          pour water into big-bowl - |
+                                                 | - take fork  
+                                           none    - none   
+                                read brownie-box   - |
+                                           none    - |
+                                        take oil   - take oil  
+                                           none    - |
+                                                 | - take oil  
+                                   twist-off cap   - twist-off cap  
+                                           none    - none   
+                 pour oil into measuring-cup-small - pour oil into measuring-cup-small
+                                           none    - none   
+                                    twist-on cap   - twist-on cap  
+                put oil into cupboard-bottom-right - put oil into cupboard-bottom-right
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S19 WITH Bro_S20
+global alignments:
+
+                                           none    - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       take fork   - take fork  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S20 WITH Bro_S22
+global alignments:
+
+                                           none    - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                                 | - take fork  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       take fork   - |
+                                           none    - |
+                                        stir egg   - stir egg  
+                        close cupboard-top-right   - |
+                                        stir egg   - stir egg  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S22 WITH Bro_S23
+global alignments:
+
+                                           none    - none   
+                                        stir egg   - stir egg  
+                                           none    - none   
+                                open brownie-box   - open brownie-box  
+                                open brownie-bag   - open brownie-bag  
+                    pour brownie-bag into big-bowl - pour brownie-bag into big-bowl
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                    pour brownie-bag into big-bowl - pour brownie-bag into big-bowl
+                                           none    - none   
+                                                 | - open brownie-bag  
+                                                 | - pour brownie-bag into big-bowl
+                                                 | - none   
+                                                 | - none   
+                                   stir big-bowl   - stir big-bowl  
+                                       take fork   - |
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - |
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                      switch-on    - |
+                                           none    - |
+                                                 | - take baking-pan  
+                                                 | - take pam  
+                                       spray pam   - spray pam  
+                put pam into cupboard-bottom-right - put pam into cupboard-bottom-right
+                                           none    - none   
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - |
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+                                           none    - |
+                          put baking-pan into oven - put baking-pan into oven
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S23 WITH Bro_S24
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S24 WITH Bro_S06
+global alignments:
+
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                        take egg   - take egg  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                           none    - none   
+                                       crack egg   - crack egg  
+                                           none    - none   
+

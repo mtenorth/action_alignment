@@ -130,7 +130,8 @@ public class Main {
 		
 	}
 
-
+	
+	@SuppressWarnings("unused")
 	public static void computeAndPrintGlobalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology) {
 		
 		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");

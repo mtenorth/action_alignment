@@ -1,0 +1,1675 @@
+Ontology wurde in 7.253 Sekunden geladen.
+
+
+
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S06 WITH Bro_S07
+                                           none    - none   
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                                 switch-on stove   - |
+                                           none    - |
+                      open cupboard-bottom-right   - |
+               take oil from cupboard-bottom-right - |
+                                        open oil   - |
+                          pour oil into frying-pan - |
+                                       close oil   - |
+                      open cupboard-bottom-right   - |
+                put oil into cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                           none    - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                                           none    - |
+                         open cupboard-top-right   - open cupboard-top-right  
+           take small-bowl from cupboard-top-right - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                           none    - |
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                                 | - open egg-box  
+                              take egg from fridge - take egg from egg-box
+                                    close fridge   - close fridge  
+                                                 | - close fridge  
+                                  walk  to counter - walk  to counter
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                                                 | - none   
+                         crack egg into small-bowl - crack egg  
+                          put egg-shell on counter - put egg-shell into sink
+                                                 | - stir egg with fork
+                                                 | - open cupboard-top-left  
+                                                 | - take pepper from cupboard-top-left
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                     put salt to cupboard-top-left - |
+                take pepper from cupboard-top-left - |
+                       pour pepper into small-bowl - pour pepper into small-bowl
+                   put pepper to cupboard-top-left - put pepper to cupboard-top-left
+                                                 | - put salt to cupboard-top-left
+                                                 | - open cupboard-bottom-left  
+                                                 | - take frying-pan from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                                 | - put frying-pan on stove
+                                                 | - open cupboard-bottom-right  
+                                                 | - close cupboard-bottom-right  
+                                                 | - twist-off cap  
+                                                 | - pour oil into frying-pan
+                                                 | - twist-on cap  
+                                           none    - none   
+                                beat egg with fork - |
+                                                 | - switch-on stove  
+                                           none    - none   
+                                beat egg with fork - |
+                                                 | - open cupboard-top-right  
+                                                 | - take plate from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - none   
+                                 take small-bowl   - stir small-bowl  
+                                                 | - none   
+                          pour egg into frying-pan - pour small-bowl into frying-pan
+                         put small-bowl to counter - |
+                     put egg-shell into small-bowl - |
+                          put small-bowl into sink - put small-bowl into sink
+                                    walk  to stove - |
+                                           none    - none   
+                                stir egg with fork - |
+                                switch-off stove   - switch-off stove  
+                                 take frying-pan   - |
+                                                 | - none   
+                                  put egg on plate - put egg on plate
+                          put frying-pan into sink - |
+                                           none    - none   
+
+Length seq1 = 52; length seq2 = 50
+alignment score: 0.41
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S07 WITH Bro_S08
+                                           none    - none   
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                                 | - open cupboard-bottom-left  
+                                                 | - take frying-pan from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                                 | - put frying-pan on stove
+                                                 | - switch-on stove  
+                                                 | - open cupboard-bottom-right  
+                                                 | - take oil from cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - twist-off cap  
+                                                 | - pour oil into frying-pan
+                                                 | - twist-on cap  
+                                                 | - open cupboard-bottom-right  
+                                                 | - put oil to cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - open egg-box  
+                             take egg from egg-box - take egg from egg-box
+                                                 | - close egg-box  
+                                    close fridge   - close fridge  
+                                    close fridge   - |
+                                  walk  to counter - walk  to counter
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                     open drawer   - open drawer  
+                             take fork from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                                           none    - |
+                                       crack egg   - |
+                           put egg-shell into sink - |
+                                stir egg with fork - |
+                          open cupboard-top-left   - open cupboard-top-left  
+                take pepper from cupboard-top-left - |
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                                                 | - crack egg  
+                                                 | - put egg-shell into sink
+                         pour salt into small-bowl - pour salt into small-bowl
+                       pour pepper into small-bowl - |
+                   put pepper to cupboard-top-left - |
+                     put salt to cupboard-top-left - |
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                      close cupboard-bottom-left   - |
+                           put frying-pan on stove - |
+                      open cupboard-bottom-right   - |
+                     close cupboard-bottom-right   - |
+                                   twist-off cap   - |
+                          pour oil into frying-pan - |
+                                    twist-on cap   - |
+                                                 | - stir egg with fork
+                                           none    - none   
+                                 switch-on stove   - |
+                                                 | - pour small-bowl into frying-pan
+                                           none    - none   
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                                 | - open drawer  
+                                                 | - take spatula  
+                                                 | - close drawer  
+                                           none    - none   
+                                 stir small-bowl   - |
+                                           none    - |
+                   pour small-bowl into frying-pan - |
+                                                 | - put egg on plate
+                          put small-bowl into sink - put frying-pan into sink
+                                           none    - |
+                                switch-off stove   - switch-off stove  
+                                                 | - put small-bowl into sink
+                                           none    - none   
+                                  put egg on plate - |
+                                           none    - |
+
+Length seq1 = 50; length seq2 = 49
+alignment score: 0.43
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S08 WITH Bro_S09
+                                           none    - none   
+                                                 | - open cupboard-top-right  
+                                                 | - take plate from cupboard-top-right
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                      close cupboard-bottom-left   - |
+                           put frying-pan on stove - put frying-pan on stove
+                                 switch-on stove   - switch-on stove  
+                                                 | - close cupboard-bottom-left  
+                      open cupboard-bottom-right   - close cupboard-bottom-right  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                   twist-off cap   - twist-off cap  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - twist-on cap  
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+                  put oil to cupboard-bottom-right - put oil into cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - open egg-box  
+                             take egg from egg-box - take egg from egg-box
+                                   close egg-box   - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                          open cupboard-top-left   - |
+                  take salt from cupboard-top-left - |
+                                                 | - none   
+                                       crack egg   - crack egg  
+                           put egg-shell into sink - put egg-shell into sink
+                                                 | - take paper-towel  
+                                                 | - clean  with paper-towel
+                                                 | - none   
+                                                 | - stir egg with fork
+                                                 | - open cupboard-top-left  
+                                                 | - close cupboard-top-left  
+                                                 | - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                                                 | - open cupboard-top-left  
+                                                 | - put salt to cupboard-top-left
+                                                 | - close cupboard-top-left  
+                                stir egg with fork - stir small-bowl with fork
+                                           none    - |
+                                                 | - stir small-bowl with fork
+                   pour small-bowl into frying-pan - pour small-bowl into frying-pan
+                                                 | - put small-bowl into sink
+                                                 | - clean  with paper-towel
+                                           none    - none   
+                         open cupboard-top-right   - |
+                take plate from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                     open drawer   - |
+                                    take spatula   - |
+                                    close drawer   - |
+                                           none    - |
+                                  put egg on plate - put egg on plate
+                          put frying-pan into sink - put frying-pan into sink
+                                switch-off stove   - switch-off stove  
+                          put small-bowl into sink - |
+                                           none    - none   
+
+Length seq1 = 49; length seq2 = 53
+alignment score: 0.58
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S09 WITH Bro_S11
+                                           none    - none   
+                         open cupboard-top-right   - |
+                take plate from cupboard-top-right - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                           put frying-pan on stove - put frying-pan on stove
+                                 switch-on stove   - switch-on stove  
+                      close cupboard-bottom-left   - |
+                     close cupboard-bottom-right   - open cupboard-bottom-right  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-right
+                     close cupboard-bottom-right   - |
+                                   twist-off cap   - twist-off cap  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - twist-on cap  
+                      open cupboard-bottom-right   - |
+                put oil into cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                                 | - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - open egg-box  
+                             take egg from egg-box - take egg from egg-box
+                                   close egg-box   - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk fridge to counter
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                           none    - none   
+                                       crack egg   - crack egg  
+                           put egg-shell into sink - put egg-shell into sink
+                                take paper-towel   - |
+                           clean  with paper-towel - |
+                                           none    - |
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                                stir egg with fork - stir egg with fork
+                          open cupboard-top-left   - open cupboard-top-left  
+                         close cupboard-top-left   - |
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                          open cupboard-top-left   - |
+                     put salt to cupboard-top-left - put salt to cupboard-top-left
+                                                 | - take pepper from cupboard-top-left
+                                                 | - pour pepper into small-bowl
+                                                 | - put pepper to cupboard-top-left
+                         close cupboard-top-left   - close cupboard-top-left  
+                         stir small-bowl with fork - stir small-bowl with fork
+                         stir small-bowl with fork - |
+                   pour small-bowl into frying-pan - pour small-bowl into frying-pan
+                          put small-bowl into sink - |
+                           clean  with paper-towel - |
+                                           none    - |
+                                                 | - open cupboard-top-right  
+                                                 | - take plate from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                  put egg on plate - put egg on plate
+                          put frying-pan into sink - |
+                                switch-off stove   - switch-off stove  
+                                           none    - |
+
+Length seq1 = 53; length seq2 = 46
+alignment score: 0.62
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S11 WITH Bro_S12
+                                           none    - none   
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                           put frying-pan on stove - put frying-pan to stove
+                                 switch-on stove   - switch-on stove to stove
+                      open cupboard-bottom-right   - |
+                                                 | - open cupboard-bottom-left  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-left
+                                   twist-off cap   - |
+                                                 | - open oil  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - |
+                                                 | - close oil  
+                  put oil to cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - |
+                                                 | - close oil  cupboard-bottom-right
+                                           none    - none   
+                                   walk  to fridge - |
+                                     open fridge   - |
+                                    open egg-box   - |
+                             take egg from egg-box - |
+                                   close egg-box   - |
+                                    close fridge   - |
+                            walk fridge to counter - |
+                         open cupboard-top-right   - |
+                                                 | - open   cupboard-top-right
+           take small-bowl from cupboard-top-right - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                           none    - |
+                                       crack egg   - |
+                           put egg-shell into sink - |
+                                     open drawer   - open drawer  
+                             take fork from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                                                 | - put fork to counter
+                                                 | - walk  to fridge
+                                                 | - open fridge  
+                                                 | - take egg from fridge
+                                                 | - close fridge  
+                                                 | - walk  to counter
+                                                 | - crack egg into small-bowl
+                                                 | - put egg-shell to sink
+                                                 | - take fork  
+                                stir egg with fork - beat egg with fork
+                          open cupboard-top-left   - open cupboard-top-left  
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                                                 | - close cupboard-top-left  
+                         pour salt into small-bowl - pour salt into small-bowl
+                                                 | - open cupboard-top-left  
+                     put salt to cupboard-top-left - put salt to cupboard-top-left
+                take pepper from cupboard-top-left - |
+                       pour pepper into small-bowl - |
+                   put pepper to cupboard-top-left - |
+                         close cupboard-top-left   - close cupboard-top-left  
+                         stir small-bowl with fork - beat egg with fork
+                                                 | - take frying-pan  
+                                                 | - beat egg with fork
+                                                 | - put fork to sink
+                                                 | - take small-bowl  
+                   pour small-bowl into frying-pan - pour egg into frying-pan
+                                                 | - put small-bowl into sink
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                                 | - take fork from sink
+                                                 | - none   
+                                  put egg on plate - stir egg with fork
+                                switch-off stove   - switch-off stove  
+                                                 | - take frying-pan from stove
+                                                 | - put egg on plate
+                                                 | - put fork to sink
+                                                 | - none   
+
+Length seq1 = 46; length seq2 = 55
+alignment score: 0.47
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S12 WITH Bro_S13
+                                           none    - none   
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                      close cupboard-bottom-left   - |
+                           put frying-pan to stove - |
+                          switch-on stove to stove - |
+                       open cupboard-bottom-left   - |
+                take oil from cupboard-bottom-left - |
+                                        open oil   - open fridge  
+                          pour oil into frying-pan - |
+                                                 | - take egg from fridge
+                                                 | - put egg into egg-box
+                                                 | - take egg from egg-box
+                                       close oil   - close fridge  
+                  put oil to cupboard-bottom-right - |
+                  close oil  cupboard-bottom-right - |
+                                           none    - |
+                         open   cupboard-top-right - |
+                                                 | - walk  to counter
+                                                 | - open cupboard-top-right  
+           take small-bowl from cupboard-top-right - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                     open drawer   - open drawer  
+                             take fork from drawer - take spoon from drawer
+                                                 | - put spoon to drawer
+                                    close drawer   - close drawer  
+                               put fork to counter - |
+                                   walk  to fridge - |
+                                     open fridge   - |
+                              take egg from fridge - take egg  
+                                    close fridge   - |
+                                  walk  to counter - |
+                         crack egg into small-bowl - crack egg into small-bowl
+                             put egg-shell to sink - |
+                                       take fork   - |
+                                beat egg with fork - |
+                                                 | - put egg to cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - take paper-towel  
+                                                 | - open drawer  
+                                                 | - take spoon from drawer
+                                                 | - close drawer  
+                          open cupboard-top-left   - open cupboard-top-left  
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                         close cupboard-top-left   - |
+                         pour salt into small-bowl - pour salt into small-bowl
+                                                 | - pour pepper into small-bowl
+                                                 | - beat egg with spoon
+                                                 | - open cupboard-bottom-left  
+                                                 | - take frying-pan from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                                 | - put frying-pan to sink
+                                                 | - put frying-pan to stove
+                                                 | - switch-on stove  
+                                                 | - none   
+                                                 | - beat egg with spoon
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                                 | - beat egg with spoon
+                                                 | - take pepper from counter
+                                                 | - pour pepper into small-bowl
+                                                 | - put pepper to counter
+                                                 | - beat egg with spoon
+                                                 | - take salt from counter
+                          open cupboard-top-left   - open cupboard-top-left  
+                     put salt to cupboard-top-left - put salt to cupboard-top-left
+                                                 | - put pepper to cupboard-top-left
+                         close cupboard-top-left   - close cupboard-top-left  
+                                beat egg with fork - beat egg with spoon
+                                                 | - open cupboard-bottom-right  
+                                                 | - take pam from cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - beat egg with spoon
+                                                 | - take pam  
+                                                 | - open pam  
+                                                 | - spray pam into frying-pan
+                                                 | - close pam  
+                                                 | - put pam to counter
+                                                 | - beat egg with spoon
+                                 take frying-pan   - take frying-pan  
+                                beat egg with fork - |
+                                                 | - put frying-pan  
+                                                 | - take small-bowl  
+                                                 | - pour egg into frying-pan
+                                  put fork to sink - put small-bowl to counter
+                                                 | - none   
+                                                 | - take frying-pan  
+                                                 | - switch-on stove  
+                                                 | - take frying-pan  
+                                                 | - switch-on stove  
+                                 take small-bowl   - take small-bowl  
+                          pour egg into frying-pan - pour egg into frying-pan
+                          put small-bowl into sink - put small-bowl to sink
+                                                 | - none   
+                                                 | - take paper-towel  
+                                                 | - clean   
+                                                 | - none   
+                                                 | - open drawer  
+                                                 | - take spatula2 from drawer
+                                                 | - take spatula from drawer
+                                                 | - put spatula2 to drawer
+                                                 | - put spatula to drawer
+                                                 | - close drawer  
+                                                 | - take paper-towel from counter
+                                                 | - open cupboard-bottom-right  
+                                                 | - put paper-towel to cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - |
+                                                 | - put plate to counter
+                                                 | - take frying-pan from stove
+                                                 | - open drawer  
+                                                 | - take spatula from drawer
+                                                 | - close drawer  
+                                                 | - stir egg with spatula
+                                                 | - take pam from counter
+                                                 | - open pam  
+                                                 | - spray pam into frying-pan
+                                                 | - put pam to counter
+                               take fork from sink - take spatula from counter
+                                                 | - stir egg with spatula
+                                           none    - none   
+                                                 | - put spatula to counter
+                                                 | - close pam  
+                                                 | - open cupboard-bottom-right  
+                                                 | - put pam to cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - take paper-towel from counter
+                                                 | - put spatula to counter
+                                                 | - none   
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                                                 | - put fork to counter
+                                                 | - take spatula from counter
+                                stir egg with fork - stir egg with spatula
+                                                 | - none   
+                                switch-off stove   - switch-off stove  
+                        take frying-pan from stove - take frying-pan from stove
+                                  put egg on plate - put egg on plate
+                                                 | - put frying-pan to stove
+                                  put fork to sink - put frying-pan to sink
+                                                 | - take paper-towel from counter
+                                           none    - none   
+                                                 | - open cupboard-bottom-right  
+                                                 | - put paper-towel into cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - none   
+
+Length seq1 = 55; length seq2 = 126
+alignment score: 0.29
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S13 WITH Bro_S14
+                                           none    - none   
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - walk  to fridge
+                                     open fridge   - open fridge  
+                              take egg from fridge - take egg from fridge
+                              put egg into egg-box - |
+                             take egg from egg-box - |
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                     open drawer   - |
+                            take spoon from drawer - |
+                               put spoon to drawer - |
+                                    close drawer   - |
+                                        take egg   - |
+                         crack egg into small-bowl - crack egg into small-bowl
+                  put egg to cupboard-bottom-right - put egg to sink
+                     close cupboard-bottom-right   - |
+                                take paper-towel   - |
+                                     open drawer   - open drawer  
+                            take spoon from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                                                 | - beat egg with fork
+                          open cupboard-top-left   - open cupboard-top-left  
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                                                 | - beat egg with fork
+                                                 | - take salt from counter
+                         pour salt into small-bowl - pour salt into small-bowl
+                                                 | - put salt to counter
+                       pour pepper into small-bowl - pour pepper into small-bowl
+                                                 | - pour pepper into small-bowl
+                                                 | - put pepper to cupboard-top-left
+                                                 | - close cupboard-top-left  
+                               beat egg with spoon - beat egg with fork
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                            put frying-pan to sink - |
+                           put frying-pan to stove - |
+                                 switch-on stove   - switch-on stove to 
+                                           none    - |
+                               beat egg with spoon - |
+                        take frying-pan from stove - |
+                           put frying-pan to stove - put frying-pan to stove
+                               beat egg with spoon - |
+                          take pepper from counter - |
+                       pour pepper into small-bowl - |
+                             put pepper to counter - |
+                               beat egg with spoon - |
+                            take salt from counter - |
+                          open cupboard-top-left   - |
+                     put salt to cupboard-top-left - |
+                   put pepper to cupboard-top-left - |
+                         close cupboard-top-left   - |
+                               beat egg with spoon - |
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+               take pam from cupboard-bottom-right - take oil from cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                               beat egg with spoon - |
+                                        take pam   - |
+                                        open pam   - open oil  
+                         spray pam into frying-pan - |
+                                       close pam   - |
+                                put pam to counter - |
+                               beat egg with spoon - |
+                                 take frying-pan   - |
+                                  put frying-pan   - |
+                                 take small-bowl   - |
+                          pour egg into frying-pan - |
+                         put small-bowl to counter - |
+                                           none    - none   
+                                 take frying-pan   - |
+                                 switch-on stove   - |
+                                 take frying-pan   - |
+                                 switch-on stove   - |
+                                 take small-bowl   - |
+                          pour egg into frying-pan - pour oil into frying-pan
+                            put small-bowl to sink - |
+                                           none    - |
+                                take paper-towel   - |
+                                          clean    - |
+                                           none    - |
+                                     open drawer   - |
+                         take spatula2 from drawer - |
+                          take spatula from drawer - |
+                            put spatula2 to drawer - |
+                             put spatula to drawer - |
+                                    close drawer   - close oil  
+                     take paper-towel from counter - |
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+          put paper-towel to cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                                 | - take small-bowl from counter
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                                 | - beat egg with fork
+                                                 | - pour egg into frying-pan
+                                                 | - put small-bowl to sink
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - take frying-pan  
+                              put plate to counter - put frying-pan to stove
+                                                 | - none   
+                        take frying-pan from stove - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                     open drawer   - open drawer  
+                          take spatula from drawer - take spatula from drawer
+                                    close drawer   - close drawer  
+                                                 | - none   
+                             stir egg with spatula - stir egg with spatula
+                             take pam from counter - take frying-pan from stove
+                                        open pam   - |
+                         spray pam into frying-pan - |
+                                put pam to counter - put frying-pan to stove
+                         take spatula from counter - |
+                             stir egg with spatula - stir egg with spatula
+                                           none    - |
+                            put spatula to counter - put spatula into sink
+                                       close pam   - |
+                      open cupboard-bottom-right   - |
+                  put pam to cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                     take paper-towel from counter - |
+                            put spatula to counter - |
+                                           none    - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                               put fork to counter - |
+                         take spatula from counter - |
+                             stir egg with spatula - |
+                                           none    - |
+                                switch-off stove   - switch-off stove  
+                        take frying-pan from stove - take pam from stove
+                                  put egg on plate - put egg on plate
+                           put frying-pan to stove - |
+                            put frying-pan to sink - put frying-pan to sink
+                     take paper-towel from counter - |
+                                           none    - none   
+                      open cupboard-bottom-right   - |
+        put paper-towel into cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                           none    - |
+
+Length seq1 = 126; length seq2 = 69
+alignment score: 0.4
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S14 WITH Bro_S15
+                                           none    - none   
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                                 | - open cupboard-bottom-left  
+                                                 | - take frying-pan from cupboard-bottom-left
+                                                 | - put frying-pan on stove
+                                                 | - close cupboard-bottom-left  
+                                                 | - switch-on stove  
+                                                 | - open cupboard-bottom-right  
+                                                 | - take oil from cupboard-bottom-right
+                                                 | - twist-off cap  
+                                                 | - pour oil into frying-pan
+                                                 | - twist-on cap  
+                                                 | - put oil into cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                                 | - open egg-box  
+                              take egg from fridge - take egg from egg-box
+                                                 | - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                         crack egg into small-bowl - crack egg  
+                                   put egg to sink - put egg-shell into sink
+                                     open drawer   - open drawer  
+                             take fork from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                                beat egg with fork - stir egg with fork
+                          open cupboard-top-left   - open cupboard-top-left  
+                  take salt from cupboard-top-left - take pepper from cupboard-top-left
+                                beat egg with fork - |
+                            take salt from counter - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                               put salt to counter - put salt to cupboard-top-left
+                       pour pepper into small-bowl - pour pepper into small-bowl
+                       pour pepper into small-bowl - |
+                   put pepper to cupboard-top-left - put pepper to cupboard-top-left
+                         close cupboard-top-left   - close cupboard-top-left  
+                                beat egg with fork - stir small-bowl with fork
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                      close cupboard-bottom-left   - |
+                               switch-on stove to  - |
+                           put frying-pan to stove - |
+                      open cupboard-bottom-right   - |
+               take oil from cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                        open oil   - |
+                                           none    - none   
+                          pour oil into frying-pan - pour small-bowl into frying-pan
+                                       close oil   - |
+                      open cupboard-bottom-right   - |
+                  put oil to cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                      take small-bowl from counter - |
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                                beat egg with fork - |
+                          pour egg into frying-pan - |
+                            put small-bowl to sink - put small-bowl into sink
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - |
+                                 take frying-pan   - |
+                           put frying-pan to stove - |
+                                           none    - none   
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                                     open drawer   - |
+                          take spatula from drawer - |
+                                    close drawer   - |
+                                           none    - |
+                             stir egg with spatula - |
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                             stir egg with spatula - |
+                             put spatula into sink - |
+                                switch-off stove   - |
+                               take pam from stove - |
+                                  put egg on plate - put egg on plate
+                            put frying-pan to sink - |
+                                           none    - none   
+
+Length seq1 = 69; length seq2 = 46
+alignment score: 0.41
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S15 WITH Bro_S16
+                                           none    - none   
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-bottom-right
+                                                 | - close cupboard-top-right  
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                                                 | - put fork to counter
+                                                 | - open cupboard-top-left  
+                                                 | - take salt from cupboard-top-left
+                                                 | - close cupboard-top-left  
+                                                 | - walk  to fridge
+                                                 | - open fridge  
+                                                 | - take egg from fridge
+                                                 | - close fridge  
+                                                 | - walk  to counter
+                                                 | - switch-on stove to counter
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                           put frying-pan on stove - |
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                                 switch-on stove   - |
+                                                 | - put frying-pan to counter
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-right
+                                   twist-off cap   - |
+                                                 | - close cupboard-bottom-right  
+                                                 | - put oil to counter
+                                                 | - take frying-pan from counter
+                                                 | - put frying-pan to stove
+                                                 | - take oil from counter
+                                                 | - open oil  
+                          pour oil into frying-pan - pour oil  frying-pan
+                                    twist-on cap   - |
+                                                 | - close oil  
+                                                 | - open cupboard-bottom-right  
+                put oil into cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                   walk  to fridge - |
+                                     open fridge   - |
+                                    open egg-box   - |
+                             take egg from egg-box - |
+                                   close egg-box   - |
+                                    close fridge   - |
+                                                 | - take frying-pan  
+                                                 | - put frying-pan to sink
+                                                 | - put frying-pan to stove
+                                  walk  to counter - put small-bowl to counter
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                       crack egg   - crack egg to small-bowl
+                           put egg-shell into sink - put egg-shell into sink
+                                     open drawer   - |
+                                                 | - none   
+                             take fork from drawer - take fork from counter
+                                    close drawer   - |
+                                stir egg with fork - beat egg with fork
+                          open cupboard-top-left   - |
+                take pepper from cupboard-top-left - |
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to sink
+                                                 | - put frying-pan to stove
+                                                 | - switch-on stove  
+                                                 | - take small-bowl from counter
+                                                 | - pour egg into frying-pan
+                                                 | - put small-bowl to sink
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                                 | - put fork to counter
+                  take salt from cupboard-top-left - take salt from counter
+                         pour salt into small-bowl - pour salt into frying-pan
+                     put salt to cupboard-top-left - put salt to counter
+                                                 | - take pepper from counter
+                       pour pepper into small-bowl - pour pepper into frying-pan
+                                                 | - put pepper to counter
+                                                 | - take frying-pan from stove
+                                                 | - take fork from counter
+                                                 | - stir egg with fork
+                                                 | - put fork to counter
+                                                 | - switch-on stove  
+                                                 | - take salt from counter
+                                                 | - open cupboard-top-left  
+                   put pepper to cupboard-top-left - put salt into cupboard-top-left
+                         close cupboard-top-left   - close cupboard-top-left  
+                         stir small-bowl with fork - |
+                                           none    - |
+                   pour small-bowl into frying-pan - |
+                          put small-bowl into sink - |
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                                           none    - |
+                                                 | - close cupboard-top-right  
+                                                 | - take fork from counter
+                                                 | - switch-on stove  
+                                                 | - stir egg with fork
+                                                 | - switch-off stove  
+                                                 | - take frying-pan from stove
+                                  put egg on plate - put egg on plate
+                                                 | - put frying-pan to stove
+                                           none    - none   
+
+Length seq1 = 46; length seq2 = 79
+alignment score: 0.29
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S16 WITH Bro_S17
+                                           none    - none   
+                         open cupboard-top-right   - |
+        take small-bowl from cupboard-bottom-right - |
+                        close cupboard-top-right   - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                               put fork to counter - |
+                          open cupboard-top-left   - |
+                  take salt from cupboard-top-left - |
+                         close cupboard-top-left   - |
+                                   walk  to fridge - |
+                                     open fridge   - |
+                              take egg from fridge - |
+                                    close fridge   - |
+                                  walk  to counter - |
+                        switch-on stove to counter - |
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                                                 | - put frying-pan on stove
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                         put frying-pan to counter - |
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                put oil to counter - |
+                      take frying-pan from counter - |
+                           put frying-pan to stove - |
+                             take oil from counter - |
+                                        open oil   - |
+                                                 | - twist-off cap  
+                              pour oil  frying-pan - pour oil into frying-pan
+                                       close oil   - |
+                                                 | - none   
+                                                 | - twist-on cap  
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+                  put oil to cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                 take frying-pan   - |
+                            put frying-pan to sink - |
+                           put frying-pan to stove - |
+                                                 | - switch-on stove  
+                                                 | - walk  to fridge
+                                                 | - open fridge  
+                                                 | - open egg-box  
+                                                 | - take egg from egg-box
+                                                 | - close egg-box  
+                                                 | - close fridge  
+                         put small-bowl to counter - walk  to counter
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                           crack egg to small-bowl - crack egg  
+                           put egg-shell into sink - put egg-shell into sink
+                                           none    - |
+                                                 | - take paper-towel  
+                                                 | - clean  with paper-towel
+                                                 | - put paper-towel into sink
+                                                 | - open drawer  
+                            take fork from counter - take spoon from drawer
+                                beat egg with fork - |
+                        take frying-pan from stove - |
+                            put frying-pan to sink - |
+                           put frying-pan to stove - |
+                                 switch-on stove   - |
+                      take small-bowl from counter - |
+                          pour egg into frying-pan - |
+                            put small-bowl to sink - |
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                               put fork to counter - |
+                                                 | - close drawer  
+                                                 | - open cupboard-top-left  
+                            take salt from counter - take salt from cupboard-top-left
+                         pour salt into frying-pan - pour salt into small-bowl
+                               put salt to counter - put salt to cupboard-top-left
+                          take pepper from counter - take pepper from cupboard-top-left
+                       pour pepper into frying-pan - pour pepper into small-bowl
+                             put pepper to counter - put pepper to cupboard-top-left
+                        take frying-pan from stove - |
+                                                 | - open drawer  
+                            take fork from counter - take fork from drawer
+                                                 | - close drawer  
+                                stir egg with fork - stir egg with fork
+                               put fork to counter - |
+                                 switch-on stove   - |
+                                                 | - pour small-bowl into frying-pan
+                                                 | - open drawer  
+                            take salt from counter - take spatula from drawer
+                          open cupboard-top-left   - |
+                   put salt into cupboard-top-left - |
+                         close cupboard-top-left   - |
+                                                 | - none   
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                            take fork from counter - |
+                                 switch-on stove   - |
+                                                 | - none   
+                                stir egg with fork - put egg on plate
+                                switch-off stove   - switch-off stove  
+                        take frying-pan from stove - |
+                                  put egg on plate - |
+                           put frying-pan to stove - put frying-pan into sink
+                                           none    - none   
+
+Length seq1 = 79; length seq2 = 57
+alignment score: 0.33
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S17 WITH Bro_S19
+                                           none    - none   
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                           put frying-pan on stove - |
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                      open cupboard-bottom-right   - |
+               take oil from cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                   twist-off cap   - |
+                          pour oil into frying-pan - |
+                                           none    - |
+                                    twist-on cap   - |
+                      open cupboard-bottom-right   - |
+                  put oil to cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                 switch-on stove   - |
+                                                 | - put frying-pan on stove
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - open egg-box  
+                             take egg from egg-box - take egg from egg-box
+                                   close egg-box   - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         open cupboard-top-right   - open cupboard-top-right  
+           take small-bowl from cupboard-top-right - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                       crack egg   - crack egg  
+                           put egg-shell into sink - put egg-shell into sink
+                                take paper-towel   - |
+                           clean  with paper-towel - |
+                         put paper-towel into sink - |
+                                     open drawer   - open drawer  
+                                                 | - take fork from drawer
+                            take spoon from drawer - take spatula from drawer
+                                    close drawer   - close drawer  
+                          open cupboard-top-left   - |
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                     put salt to cupboard-top-left - put salt to cupboard-top-right
+                take pepper from cupboard-top-left - |
+                       pour pepper into small-bowl - |
+                   put pepper to cupboard-top-left - |
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                                stir egg with fork - stir egg with fork
+                                                 | - switch-on stove  
+                                                 | - open cupboard-bottom-right  
+                                                 | - take oil from cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - twist-off cap  
+                   pour small-bowl into frying-pan - pour oil into frying-pan
+                                     open drawer   - |
+                          take spatula from drawer - |
+                                           none    - none   
+                                                 | - twist-on cap  
+                                                 | - stir small-bowl with fork
+                                                 | - none   
+                                                 | - stir small-bowl with fork
+                                                 | - open cupboard-bottom-right  
+                                                 | - put oil to cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                                 | - none   
+                         open cupboard-top-right   - open cupboard-top-right  
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                                 | - pour small-bowl into frying-pan
+                                                 | - put small-bowl into sink
+                                           none    - none   
+                                  put egg on plate - put egg on plate
+                                switch-off stove   - switch-off stove  
+                          put frying-pan into sink - |
+                                           none    - none   
+
+Length seq1 = 57; length seq2 = 49
+alignment score: 0.58
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S19 WITH Bro_S20
+                                           none    - none   
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - open drawer  
+                                                 | - take fork from drawer
+                                                 | - close drawer  
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+         take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
+                                                 | - put frying-pan to counter
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                           put frying-pan on stove - |
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - |
+                             take egg from egg-box - take egg from fridge
+                                   close egg-box   - |
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                       crack egg   - crack egg into small-bowl
+                           put egg-shell into sink - put egg-shell to sink
+                                     open drawer   - |
+                             take fork from drawer - |
+                          take spatula from drawer - |
+                                    close drawer   - |
+                  take salt from cupboard-top-left - |
+                         pour salt into small-bowl - |
+                    put salt to cupboard-top-right - |
+                                stir egg with fork - |
+                                 switch-on stove   - |
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                   twist-off cap   - |
+                                                 | - take frying-pan from counter
+                                                 | - put frying-pan to stove
+                                                 | - open oil  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                           none    - |
+                                    twist-on cap   - |
+                         stir small-bowl with fork - |
+                                           none    - |
+                         stir small-bowl with fork - |
+                                                 | - close oil  
+                      open cupboard-bottom-right   - open cupboard-bottom-right  
+                  put oil to cupboard-bottom-right - put oil to cupboard-bottom-right
+                     close cupboard-bottom-right   - close cupboard-bottom-right  
+                                                 | - switch-on stove  
+                                                 | - take fork from counter
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                                 | - beat egg with fork
+                                                 | - switch-on stove  
+                                                 | - beat egg with fork
+                                           none    - none   
+                         open cupboard-top-right   - |
+                take plate from cupboard-top-right - take plate from cupboard-top-right
+                                                 | - put plate to counter
+                                                 | - put fork to plate
+                        close cupboard-top-right   - close cupboard-top-right  
+                   pour small-bowl into frying-pan - |
+                                                 | - take small-bowl from counter
+                          put small-bowl into sink - put small-bowl to counter
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                                 | - switch-on stove from counter
+                                                 | - take frying-pan from stove
+                                                 | - put frying-pan to stove
+                                           none    - none   
+                                                 | - take fork from plate
+                                                 | - beat egg with fork
+                                                 | - take small-bowl  
+                                                 | - none   
+                                                 | - beat egg with fork
+                                                 | - take frying-pan  
+                                                 | - put frying-pan  
+                                                 | - none   
+                                                 | - pour egg into frying-pan
+                                                 | - put small-bowl to sink
+                                                 | - stir egg with fork
+                                                 | - put fork to plate
+                                                 | - open drawer  
+                                                 | - take spatula from drawer
+                                                 | - close drawer  
+                                                 | - stir egg with spatula
+                                                 | - put spatula to counter
+                                                 | - take frying-pan from stove
+                                  put egg on plate - put egg on plate
+                                                 | - put frying-pan to stove
+                                switch-off stove   - switch-off stove  
+                                                 | - put spatula to counter
+                                           none    - none   
+
+Length seq1 = 49; length seq2 = 72
+alignment score: 0.39
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S20 WITH Bro_S25
+                                           none    - none   
+                                                 | - open cupboard-bottom-left  
+                                                 | - take frying-pan from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                                 | - put frying-pan on stove
+                         open cupboard-top-right   - open cupboard-top-right  
+           take small-bowl from cupboard-top-right - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                     open drawer   - open drawer  
+                             take fork from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                         put frying-pan to counter - |
+                      close cupboard-bottom-left   - |
+                                                 | - open cupboard-bottom-right  
+                                                 | - take oil from cupboard-bottom-right
+                                                 | - close cupboard-bottom-right  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                                 | - open egg-box  
+                              take egg from fridge - take egg from egg-box
+                                                 | - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         crack egg into small-bowl - crack egg  
+                             put egg-shell to sink - |
+                      open cupboard-bottom-right   - |
+               take oil from cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                      take frying-pan from counter - |
+                           put frying-pan to stove - |
+                                        open oil   - |
+                          pour oil into frying-pan - |
+                                       close oil   - |
+                      open cupboard-bottom-right   - |
+                  put oil to cupboard-bottom-right - |
+                     close cupboard-bottom-right   - |
+                                 switch-on stove   - |
+                            take fork from counter - |
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                                beat egg with fork - |
+                                 switch-on stove   - |
+                                beat egg with fork - |
+                                           none    - none   
+                take plate from cupboard-top-right - |
+                              put plate to counter - |
+                                 put fork to plate - |
+                        close cupboard-top-right   - |
+                      take small-bowl from counter - stir small-bowl with fork
+                                                 | - open cupboard-top-left  
+                                                 | - take pepper from cupboard-top-left
+                                                 | - take salt from cupboard-top-left
+                                                 | - pour salt into small-bowl
+                                                 | - pour pepper into small-bowl
+                                                 | - put salt to cupboard-top-left
+                                                 | - put pepper to cupboard-top-left
+                         put small-bowl to counter - stir small-bowl with fork
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                      switch-on stove from counter - switch-on stove  
+                        take frying-pan from stove - |
+                           put frying-pan to stove - |
+                                                 | - twist-off cap  
+                                                 | - pour oil into frying-pan
+                                                 | - twist-on cap  
+                                           none    - none   
+                              take fork from plate - |
+                                beat egg with fork - stir small-bowl with fork
+                                 take small-bowl   - |
+                                           none    - none   
+                                beat egg with fork - |
+                                 take frying-pan   - |
+                                  put frying-pan   - |
+                                                 | - pour small-bowl into frying-pan
+                                                 | - open cupboard-top-right  
+                                                 | - take plate from cupboard-top-right
+                                           none    - none   
+                          pour egg into frying-pan - |
+                            put small-bowl to sink - |
+                                stir egg with fork - |
+                                 put fork to plate - |
+                                     open drawer   - |
+                          take spatula from drawer - |
+                                    close drawer   - |
+                             stir egg with spatula - |
+                            put spatula to counter - |
+                        take frying-pan from stove - |
+                                  put egg on plate - |
+                           put frying-pan to stove - |
+                                switch-off stove   - switch-off stove  
+                            put spatula to counter - |
+                                                 | - put egg on plate
+                                           none    - none   
+
+Length seq1 = 72; length seq2 = 46
+alignment score: 0.31
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S25 WITH Bro_S53
+                                           none    - none   
+                       open cupboard-bottom-left   - |
+         take frying-pan from cupboard-bottom-left - |
+                      close cupboard-bottom-left   - |
+                           put frying-pan on stove - |
+                                                 | - switch-on stove  
+                         open cupboard-top-right   - open cupboard-top-right  
+           take small-bowl from cupboard-top-right - take frying-pan from cupboard-top-right
+                                                 | - put frying-pan on stove
+                        close cupboard-top-right   - close cupboard-top-right  
+                                     open drawer   - |
+                             take fork from drawer - |
+                                    close drawer   - |
+                      open cupboard-bottom-right   - |
+                                                 | - open cupboard-bottom-left  
+               take oil from cupboard-bottom-right - take oil from cupboard-bottom-left
+                     close cupboard-bottom-right   - |
+                                                 | - twist-off cap  
+                                                 | - pour oil into frying-pan
+                                                 | - twist-on cap  
+                                                 | - put oil to cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                                    open egg-box   - open egg-box  
+                             take egg from egg-box - take egg from egg-box
+                                   close egg-box   - |
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                       crack egg   - crack egg  
+                                                 | - crack egg  
+                                           none    - none   
+                         stir small-bowl with fork - |
+                                                 | - close cupboard-top-right  
+                          open cupboard-top-left   - open cupboard-top-left  
+                take pepper from cupboard-top-left - take pepper from cupboard-top-left
+                                                 | - pour pepper into small-bowl
+                                                 | - put pepper to cupboard-top-left
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                       pour pepper into small-bowl - |
+                     put salt to cupboard-top-left - put salt to cupboard-top-left
+                   put pepper to cupboard-top-left - take plate from cupboard-top-left
+                                                 | - open drawer  
+                                                 | - take whisk from drawer
+                                                 | - close drawer  
+                         stir small-bowl with fork - stir small-bowl with whisk
+                                 switch-on stove   - |
+                                   twist-off cap   - |
+                          pour oil into frying-pan - |
+                                    twist-on cap   - |
+                                           none    - |
+                         stir small-bowl with fork - |
+                                           none    - |
+                   pour small-bowl into frying-pan - pour small-bowl into frying-pan
+                         open cupboard-top-right   - |
+                                                 | - open drawer  
+                take plate from cupboard-top-right - take spatula from drawer
+                                                 | - close drawer  
+                                           none    - none   
+                                switch-off stove   - |
+                                  put egg on plate - put egg on plate
+                                           none    - none   
+
+Length seq1 = 46; length seq2 = 44
+alignment score: 0.48
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S53 WITH Bro_S54
+                                           none    - none   
+                                 switch-on stove   - |
+                                                 | - walk  to fridge
+                                                 | - open fridge  
+                                                 | - take egg-box from fridge
+                                                 | - close fridge  
+                                                 | - walk  to counter
+                         open cupboard-top-right   - open cupboard-top-right  
+           take frying-pan from cupboard-top-right - take frying-pan from cupboard-top-right
+                           put frying-pan on stove - put frying-pan on stove
+                                                 | - switch-on stove  
+                                                 | - take small-bowl from cupboard-top-right
+                        close cupboard-top-right   - close cupboard-top-right  
+                                                 | - open egg-box  
+                                                 | - take egg from egg-box
+                                                 | - close egg-box  
+                                                 | - crack egg  
+                                                 | - crack egg  
+                                                 | - put egg-shell into sink
+                                                 | - take paper-towel  
+                                                 | - clean  with paper-towel
+                                                 | - open drawer  
+                                                 | - take whisk from drawer
+                                                 | - close drawer  
+                                                 | - open cupboard-top-left  
+                                                 | - take salt from cupboard-top-left
+                                                 | - take pepper from cupboard-top-left
+                                                 | - close cupboard-top-left  
+                                                 | - pour salt into small-bowl
+                                                 | - pour pepper into small-bowl
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+                take oil from cupboard-bottom-left - take oil from cupboard-bottom-left
+                                                 | - close cupboard-bottom-left  
+                                   twist-off cap   - twist-off cap  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - twist-on cap  
+                                                 | - none   
+                                                 | - open cupboard-bottom-left  
+                   put oil to cupboard-bottom-left - put oil into cupboard-bottom-left
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                                   walk  to fridge - |
+                                     open fridge   - |
+                                    open egg-box   - |
+                             take egg from egg-box - |
+                                    close fridge   - |
+                                  walk  to counter - |
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                                       crack egg   - |
+                                       crack egg   - |
+                                           none    - |
+                        close cupboard-top-right   - |
+                                                 | - stir small-bowl with whisk
+                          open cupboard-top-left   - open cupboard-top-left  
+                take pepper from cupboard-top-left - |
+                       pour pepper into small-bowl - |
+                   put pepper to cupboard-top-left - |
+                  take salt from cupboard-top-left - |
+                         pour salt into small-bowl - |
+                     put salt to cupboard-top-left - |
+                 take plate from cupboard-top-left - take plate from cupboard-top-left
+                                                 | - none   
+                                     open drawer   - open drawer  
+                            take whisk from drawer - take spoon from drawer
+                                    close drawer   - close drawer  
+                        stir small-bowl with whisk - |
+                                                 | - none   
+                   pour small-bowl into frying-pan - pour small-bowl into frying-pan
+                                                 | - none   
+                                     open drawer   - open drawer  
+                          take spatula from drawer - take spatula from drawer
+                                    close drawer   - close drawer  
+                                           none    - none   
+                                  put egg on plate - put egg on plate
+                                           none    - none   
+
+Length seq1 = 44; length seq2 = 55
+alignment score: 0.48
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S54 WITH Bro_S55
+                                           none    - none   
+                                   walk  to fridge - walk  to fridge
+                                     open fridge   - open fridge  
+                          take egg-box from fridge - |
+                                                 | - open egg-box  
+                                                 | - take egg from egg-box
+                                                 | - close egg-box  
+                                    close fridge   - close fridge  
+                                  walk  to counter - walk  to counter
+                         open cupboard-top-right   - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+           take frying-pan from cupboard-top-right - take frying-pan from cupboard-top-right
+                           put frying-pan on stove - |
+                                 switch-on stove   - switch-on stove  
+           take small-bowl from cupboard-top-right - |
+                        close cupboard-top-right   - |
+                                    open egg-box   - |
+                             take egg from egg-box - |
+                                   close egg-box   - |
+                                       crack egg   - |
+                                       crack egg   - |
+                           put egg-shell into sink - |
+                                take paper-towel   - |
+                           clean  with paper-towel - |
+                                     open drawer   - |
+                            take whisk from drawer - |
+                                    close drawer   - |
+                                                 | - put frying-pan on stove
+                          open cupboard-top-left   - open cupboard-top-left  
+                                                 | - take plate from cupboard-top-left
+                  take salt from cupboard-top-left - take salt from cupboard-top-left
+                take pepper from cupboard-top-left - take pepper from cupboard-top-left
+                         close cupboard-top-left   - close cupboard-top-left  
+                         pour salt into small-bowl - |
+                       pour pepper into small-bowl - |
+                       open cupboard-bottom-left   - open cupboard-bottom-left  
+                take oil from cupboard-bottom-left - take oil from cupboard-bottom-left
+                      close cupboard-bottom-left   - |
+                                   twist-off cap   - twist-off cap  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - twist-on cap  
+                                           none    - |
+                       open cupboard-bottom-left   - |
+                 put oil into cupboard-bottom-left - put oil to cupboard-bottom-left
+                      close cupboard-bottom-left   - close cupboard-bottom-left  
+                        stir small-bowl with whisk - |
+                          open cupboard-top-left   - |
+                 take plate from cupboard-top-left - |
+                                           none    - none   
+                                     open drawer   - open drawer  
+                            take spoon from drawer - take whisk from drawer
+                                    close drawer   - close drawer  
+                                                 | - crack egg  
+                                                 | - take paper-towel  
+                                                 | - put egg-shell on paper-towel
+                                           none    - none   
+                                                 | - pour salt into small-bowl
+                                                 | - pour pepper into small-bowl
+                                                 | - stir small-bowl with whisk
+                   pour small-bowl into frying-pan - pour small-bowl into frying-pan
+                                           none    - |
+                                     open drawer   - open drawer  
+                          take spatula from drawer - take spatula from drawer
+                                    close drawer   - close drawer  
+                                           none    - none   
+                                  put egg on plate - put egg on plate
+                                                 | - open cupboard-top-left  
+                                                 | - put salt to cupboard-top-left
+                                                 | - put pepper to cupboard-top-left
+                                                 | - close cupboard-top-left  
+                                           none    - none   
+
+Length seq1 = 55; length seq2 = 47
+alignment score: 0.6
+
+
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Bro_S55 WITH Bro_S06
+                                           none    - none   
+                                   walk  to fridge - |
+                                     open fridge   - |
+                                    open egg-box   - |
+                             take egg from egg-box - |
+                                   close egg-box   - |
+                                    close fridge   - |
+                                  walk  to counter - |
+                         open cupboard-top-right   - |
+           take small-bowl from cupboard-top-right - |
+                                                 | - open cupboard-bottom-left  
+           take frying-pan from cupboard-top-right - take frying-pan from cupboard-bottom-left
+                                 switch-on stove   - switch-on stove  
+                           put frying-pan on stove - |
+                          open cupboard-top-left   - |
+                 take plate from cupboard-top-left - |
+                  take salt from cupboard-top-left - |
+                take pepper from cupboard-top-left - |
+                         close cupboard-top-left   - |
+                       open cupboard-bottom-left   - |
+                                                 | - none   
+                                                 | - open cupboard-bottom-right  
+                take oil from cupboard-bottom-left - take oil from cupboard-bottom-right
+                                   twist-off cap   - |
+                                                 | - open oil  
+                          pour oil into frying-pan - pour oil into frying-pan
+                                    twist-on cap   - |
+                                                 | - close oil  
+                                                 | - open cupboard-bottom-right  
+                   put oil to cupboard-bottom-left - put oil into cupboard-bottom-right
+                      close cupboard-bottom-left   - |
+                                                 | - close cupboard-bottom-right  
+                                           none    - none   
+                                     open drawer   - open drawer  
+                            take whisk from drawer - take fork from drawer
+                                    close drawer   - close drawer  
+                                       crack egg   - |
+                                take paper-towel   - |
+                      put egg-shell on paper-towel - |
+                                           none    - none   
+                                                 | - open cupboard-top-right  
+                                                 | - take small-bowl from cupboard-top-right
+                                                 | - close cupboard-top-right  
+                                                 | - none   
+                                                 | - walk  to fridge
+                                                 | - open fridge  
+                                                 | - take egg from fridge
+                                                 | - close fridge  
+                                                 | - walk  to counter
+                                                 | - crack egg into small-bowl
+                                                 | - put egg-shell on counter
+                                                 | - take salt from cupboard-top-left
+                         pour salt into small-bowl - pour salt into small-bowl
+                                                 | - put salt to cupboard-top-left
+                                                 | - take pepper from cupboard-top-left
+                       pour pepper into small-bowl - pour pepper into small-bowl
+                        stir small-bowl with whisk - |
+                                                 | - put pepper to cupboard-top-left
+                                                 | - none   
+                                                 | - beat egg with fork
+                                                 | - none   
+                                                 | - beat egg with fork
+                                                 | - take small-bowl  
+                   pour small-bowl into frying-pan - pour egg into frying-pan
+                                     open drawer   - |
+                          take spatula from drawer - |
+                                    close drawer   - |
+                                                 | - put small-bowl to counter
+                                                 | - put egg-shell into small-bowl
+                                                 | - put small-bowl into sink
+                                                 | - walk  to stove
+                                           none    - none   
+                                                 | - stir egg with fork
+                                                 | - switch-off stove  
+                                                 | - take frying-pan  
+                                  put egg on plate - put egg on plate
+                          open cupboard-top-left   - |
+                     put salt to cupboard-top-left - |
+                   put pepper to cupboard-top-left - |
+                         close cupboard-top-left   - |
+                                                 | - put frying-pan into sink
+                                           none    - none   
+
+Length seq1 = 47; length seq2 = 52
+alignment score: 0.29
+
