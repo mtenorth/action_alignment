@@ -1,5 +1,3 @@
-Ontology wurde in 7.617 Sekunden geladen.
-
 
 
 
@@ -85,7 +83,7 @@ COMPARING Bro_S06 WITH Bro_S07
                                                  | - none   
 
 Length seq1 = 50; length seq2 = 58
-alignment score: 0.7
+alignment score: 0.85
 
 
 
@@ -171,7 +169,7 @@ COMPARING Bro_S07 WITH Bro_S08
                                                  | - none   
 
 Length seq1 = 58; length seq2 = 54
-alignment score: 0.63
+alignment score: 0.81
 
 
 
@@ -268,7 +266,7 @@ COMPARING Bro_S08 WITH Bro_S09
                                            none    - none   
 
 Length seq1 = 54; length seq2 = 70
-alignment score: 0.58
+alignment score: 0.79
 
 
 
@@ -365,7 +363,7 @@ COMPARING Bro_S09 WITH Bro_S10
                                                  | - put baking-pan into oven
 
 Length seq1 = 70; length seq2 = 63
-alignment score: 0.68
+alignment score: 0.84
 
 
 
@@ -451,7 +449,7 @@ COMPARING Bro_S10 WITH Bro_S12
                           put baking-pan into oven - put baking-pan into oven
 
 Length seq1 = 63; length seq2 = 60
-alignment score: 0.75
+alignment score: 0.87
 
 
 
@@ -589,7 +587,7 @@ COMPARING Bro_S12 WITH Bro_S13
                                                  | - none   
 
 Length seq1 = 60; length seq2 = 107
-alignment score: 0.46
+alignment score: 0.73
 
 
 
@@ -713,7 +711,7 @@ COMPARING Bro_S13 WITH Bro_S14
                                                  | - switch-on   
 
 Length seq1 = 107; length seq2 = 39
-alignment score: 0.42
+alignment score: 0.71
 
 
 
@@ -799,7 +797,7 @@ COMPARING Bro_S14 WITH Bro_S16
                                                  | - none   
 
 Length seq1 = 39; length seq2 = 65
-alignment score: 0.52
+alignment score: 0.76
 
 
 
@@ -894,7 +892,7 @@ COMPARING Bro_S16 WITH Bro_S17
                                            none    - none   
 
 Length seq1 = 65; length seq2 = 56
-alignment score: 0.58
+alignment score: 0.79
 
 
 
@@ -984,7 +982,7 @@ COMPARING Bro_S17 WITH Bro_S18
                                            none    - none   
 
 Length seq1 = 56; length seq2 = 60
-alignment score: 0.6
+alignment score: 0.8
 
 
 
@@ -1074,7 +1072,7 @@ COMPARING Bro_S18 WITH Bro_S19
                                            none    - none   
 
 Length seq1 = 60; length seq2 = 63
-alignment score: 0.68
+alignment score: 0.84
 
 
 
@@ -1170,7 +1168,7 @@ COMPARING Bro_S19 WITH Bro_S20
                                            none    - none   
 
 Length seq1 = 63; length seq2 = 59
-alignment score: 0.57
+alignment score: 0.79
 
 
 
@@ -1267,7 +1265,7 @@ COMPARING Bro_S20 WITH Bro_S22
                                            none    - none   
 
 Length seq1 = 59; length seq2 = 66
-alignment score: 0.59
+alignment score: 0.8
 
 
 
@@ -1363,7 +1361,7 @@ COMPARING Bro_S22 WITH Bro_S23
                                            none    - none   
 
 Length seq1 = 66; length seq2 = 64
-alignment score: 0.66
+alignment score: 0.83
 
 
 
@@ -1462,7 +1460,7 @@ COMPARING Bro_S23 WITH Bro_S24
                                            none    - none   
 
 Length seq1 = 64; length seq2 = 60
-alignment score: 0.55
+alignment score: 0.77
 
 
 
@@ -1551,5 +1549,5 @@ COMPARING Bro_S24 WITH Bro_S06
                                            none    - none   
 
 Length seq1 = 60; length seq2 = 50
-alignment score: 0.55
+alignment score: 0.77
 
