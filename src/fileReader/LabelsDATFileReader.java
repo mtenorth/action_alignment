@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import sequenceElement.ActionElement;
 
 public class LabelsDATFileReader {
-
-	private ArrayList<ActionElement> seq = new ArrayList<ActionElement>();
 	
 	public ArrayList<ActionElement> getSequence(String file){
-		seq.clear();
+		ArrayList<ActionElement> seq = new ArrayList<ActionElement>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = null;

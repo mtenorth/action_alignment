@@ -52,7 +52,7 @@ public class NeedlemanWunsch {
 	 * @param aSeq2 second ActionSequence
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2) {
-		calculate(aSeq1, aSeq2, 1, null);
+		calculate(aSeq1, aSeq2, null);
 	}
 	
 	/**
@@ -61,11 +61,11 @@ public class NeedlemanWunsch {
 	 * @param ontology the used Ontology for the WUP-similarity-calculation
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
-		calculate(aSeq1, aSeq2, 2, ontology);
+		calculate(aSeq1, aSeq2, ontology);
 	}
 	
 	//implementation of the needleman-wunsch-algorithm
-	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, int function, Ontology ontology){
+	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology){
 		seq1 = aSeq1.getSequence();
 		seq2 = aSeq2.getSequence();
 		seq1 = transformer.transform(aSeq1.getSequence());
@@ -92,7 +92,7 @@ public class NeedlemanWunsch {
 			for (int j = 1; j <= n; j++){
 				double score1;
 				double d;
-				if (function == 1) {
+				if (ontology == null) {
 					d = Compare1(seq1.get(i - 1), seq2.get(j - 1));
 					score1 = matrix[i - 1][j - 1] + d;
 				} 
