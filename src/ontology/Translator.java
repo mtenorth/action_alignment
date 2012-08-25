@@ -81,11 +81,12 @@ public class Translator {
 		
 	}
 	
-	/**
-	 * @return translateMap
-	 */
-	public HashMap<String, String> getTranslateMap() {
-		return translateMap;
+	public String translate(String in) {
+
+		if(translateMap.containsKey(in)) {
+			return translateMap.get(in);
+		}
+		return "";
 	}
 	
 }

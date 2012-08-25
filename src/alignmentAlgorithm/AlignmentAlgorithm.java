@@ -16,9 +16,9 @@ public abstract class AlignmentAlgorithm {
 	
 	//the sum of alpha, beta, gamma and delta must be 1
 	protected double weight_act = 0.3;
-	protected double weight_obj1 = 0.3;
-	protected double weight_prep = 0.1;
-	protected double weight_obj2 = 0.3;
+	protected double weight_obj1 = 0.55;
+	protected double weight_prep = 0.05;
+	protected double weight_obj2 = 0.1;
 	
 	protected double exponent = 3;
 
@@ -54,15 +54,15 @@ public abstract class AlignmentAlgorithm {
 			return match;
 		} else {
 			double compare = 0;
-			Translator translator = new Translator();
-			String act_1 = translator.getTranslateMap().get(a1.getHashMap().get("verb"));
-			String act_2 = translator.getTranslateMap().get(a2.getHashMap().get("verb"));
-			String obj1_1 = translator.getTranslateMap().get(a1.getHashMap().get("object1"));
-			String obj1_2 = translator.getTranslateMap().get(a2.getHashMap().get("object1"));
-			String prep_1 = translator.getTranslateMap().get(a1.getHashMap().get("preposition"));
-			String prep_2 = translator.getTranslateMap().get(a2.getHashMap().get("preposition"));
-			String obj2_1 = translator.getTranslateMap().get(a1.getHashMap().get("object2"));
-			String obj2_2 = translator.getTranslateMap().get(a2.getHashMap().get("object2"));
+			Translator t = new Translator();
+			String act_1 = t.translate(a1.getHashMap().get("verb"));
+			String act_2 = t.translate(a2.getHashMap().get("verb"));
+			String obj1_1 = t.translate(a1.getHashMap().get("object1"));
+			String obj1_2 = t.translate(a2.getHashMap().get("object1"));
+			String prep_1 = t.translate(a1.getHashMap().get("preposition"));
+			String prep_2 = t.translate(a2.getHashMap().get("preposition"));
+			String obj2_1 = t.translate(a1.getHashMap().get("object2"));
+			String obj2_2 = t.translate(a2.getHashMap().get("object2"));
 
 			
 			double sim_act = 0.5;

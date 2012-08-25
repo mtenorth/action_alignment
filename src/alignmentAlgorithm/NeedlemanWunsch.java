@@ -4,9 +4,7 @@ import hierarchicStructure.HierarchicalStructure;
 import hierarchicStructure.Transformer;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import ontology.Ontology;
-import ontology.Translator;
 import sequence.ActionSequence;
 import sequenceElement.ActionElement;
 

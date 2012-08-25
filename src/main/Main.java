@@ -7,7 +7,6 @@ import java.util.LinkedHashMap;
 import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
 
-import evaluation.ConfusionMatrix;
 import fileReader.LabelsDATFileReader;
 import ontology.Ontology;
 import sequence.ActionSequence;
@@ -68,7 +67,7 @@ public class Main {
 
 		// comparison with WUP
 //		computeAndPrintGlobalAlignment(brownies, ontology);
-//		computeAndPrintGlobalAlignment(eggs, ontology);
+		computeAndPrintGlobalAlignment(eggs, ontology);
 
 
 		// // // // // // // // // // // // // // // // // // // // // // 
@@ -79,28 +78,28 @@ public class Main {
 //		computeAndPrintLocalAlignment(eggs, null);
 
 		// comparison with WUP
-		computeAndPrintLocalAlignment(brownies, ontology);
+//		computeAndPrintLocalAlignment(brownies, ontology);
 //		computeAndPrintLocalAlignment(eggs, ontology);
 		
 
 		// // // // // // // // // // // // // // // // // // // // // // 
 		// SIMILARITY MATRIX EGGS/BROWNIES
 		
-		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
-		aList.addAll(brownies.values());
-		aList.addAll(eggs.values());
-		
-		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-		System.out.println("SIMILARITY MATRIX WITHOUT WUP");
-		
-		ConfusionMatrix cm_nowup = new ConfusionMatrix(aList);
-		cm_nowup.printConfusionMatrix();
-
-		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-		System.out.println("SIMILARITY MATRIX WITH WUP");
-		
-		ConfusionMatrix cm_wup = new ConfusionMatrix(aList, ontology);
-		cm_wup.printConfusionMatrix();
+//		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
+//		aList.addAll(brownies.values());
+//		aList.addAll(eggs.values());
+//		
+//		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
+//		System.out.println("SIMILARITY MATRIX WITHOUT WUP");
+//		
+//		ConfusionMatrix cm_nowup = new ConfusionMatrix(aList);
+//		cm_nowup.printConfusionMatrix();
+//
+//		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
+//		System.out.println("SIMILARITY MATRIX WITH WUP");
+//		
+//		ConfusionMatrix cm_wup = new ConfusionMatrix(aList, ontology);
+//		cm_wup.printConfusionMatrix();
 		
 	}
 	
