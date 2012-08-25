@@ -4,52 +4,32 @@ import java.util.ArrayList;
 
 
 import ontology.Ontology;
-import ontology.Translator;
 
 import sequence.ActionSequence;
-import sequenceElement.ActionElement;
 
 /**
  * @author Johannes Ziegltrum
  *
  */
-public class SmithWaterman {
+public class SmithWaterman extends AlignmentAlgorithm{
 
-	double match = 1.0;
-	double mismatch = -1.5;
-	double gap = -0.75;
-	
-	//the sum of alpha, beta, gamma and delta must be 1
-	private double alpha = 0.3;
-	private double beta = 0.3;
-	private double gamma = 0.1;
-	private double delta = 0.3;
-	
-	private double exponent = 3;
-	
-	private ArrayList<ActionElement> seq1;
-	private ArrayList<ActionElement> seq2;
-	
-	private int m;
-	private int n;
-	
-	private double[][] matrix;
-	private String[][] traceback;
-	private String[][] alignments;
-	
-	private int pointer = 0;
 	
 	private double maxScore = 0;
 	private ArrayList<Integer> maxScoreIndices = new ArrayList<Integer>();
+	private String[][] alignments;
 	
-	private Ontology ontology;
 	
 	/**
 	 * @param aSeq1 first ActionSequence
 	 * @param aSeq2 second ActionSequence
 	 */
 	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2) {
-		calculate(aSeq1, aSeq2, 1, null);
+		
+		match = 1.0;
+		mismatch = -1.5;
+		gap = -0.75;
+		
+		calculate(aSeq1, aSeq2, null);
 	}
 	
 	/**
@@ -59,11 +39,18 @@ public class SmithWaterman {
 	 * @param ontology the used Ontology for the WUP-similarity-calculation
 	 */
 	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
-		calculate(aSeq1, aSeq2, 2, ontology);
+		
+		match = 1.0;
+		mismatch = -1.5;
+		gap = -0.75;
+		
+		calculate(aSeq1, aSeq2, ontology);
 	}
 	
+	
+	
 	//implementation of the smith-waterman-algorithm
-	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, int function, Ontology ontology){
+	protected void calculate(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology){
 		this.seq1 = aSeq1.getSequence();
 		this.seq2 = aSeq2.getSequence();
 		this.ontology = ontology;
@@ -84,11 +71,11 @@ public class SmithWaterman {
 			for (int j = 1; j <= n; j++){
 				double score1;
 				double d;
-				if (function == 1) {
-					d = Compare1(seq1.get(i - 1), seq2.get(j - 1));
+				if (ontology == null) {
+					d = compareNoWUP(seq1.get(i - 1), seq2.get(j - 1));
 					score1 = matrix[i - 1][j - 1] + d;
 				} else {
-					d = Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					d = compareWUP(seq1.get(i - 1), seq2.get(j - 1));
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
@@ -130,96 +117,7 @@ public class SmithWaterman {
 		}
 		
 	}
-	
-	//simple match-mismatch-comparison
-	private double Compare1(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())) {
-			return match;
-		} else {
-			return mismatch;
-		}
-	}
-	
-	//comparison with WUP-similarity
-	private double Compare2(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())) {
-			return match;
-		} else {
-			double compare = 0;
-			Translator translater = new Translator();
-			String verb1 = a1.getHashMap().get("verb");
-			String verb2 = a2.getHashMap().get("verb");
-			String firstObject1 = a1.getHashMap().get("object1");
-			String firstObject2 = a2.getHashMap().get("object1");
-			String preposition1 = a1.getHashMap().get("preposition");
-			String preposition2 = a2.getHashMap().get("preposition");
-			String secondObject1 = a1.getHashMap().get("object2");
-			String secondObject2 = a2.getHashMap().get("object2");
-			
-			String translated1;
-			String translated2;
-			double a = 0;
-			if (!verb1.equals(verb2)) {
-				if (verb1.isEmpty() || verb2.isEmpty()) {
-					a = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(verb1);
-					translated2 = translater.getTranslateMap().get(verb2);
-					a = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
-				a = match;
-			}
-			
-			double b = 0;
-			if (!firstObject1.equals(firstObject2)) {
-				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
-					b = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(firstObject1);
-					translated2 = translater.getTranslateMap().get(firstObject2);
-					b = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
-				b = match;
-			}
-			
-			double c = 0;
-			if (!preposition1.equals(preposition2)) {
-				if (preposition1.isEmpty() || preposition2.isEmpty()) {
-					c = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(preposition1);
-					translated2 = translater.getTranslateMap().get(preposition2);
-					c = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
-				c = match;
-			}
-			
-			double d = 0;
-			if (!secondObject1.equals(secondObject2)) {
-				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
-					d = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(secondObject1);
-					translated2 = translater.getTranslateMap().get(secondObject2);
-					d = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
-				d = match;
-			}
-			
-			compare = alpha * a + beta * b + gamma * c + delta * d;
-			//standardize on [-1;1]
-			compare = -1.0 + 2.0 * compare;
-			if (compare > 0) {
-				return compare;
-			} else {
-				return mismatch;
-			}
-		}
-	}
+
 	
 	/**
 	 * prints the calculation-matrix
@@ -288,7 +186,7 @@ public class SmithWaterman {
 				for (int k = 50 - s1.length(); k > 0; k--) {
 					System.out.print(" ");
 				}
-				System.out.println(s1 + " - " + s2);
+				System.out.println(s1 + " , " + s2);
 			} else {
 				System.out.println();
 			}

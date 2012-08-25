@@ -14,8 +14,9 @@ public class Translator {
 	 * transforms the label into the corresponding entities of the ontology
 	 */
 	public Translator() {
-		
+
 		translateMap.put("none", "Nothing");
+		translateMap.put("", "");
 		
 		translateMap.put("take", "TakingSomething");
 		translateMap.put("put", "PuttingSomethingSomewhere");

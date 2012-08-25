@@ -15,43 +15,26 @@ import sequenceElement.ActionElement;
  * @author Johannes Ziegltrum
  *
  */
-public class NeedlemanWunsch {
+public class NeedlemanWunsch extends AlignmentAlgorithm {
 	
-	private double match = 1;
-	private double mismatch = -1;
-	private double gap = 0;
-	
-	//the sum of alpha, beta, gamma and delta must be 1
-	private double alpha = 0.3;
-	private double beta = 0.3;
-	private double gamma = 0.1;
-	private double delta = 0.3;
-	
-	private double exponent = 3;
 	
 	HierarchicalStructure hierarchy = new HierarchicalStructure("Data/HierarchicStructure.txt");
 	Transformer transformer = new Transformer(hierarchy);
 	
-	private ArrayList<ActionElement> seq1;
-	private ArrayList<ActionElement> seq2;
-	
-	private Ontology ontology;
-	
-	private int m;
-	private int n;
-	
-	private double[][] matrix;
-	private String[][] traceback;
-	private ActionElement[][] alignments;
-	
-	private int pointer = 0;
-	//private int noneCount = 0;
+	protected ActionElement[][] alignments;
 	
 	/**
 	 * @param aSeq1 first ActionSequence
 	 * @param aSeq2 second ActionSequence
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2) {
+		
+		// init generic fields:
+		match = 1;
+		mismatch = -1;
+		gap = 0;
+		
+		
 		calculate(aSeq1, aSeq2, null);
 	}
 	
@@ -61,11 +44,16 @@ public class NeedlemanWunsch {
 	 * @param ontology the used Ontology for the WUP-similarity-calculation
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
+		
+		match = 1.0;
+		mismatch = -1.5;
+		gap = -0.75;
+				
 		calculate(aSeq1, aSeq2, ontology);
 	}
 	
 	//implementation of the needleman-wunsch-algorithm
-	private void calculate(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology){
+	protected void calculate(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology){
 		seq1 = aSeq1.getSequence();
 		seq2 = aSeq2.getSequence();
 		seq1 = transformer.transform(aSeq1.getSequence());
@@ -93,11 +81,11 @@ public class NeedlemanWunsch {
 				double score1;
 				double d;
 				if (ontology == null) {
-					d = Compare1(seq1.get(i - 1), seq2.get(j - 1));
+					d = compareNoWUP(seq1.get(i - 1), seq2.get(j - 1));
 					score1 = matrix[i - 1][j - 1] + d;
 				} 
 				else {
-					d = Compare2(seq1.get(i - 1), seq2.get(j - 1));
+					d = compareWUP(seq1.get(i - 1), seq2.get(j - 1));
 					score1 = matrix[i - 1][j - 1] + d;
 				}
 				
@@ -131,91 +119,6 @@ public class NeedlemanWunsch {
 		
 	}
 	
-	//simple match-mismatch-comparison
-	private double Compare1(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())) {
-			return match;
-		} else {
-			return mismatch;
-		}
-	}
-	
-	//comparison with WUP-similarity
-	private double Compare2(ActionElement a1, ActionElement a2){
-		if (a1.getName().equals(a2.getName())) {
-			return match;
-		} else {
-			double compare = 0;
-			Translator translater = new Translator();
-			String verb1 = a1.getHashMap().get("verb");
-			String verb2 = a2.getHashMap().get("verb");
-			String firstObject1 = a1.getHashMap().get("object1");
-			String firstObject2 = a2.getHashMap().get("object1");
-			String preposition1 = a1.getHashMap().get("preposition");
-			String preposition2 = a2.getHashMap().get("preposition");
-			String secondObject1 = a1.getHashMap().get("object2");
-			String secondObject2 = a2.getHashMap().get("object2");
-			
-			String translated1;
-			String translated2;
-			double a = 0.5;
-			if (!verb1.equals(verb2)) {
-				if (verb1.isEmpty() || verb2.isEmpty()) {
-					a = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(verb1);
-					translated2 = translater.getTranslateMap().get(verb2);
-					a = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (verb1.equals(verb2) && !verb1.isEmpty() && !verb2.isEmpty()) {
-				a = match;
-			}
-			
-			double b = 0.5;
-			if (!firstObject1.equals(firstObject2)) {
-				if (firstObject1.isEmpty() || firstObject2.isEmpty()) {
-					b = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(firstObject1);
-					translated2 = translater.getTranslateMap().get(firstObject2);
-					b = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (firstObject1.equals(firstObject2) && !firstObject1.isEmpty() && !firstObject2.isEmpty()) {
-				b = match;
-			}
-			
-			double c = 0.5;
-			if (!preposition1.equals(preposition2)) {
-				if (preposition1.isEmpty() || preposition2.isEmpty()) {
-					c = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(preposition1);
-					translated2 = translater.getTranslateMap().get(preposition2);
-					c = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (preposition1.equals(preposition2) && !preposition1.isEmpty() && !preposition2.isEmpty()) {
-				c = match;
-			}
-			
-			double d = 0.5;
-			if (!secondObject1.equals(secondObject2)) {
-				if (secondObject1.isEmpty() || secondObject2.isEmpty()) {
-					d = 0;
-				} else {
-					translated1 = translater.getTranslateMap().get(secondObject1);
-					translated2 = translater.getTranslateMap().get(secondObject2);
-					d = Math.pow(ontology.getWupSimilarity(translated1, translated2), exponent);
-				}
-			} else if (secondObject1.equals(secondObject2) && !secondObject1.isEmpty() && !secondObject2.isEmpty()) {
-				d = match;
-			}
-			
-			compare = alpha * a + beta * b + gamma * c + delta * d;
-			//standardize on [-1;1]
-			compare = -1.0 + 2.0 * compare;
-			return compare;
-		}
-	}
 	
 	/**
 	 * prints the calculation-matrix

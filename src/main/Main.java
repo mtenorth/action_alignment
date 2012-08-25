@@ -45,7 +45,7 @@ public class Main {
 		HashMap<String, ActionSequence> eggs = new LinkedHashMap<String, ActionSequence>();
 		for (String id : new String[]{"S06", "S07", "S08", "S09", "S11", "S12", "S13", 
 				"S14", "S15", "S16", "S17", "S19", "S20", "S25", "S53", "S54", "S55"}) {
-			eggs.put("Bro_"+id, new ActionSequence("Bro_"+id, 
+			eggs.put("Egg_"+id, new ActionSequence("Bro_"+id, 
 					reader.getSequence("Data/MakingEggs/"+id+"/labels.dat")));
 		}
 		
@@ -79,7 +79,7 @@ public class Main {
 //		computeAndPrintLocalAlignment(eggs, null);
 
 		// comparison with WUP
-//		computeAndPrintLocalAlignment(brownies, ontology);
+		computeAndPrintLocalAlignment(brownies, ontology);
 //		computeAndPrintLocalAlignment(eggs, ontology);
 		
 
