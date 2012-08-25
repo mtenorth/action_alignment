@@ -26,14 +26,7 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 	 * @param aSeq2 second ActionSequence
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2) {
-		
-		// init generic fields:
-		match = 1;
-		mismatch = -1;
-		gap = 0;
-		
-		
-		calculate(aSeq1, aSeq2, null);
+		this(aSeq1, aSeq2, null);
 	}
 	
 	/**
@@ -43,9 +36,9 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 	 */
 	public NeedlemanWunsch(ActionSequence aSeq1, ActionSequence aSeq2, Ontology ontology) {
 		
-		match = 1.0;
-		mismatch = -1.5;
-		gap = -0.75;
+		match = 1;
+		mismatch = -1;
+		gap = 0.25;
 				
 		calculate(aSeq1, aSeq2, ontology);
 	}
@@ -121,7 +114,10 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 	/**
 	 * prints the calculation-matrix
 	 */
-	public void printMatrix(){
+	public String printMatrix(){
+		
+		String res = "";
+		
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
 				double d = matrix[i][j];
@@ -129,37 +125,49 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 				String s = df. format(d);
 				//maximum of 8 characters
 				for (int k = 8 - s.length(); k > 0; k--){
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(s);
+				res += s;
 			}
-			System.out.println();
+			res += "\n";
 		}
-		System.out.println();
+		res += "\n";
+
+		System.out.println(res);
+		return res;
 	}
 	
 	/**
 	 * prints the traceback-matrix
 	 */
-	public void printTraceback(){
+	public String printTraceback(){
+
+		String res = "";
+		
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
 				String s = traceback[i][j];
 				//maximum of 8 characters
 				for (int k = 8 - s.length(); k > 0; k--){
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(s);
+				res += s;
 			}
-			System.out.println();
+			res += "\n";
 		}
-		System.out.println();
+		res += "\n";
+		
+		System.out.println(res);
+		return res;
 	}
 	
 	/**
 	 * prints the alignment of the two sequences
 	 */
-	public void printAlignment(){
+	public String printAlignment(){
+		
+		String res = "";
+		
 		if (pointer == 0) {
 			calculateAlignmentRecursive(m, n);
 			alignments = transformer.retransform(alignments);
@@ -169,15 +177,17 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 			String s2 = alignments[1][i].getName();
 			//maximum of 50 characters
 			for (int k = 50 - s1.length(); k > 0; k--){
-				System.out.print(" ");
+				res += " ";
 			}
-			System.out.println(s1 + " - " + s2);
+			res += s1 + " - " + s2 + "\n";
 		}
-		System.out.println();
-		System.out.println("Length seq1 = " + m + "; length seq2 = " + n);
+		
+		res += "\nLength seq1 = " + m + "; length seq2 = " + n + "\n";
 		double score = this.getScore();
-		System.out.println("alignment score: " + score);
-		System.out.println();
+		res += "alignment score: " + score + "\n\n";
+		
+		System.out.println(res);
+		return res;
 	}
 	
 	private void calculateAlignmentRecursive(int m, int n){

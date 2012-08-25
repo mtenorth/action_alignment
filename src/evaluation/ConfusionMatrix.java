@@ -69,12 +69,15 @@ public class ConfusionMatrix {
 	/**
 	 * prints the confusion-matrix
 	 */
-	public void printConfusionMatrix(){
+	public String printConfusionMatrix(){
+		
+		String res = "";
+		
 		long start = System.currentTimeMillis();
 		this.calculateConfusionMatrix();
 		for (int i = 0; i < 10; i++){
 			for (int j = 0; j < 12; j++){
-				System.out.print(" ");
+				res += " ";
 			}
 			for (int k = 0; k < number; k++){
 				String c;
@@ -86,35 +89,39 @@ public class ConfusionMatrix {
 					c = String.valueOf(identifier.charAt(i - (10 - length)));
 				}
 				for (int l = 0; l < 5; l++){
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(c);
+				res += c;
 			}
-			System.out.println();
+			res += "\n";
 		}
-		System.out.println();
+		res += "\n";
 		for (int i = 0; i < number; i++){
 			String identifier = seqList.get(i).getIdentifier();
 			int length = identifier.length();
 			for (int j = 0; j < 10 - length; j++){
-				System.out.print(" ");
+				res += " ";
 			}
-			System.out.print(identifier + "  ");
+			
+			res += identifier + "  ";
 			for (int k = 0; k < number; k++){
 				double score = confusionMatrix[i][k];
 				DecimalFormat df = new DecimalFormat("0.00");
 				String s = df. format(score);
 				for (int l = 0; l < 6 - s.length(); l++) {
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(s);
+				res += s;
 			}
-			System.out.println();
+			res += "\n";
 		}
 		long ende = System.currentTimeMillis();
-		System.out.println();
-		System.out.println("Computation time: " + ((ende - start)/1000.0) + " sec");
-		System.out.println();
+		res += "\n";
+		
+		res += "Computation time: " + ((ende - start)/1000.0) + " sec";
+		
+		System.out.println(res);
+		return res;
 	}
 	
 }

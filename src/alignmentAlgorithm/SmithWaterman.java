@@ -122,44 +122,59 @@ public class SmithWaterman extends AlignmentAlgorithm{
 	/**
 	 * prints the calculation-matrix
 	 */
-	public void printMatrix(){
+	public String printMatrix(){
+		
+		String res = "";
+		
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
 				double x = Math.round(matrix[i][j] * 100.0) / 100.0;
 				String s = String.valueOf(x);
 				//maximum of 8 characters
 				for (int k = 8 - s.length(); k > 0; k--){
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(s);
+				res += s;
 			}
-			System.out.println();
+			res += "\n";
 		}
-		System.out.println();
+		res += "\n";
+
+		System.out.println(res);
+		return res;
 	}
 	
 	/**
 	 * prints the traceback-matrix
 	 */
-	public void printTraceback(){
+	public String printTraceback(){
+		
+		String res = "";
+		
 		for (int i = 0; i <= m; i++){
 			for (int j = 0; j <= n; j++){
 				String s = traceback[i][j];
 				//maximum of 6 characters
 				for (int k = 6 - s.length(); k > 0; k--){
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.print(s);
+				res += s;
 			}
-			System.out.println();
+			res += "\n";
 		}
-		System.out.println();
+		res += "\n";
+
+		System.out.println(res);
+		return res;
 	}
 	
 	/**
 	 * prints the local alignments of the two sequences
 	 */
-	public void printAlignment(){
+	public String printAlignment(){
+		
+		String res = "";
+		
 		if (pointer == 0) {
 			for (int i = 1; i <= m; i++) {
 				for (int j = 1; j <= n; j++) {
@@ -176,7 +191,8 @@ public class SmithWaterman extends AlignmentAlgorithm{
 				calculateAlignmentRecursive(m, n);
 			}
 		}
-		System.out.println("global alignments:");
+		res += "global alignments:\n";
+		
 		for (int i = pointer - 1; i >= 0; i--){
 			// if "ln" println for a space between the next local alignment
 			if (!alignments[0][i].equals("ln")) {
@@ -184,15 +200,19 @@ public class SmithWaterman extends AlignmentAlgorithm{
 				String s2 = alignments[1][i];
 				//maximum of 50 characters
 				for (int k = 50 - s1.length(); k > 0; k--) {
-					System.out.print(" ");
+					res += " ";
 				}
-				System.out.println(s1 + " , " + s2);
+				res += s1 + " , " + s2 + "\n";
 			} else {
-				System.out.println();
+				res += "\n";
 			}
 		}
-		System.out.println();
+		res += "\n";
+		System.out.println(res);
+		return res;
 	}
+	
+	
 	
 	private void calculateAlignmentRecursive(int m, int n){
 		String s = traceback[m][n];

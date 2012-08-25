@@ -1,5 +1,10 @@
 package main;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -7,6 +12,7 @@ import java.util.LinkedHashMap;
 import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
 
+import evaluation.ConfusionMatrix;
 import fileReader.LabelsDATFileReader;
 import ontology.Ontology;
 import sequence.ActionSequence;
@@ -17,141 +23,182 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-//		LabelsCSVFileReader r1 = new LabelsCSVFileReader();
-//		LabelsCSVFileReader r2 = new LabelsCSVFileReader();
-//		
-//		ArrayList<ActionElement> seqLeft00 = r1.getSequence("Data/SequencesHands/lefthand-0-0-condensed.csv");
-//		ArrayList<ActionElement> seqRight00 = r2.getSequence("Data/SequencesHands/righthand-0-0-condensed.csv");
-//		
-//		ActionSequence aLeft00 = new ActionSequence("lefthand-0-0", seqLeft00);
-//		ActionSequence aRight00 = new ActionSequence("righthand-0-0", seqRight00);
-//		
-//		NeedlemanWunsch ndl = new NeedlemanWunsch(aLeft00, aRight00);
-//		ndl.printMatrix();
-//		ndl.printTraceback();
-//		ndl.printAlignment();
 
-		
-		
-		String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
-		Ontology ontology = new Ontology(url);
-		LabelsDATFileReader reader = new LabelsDATFileReader();
-		
-		
-		// read labels for making eggs
-		
-		HashMap<String, ActionSequence> eggs = new LinkedHashMap<String, ActionSequence>();
-		for (String id : new String[]{"S06", "S07", "S08", "S09", "S11", "S12", "S13", 
-				"S14", "S15", "S16", "S17", "S19", "S20", "S25", "S53", "S54", "S55"}) {
-			eggs.put("Egg_"+id, new ActionSequence("Bro_"+id, 
-					reader.getSequence("Data/MakingEggs/"+id+"/labels.dat")));
-		}
-		
-		
-		// read labels for making brownies
-		HashMap<String, ActionSequence> brownies = new LinkedHashMap<String, ActionSequence>();
-		for (String id : new String[]{"S06", "S07", "S08", "S09", "S10", "S12", "S13",
+		try {
+
+
+			//		LabelsCSVFileReader r1 = new LabelsCSVFileReader();
+			//		LabelsCSVFileReader r2 = new LabelsCSVFileReader();
+			//		
+			//		ArrayList<ActionElement> seqLeft00 = r1.getSequence("Data/SequencesHands/lefthand-0-0-condensed.csv");
+			//		ArrayList<ActionElement> seqRight00 = r2.getSequence("Data/SequencesHands/righthand-0-0-condensed.csv");
+			//		
+			//		ActionSequence aLeft00 = new ActionSequence("lefthand-0-0", seqLeft00);
+			//		ActionSequence aRight00 = new ActionSequence("righthand-0-0", seqRight00);
+			//		
+			//		NeedlemanWunsch ndl = new NeedlemanWunsch(aLeft00, aRight00);
+			//		ndl.printMatrix();
+			//		ndl.printTraceback();
+			//		ndl.printAlignment();
+
+
+
+			String url = "http://ias.cs.tum.edu/kb/knowrob.owl";
+			Ontology ontology = new Ontology(url);
+			LabelsDATFileReader reader = new LabelsDATFileReader();
+
+
+			// read labels for making eggs
+
+			HashMap<String, ActionSequence> eggs = new LinkedHashMap<String, ActionSequence>();
+			for (String id : new String[]{"S06", "S07", "S08", "S09", "S11", "S12", "S13", 
+					"S14", "S15", "S16", "S17", "S19", "S20", "S25", "S53", "S54", "S55"}) {
+				eggs.put("Egg_"+id, new ActionSequence("Egg_"+id, 
+						reader.getSequence("Data/MakingEggs/"+id+"/labels.dat")));
+			}
+
+
+			// read labels for making brownies
+			HashMap<String, ActionSequence> brownies = new LinkedHashMap<String, ActionSequence>();
+			for (String id : new String[]{"S06", "S07", "S08", "S09", "S10", "S12", "S13",
 					"S14", "S16", "S17", "S18", "S19", "S20", "S22", "S23", "S24"}) {
-			brownies.put("Bro_"+id, new ActionSequence("Bro_"+id, 
-					reader.getSequence("Data/MakingBrownie/"+id+"/labels.dat")));
-		}
-		
-		
-		// // // // // // // // // // // // // // // // // // // // // // 
-		// GLOBAL ALIGNMENT		
-		
-		// comparison without WUP
-//		computeAndPrintGlobalAlignment(brownies, null);
-//		computeAndPrintGlobalAlignment(eggs, null);
-
-		// comparison with WUP
-//		computeAndPrintGlobalAlignment(brownies, ontology);
-		computeAndPrintGlobalAlignment(eggs, ontology);
+				brownies.put("Bro_"+id, new ActionSequence("Bro_"+id, 
+						reader.getSequence("Data/MakingBrownie/"+id+"/labels.dat")));
+			}
 
 
-		// // // // // // // // // // // // // // // // // // // // // // 
-		// LOCAL ALIGNMENT
-		
-		// comparison without WUP
-//		computeAndPrintLocalAlignment(brownies, null);
-//		computeAndPrintLocalAlignment(eggs, null);
+			// // // // // // // // // // // // // // // // // // // // // // 
+			// GLOBAL ALIGNMENT		
 
-		// comparison with WUP
-//		computeAndPrintLocalAlignment(brownies, ontology);
-//		computeAndPrintLocalAlignment(eggs, ontology);
-		
+			String outpath = "results/weights_0.3_0.55_0.05_0.1/";
 
-		// // // // // // // // // // // // // // // // // // // // // // 
-		// SIMILARITY MATRIX EGGS/BROWNIES
-		
-//		ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
-//		aList.addAll(brownies.values());
-//		aList.addAll(eggs.values());
-//		
-//		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-//		System.out.println("SIMILARITY MATRIX WITHOUT WUP");
-//		
-//		ConfusionMatrix cm_nowup = new ConfusionMatrix(aList);
-//		cm_nowup.printConfusionMatrix();
-//
-//		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-//		System.out.println("SIMILARITY MATRIX WITH WUP");
-//		
-//		ConfusionMatrix cm_wup = new ConfusionMatrix(aList, ontology);
-//		cm_wup.printConfusionMatrix();
-		
-	}
-	
-	
-	@SuppressWarnings("unused")
-	private static void computeAndPrintLocalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology) {
+			// comparison without WUP
+			computeAndPrintGlobalAlignment(brownies, null, outpath + "pairwise-global-alignment-brownies-nowup");
+			computeAndPrintGlobalAlignment(eggs, null, outpath + "pairwise-global-alignment-eggs-nowup");
 
-		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-		System.out.println("SMITH-WATERMAN PAIRWISE LOCAL ALIGNMENTS");
-		
-		ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
-		for(int i=0;i<seqs.size();i++) {
-			
-			System.out.println("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-			System.out.println("COMPARING " + seqs.get(i).getIdentifier() + " WITH " + seqs.get((i+1)%seqs.size()).getIdentifier());
-			
-			SmithWaterman ndl1;
-			if(ontology!=null)
-				ndl1 = new SmithWaterman(seqs.get(i), seqs.get((i+1)%seqs.size()), ontology);
-			else 
-				ndl1 = new SmithWaterman(seqs.get(i), seqs.get((i+1)%seqs.size()));
-			
-			//ndl1.printMatrix();
-			//ndl1.printTraceback();
-			ndl1.printAlignment();
-		}
-		
-	}
+			// comparison with WUP
+			computeAndPrintGlobalAlignment(brownies, ontology, outpath + "pairwise-global-alignment-brownies-wup");
+			computeAndPrintGlobalAlignment(eggs, ontology, outpath + "pairwise-global-alignment-eggs-wup");
 
-	
-	@SuppressWarnings("unused")
-	public static void computeAndPrintGlobalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology) {
-		
-		System.out.println("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-		System.out.println("NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS");
-		
-		ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
-		for(int i=0;i<seqs.size();i++) {
-			
-			System.out.println("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-			System.out.println("COMPARING " + seqs.get(i).getIdentifier() + " WITH " + seqs.get((i+1)%seqs.size()).getIdentifier());
-			
-			NeedlemanWunsch ndl1;
-			if(ontology!=null)
-				ndl1 = new NeedlemanWunsch(seqs.get(i), seqs.get((i+1)%seqs.size()), ontology);
-			else 
-				ndl1 = new NeedlemanWunsch(seqs.get(i), seqs.get((i+1)%seqs.size()));
-			
-			//ndl1.printMatrix();
-			//ndl1.printTraceback();
-			ndl1.printAlignment();
+
+			// // // // // // // // // // // // // // // // // // // // // // 
+			// LOCAL ALIGNMENT
+
+			// comparison without WUP
+			computeAndPrintLocalAlignment(brownies, null, outpath + "pairwise-local-alignment-brownies-nowup");
+			computeAndPrintLocalAlignment(eggs, null, outpath + "pairwise-local-alignment-eggs-nowup");
+
+			// comparison with WUP
+			computeAndPrintLocalAlignment(brownies, ontology, outpath + "pairwise-local-alignment-brownies-wup");
+			computeAndPrintLocalAlignment(eggs, ontology, outpath + "pairwise-local-alignment-eggs-wup");
+
+
+			// // // // // // // // // // // // // // // // // // // // // // 
+			// SIMILARITY MATRIX EGGS/BROWNIES
+
+			ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
+			aList.addAll(brownies.values());
+			aList.addAll(eggs.values());
+
+
+			Writer out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-nowup")));
+
+
+			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+			out.write("SIMILARITY MATRIX WITHOUT WUP\n");
+
+			ConfusionMatrix cm_nowup = new ConfusionMatrix(aList);
+			out.write(cm_nowup.printConfusionMatrix());
+			out.close();
+
+
+			out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-wup")));
+
+			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+			out.write("SIMILARITY MATRIX WITH WUP\n");
+
+			ConfusionMatrix cm_wup = new ConfusionMatrix(aList, ontology);
+			out.write(cm_wup.printConfusionMatrix());
+			out.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
+
+	private static void computeAndPrintLocalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology, String outfile) throws IOException {
+
+		Writer out = new OutputStreamWriter(new FileOutputStream(new File(outfile)));
+		try {
+
+			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+			out.write("SMITH-WATERMAN PAIRWISE LOCAL ALIGNMENTS\n");
+
+			ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
+
+			for(ActionSequence seqA : seqs) {
+				for(ActionSequence seqB : seqs) {
+
+					if(seqA==seqB) continue;
+
+					out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+					out.write("COMPARING " + seqA.getIdentifier() + " WITH " + seqB.getIdentifier());
+
+					SmithWaterman smw;
+					if(ontology!=null)
+						smw = new SmithWaterman(seqA, seqB, ontology);
+					else 
+						smw = new SmithWaterman(seqA, seqB);
+
+					//ndl1.printMatrix();
+					//ndl1.printTraceback();
+					out.write(smw.printAlignment());
+				}
+			}
+
+		} finally {
+			out.close();
+		}
+
+	}
+
+
+	public static void computeAndPrintGlobalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology, String outfile) throws IOException {
+
+		Writer out = new OutputStreamWriter(new FileOutputStream(new File("outfile")));
+		try {
+
+			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+			out.write("NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS\n");
+
+			ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
+
+
+
+			for(ActionSequence seqA : seqs) {
+				for(ActionSequence seqB : seqs) {
+
+					if(seqA==seqB) continue;
+
+
+					out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+					out.write("COMPARING " + seqA.getIdentifier() + " WITH " + seqB.getIdentifier() + "\n");
+
+					NeedlemanWunsch ndl;
+					if(ontology!=null)
+						ndl = new NeedlemanWunsch(seqA, seqB, ontology);
+					else 
+						ndl = new NeedlemanWunsch(seqA, seqB);
+
+					//ndl1.printMatrix();
+					//ndl1.printTraceback();
+					out.write(ndl.printAlignment());
+				}
+			}
+
+		} finally {
+			out.close();
+		}
+	}
 }
