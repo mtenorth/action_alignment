@@ -16,9 +16,9 @@ public abstract class AlignmentAlgorithm {
 	
 	//the sum of alpha, beta, gamma and delta must be 1
 	public static double weight_act = 0.3;
-	public static double weight_obj1 = 0.55;
-	public static double weight_prep = 0.05;
-	public static double weight_obj2 = 0.1;
+	public static double weight_obj1 = 0.4;
+	public static double weight_prep = 0.1;
+	public static double weight_obj2 = 0.2;
 	
 	protected double exponent = 3;
 

@@ -11,6 +11,7 @@ NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S06 WITH Bro_S07
+
                                                  | - take big-bowl  
                         take measuring-cup-small   - take measuring-cup-small  
                           take measuring-cup-big   - take measuring-cup-big  
@@ -83,13 +84,14 @@ COMPARING Bro_S06 WITH Bro_S07
                                                  | - none   
 
 Length seq1 = 50; length seq2 = 58
-alignment score: 0.85
+alignment score: 0.7
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S07 WITH Bro_S08
+
                                    take big-bowl   - take big-bowl  
                         take measuring-cup-small   - take measuring-cup-small  
                           take measuring-cup-big   - take measuring-cup-big  
@@ -169,13 +171,14 @@ COMPARING Bro_S07 WITH Bro_S08
                                                  | - none   
 
 Length seq1 = 58; length seq2 = 54
-alignment score: 0.81
+alignment score: 0.63
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S08 WITH Bro_S09
+
                                                  | - take brownie-box  
                                                  | - read brownie-box  
                                                  | - none   
@@ -266,13 +269,14 @@ COMPARING Bro_S08 WITH Bro_S09
                                            none    - none   
 
 Length seq1 = 54; length seq2 = 70
-alignment score: 0.79
+alignment score: 0.58
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S09 WITH Bro_S10
+
                                 take brownie-box   - |
                                 read brownie-box   - |
                                            none    - |
@@ -363,13 +367,14 @@ COMPARING Bro_S09 WITH Bro_S10
                                                  | - put baking-pan into oven
 
 Length seq1 = 70; length seq2 = 63
-alignment score: 0.84
+alignment score: 0.68
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S10 WITH Bro_S12
+
                                                  | - none   
                                                  | - take oil  
                                                  | - take pam  
@@ -449,13 +454,14 @@ COMPARING Bro_S10 WITH Bro_S12
                           put baking-pan into oven - put baking-pan into oven
 
 Length seq1 = 63; length seq2 = 60
-alignment score: 0.87
+alignment score: 0.75
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S12 WITH Bro_S13
+
                                                  | - walk  to fridge
                                                  | - open fridge  
                                            none    - none   
@@ -587,13 +593,14 @@ COMPARING Bro_S12 WITH Bro_S13
                                                  | - none   
 
 Length seq1 = 60; length seq2 = 107
-alignment score: 0.73
+alignment score: 0.46
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S13 WITH Bro_S14
+
                                    walk  to fridge - |
                                      open fridge   - |
                                            none    - |
@@ -646,16 +653,15 @@ COMPARING Bro_S13 WITH Bro_S14
                          open cupboard-top-right   - |
                                            none    - none   
                                         take oil   - |
-                                                 | - pour oil into big-bowl
-                                           none    - none   
+                                           none    - |
                                 read brownie-box   - |
                                            none    - |
                                 read brownie-box   - |
                                            none    - |
                                    twist-off cap   - |
                                            none    - |
-                 pour oil into measuring-cup-small - |
-                                           none    - |
+                 pour oil into measuring-cup-small - pour oil into big-bowl
+                                           none    - none   
                                     twist-on cap   - twist-on cap  
                                                  | - put oil into cupboard-bottom-right
                                            none    - none   
@@ -711,13 +717,14 @@ COMPARING Bro_S13 WITH Bro_S14
                                                  | - switch-on   
 
 Length seq1 = 107; length seq2 = 39
-alignment score: 0.71
+alignment score: 0.43
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S14 WITH Bro_S16
+
                                 take brownie-box   - take brownie-box  
                                            none    - |
                                            none    - |
@@ -797,13 +804,14 @@ COMPARING Bro_S14 WITH Bro_S16
                                                  | - none   
 
 Length seq1 = 39; length seq2 = 65
-alignment score: 0.76
+alignment score: 0.52
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S16 WITH Bro_S17
+
                                 take brownie-box   - take brownie-box  
                         take measuring-cup-small   - take measuring-cup-small  
                           take measuring-cup-big   - take measuring-cup-big  
@@ -849,10 +857,9 @@ COMPARING Bro_S16 WITH Bro_S17
                             pour oil into big-bowl - |
                                            none    - none   
                                     twist-on cap   - twist-on cap  
-                put oil into cupboard-bottom-right - |
-                                           none    - none   
-                                                 | - pour oil into big-bowl
                                                  | - none   
+                put oil into cupboard-bottom-right - pour oil into big-bowl
+                                           none    - none   
                                                  | - put oil into cupboard-bottom-right
                                                  | - walk  to fridge
                                                  | - open fridge  
@@ -892,13 +899,14 @@ COMPARING Bro_S16 WITH Bro_S17
                                            none    - none   
 
 Length seq1 = 65; length seq2 = 56
-alignment score: 0.79
+alignment score: 0.58
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S17 WITH Bro_S18
+
                                 take brownie-box   - take brownie-box  
                                                  | - take big-bowl  
                                                  | - none   
@@ -982,13 +990,14 @@ COMPARING Bro_S17 WITH Bro_S18
                                            none    - none   
 
 Length seq1 = 56; length seq2 = 60
-alignment score: 0.8
+alignment score: 0.6
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S18 WITH Bro_S19
+
                                 take brownie-box   - take brownie-box  
                                    take big-bowl   - |
                                            none    - |
@@ -1072,35 +1081,35 @@ COMPARING Bro_S18 WITH Bro_S19
                                            none    - none   
 
 Length seq1 = 60; length seq2 = 63
-alignment score: 0.84
+alignment score: 0.68
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S19 WITH Bro_S20
+
                                 take brownie-box   - take brownie-box  
                         take measuring-cup-small   - |
-                                                 | - take brownie-box  
-                                                 | - none   
-                                                 | - read brownie-box  
-                                                 | - none   
-                                                 | - take big-bowl  
-                                                 | - take big-bowl  
-                          take measuring-cup-big   - take measuring-cup-big  
-                 pour water into measuring-cup-big - pour water into measuring-cup-big
+                          take measuring-cup-big   - |
+                 pour water into measuring-cup-big - |
                                    take big-bowl   - |
+                                                 | - take brownie-box  
+                                           none    - none   
+                                                 | - read brownie-box  
+                                           none    - none   
+                                open brownie-box   - |
+                                           none    - |
+                                                 | - take big-bowl  
+                                                 | - take big-bowl  
+                                                 | - take measuring-cup-big  
+                          pour water into big-bowl - pour water into measuring-cup-big
                                                  | - take measuring-cup-small  
                                                  | - take oil  
                                                  | - twist-off cap  
                                                  | - pour oil into measuring-cup-small
                                                  | - twist-on cap  
                                            none    - none   
-                                           none    - |
-                                open brownie-box   - |
-                                           none    - |
-                          pour water into big-bowl - |
-                                           none    - |
                                    walk  to fridge - walk  to fridge
                                      open fridge   - open fridge  
                                         take egg   - take egg  
@@ -1168,13 +1177,14 @@ COMPARING Bro_S19 WITH Bro_S20
                                            none    - none   
 
 Length seq1 = 63; length seq2 = 59
-alignment score: 0.79
+alignment score: 0.58
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S20 WITH Bro_S22
+
                                 take brownie-box   - take brownie-box  
                                 take brownie-box   - |
                                            none    - |
@@ -1265,13 +1275,14 @@ COMPARING Bro_S20 WITH Bro_S22
                                            none    - none   
 
 Length seq1 = 59; length seq2 = 66
-alignment score: 0.8
+alignment score: 0.59
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S22 WITH Bro_S23
+
                                 take brownie-box   - |
                                    take big-bowl   - take big-bowl  
                         take measuring-cup-small   - take measuring-cup-small  
@@ -1361,13 +1372,14 @@ COMPARING Bro_S22 WITH Bro_S23
                                            none    - none   
 
 Length seq1 = 66; length seq2 = 64
-alignment score: 0.83
+alignment score: 0.66
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S23 WITH Bro_S24
+
                                    take big-bowl   - take big-bowl  
                         take measuring-cup-small   - |
                           take measuring-cup-big   - |
@@ -1460,13 +1472,14 @@ COMPARING Bro_S23 WITH Bro_S24
                                            none    - none   
 
 Length seq1 = 64; length seq2 = 60
-alignment score: 0.77
+alignment score: 0.55
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Bro_S24 WITH Bro_S06
+
                                                  | - take measuring-cup-small  
                                                  | - take measuring-cup-big  
                                    take big-bowl   - take big-bowl  
@@ -1482,72 +1495,70 @@ COMPARING Bro_S24 WITH Bro_S06
                                            none    - none   
                                        crack egg   - crack egg  
                                            none    - none   
-                                       crack egg   - |
-                                           none    - |
+                                       crack egg   - stir egg  
+                                           none    - none   
                           open cupboard-top-left   - |
                                 take brownie-box   - |
-                                           none    - |
-                                       take fork   - |
-                                           none    - |
-                                        stir egg   - stir egg  
+                                                 | - pour water into big-bowl
                                            none    - none   
-                                open brownie-box   - |
-                                           none    - |
+                                       take fork   - |
+                                                 | - take oil  
+                                                 | - twist-off cap  
+                                           none    - none   
+                                        stir egg   - |
+                                                 | - pour oil into measuring-cup-small
+                                                 | - twist-on cap  
+                                                 | - put oil into cupboard-bottom-right
+                                           none    - none   
+                                open brownie-box   - open brownie-box  
+                                           none    - none   
                                      open drawer   - |
                                    take scissors   - |
-                                open brownie-bag   - |
+                                open brownie-bag   - open brownie-bag  
                                 open brownie-bag   - |
                                 read brownie-box   - |
                                 open brownie-bag   - |
-                    pour brownie-bag into big-bowl - |
-                                           none    - |
+                    pour brownie-bag into big-bowl - pour brownie-bag into big-bowl
+                                           none    - none   
                                    stir big-bowl   - |
-                                           none    - |
+                                                 | - pour oil into big-bowl
+                                           none    - none   
                         take measuring-cup-small   - |
                           take measuring-cup-big   - |
                  pour water into measuring-cup-big - |
-                          pour water into big-bowl - pour water into big-bowl
-                                           none    - none   
-                                   stir big-bowl   - |
+                          pour water into big-bowl - |
                                            none    - |
-                    pour brownie-bag into big-bowl - |
-                                           none    - |
-                                        take oil   - take oil  
-                                           none    - |
-                                   twist-off cap   - twist-off cap  
-                                           none    - none   
-                 pour oil into measuring-cup-small - pour oil into measuring-cup-small
-                                           none    - |
-                                    twist-on cap   - twist-on cap  
-                put oil into cupboard-bottom-right - put oil into cupboard-bottom-right
-                                           none    - none   
-                          put scissors into drawer - |
-                                                 | - open brownie-box  
-                                                 | - none   
-                                                 | - open brownie-bag  
-                                                 | - pour brownie-bag into big-bowl
-                                                 | - none   
-                            pour oil into big-bowl - pour oil into big-bowl
-                                           none    - none   
                                    stir big-bowl   - stir big-bowl  
                                            none    - none   
-                                 take baking-pan   - take baking-pan  
+                    pour brownie-bag into big-bowl - |
+                                                 | - take baking-pan  
                                            none    - none   
-                     pour big-bowl into baking-pan - |
+                                        take oil   - |
+                                           none    - |
+                                   twist-off cap   - |
+                                           none    - |
+                 pour oil into measuring-cup-small - |
+                                           none    - |
+                                    twist-on cap   - |
                                                  | - spray pam  
-                                                 | - put pam into cupboard-bottom-right
+                put oil into cupboard-bottom-right - put pam into cupboard-bottom-right
                                            none    - none   
-                                                 | - stir big-bowl  
-                                                 | - none   
-                                      switch-on    - switch-on   
-                                                 | - none   
-                                                 | - pour big-bowl into baking-pan
-                                                 | - none   
+                          put scissors into drawer - |
+                            pour oil into big-bowl - |
+                                           none    - |
+                                   stir big-bowl   - stir big-bowl  
+                                           none    - none   
+                                 take baking-pan   - |
+                                                 | - switch-on   
+                                           none    - none   
+                     pour big-bowl into baking-pan - pour big-bowl into baking-pan
+                                           none    - none   
+                                      switch-on    - |
                                                  | - pour big-bowl into baking-pan
                                                  | - none   
                           put baking-pan into oven - put baking-pan into oven
                                            none    - none   
 
 Length seq1 = 60; length seq2 = 50
-alignment score: 0.77
+alignment score: 0.55
 

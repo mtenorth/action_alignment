@@ -11,6 +11,7 @@ NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S06 WITH Egg_S07
+
                                            none    - none   
                        open cupboard-bottom-left   - |
          take frying-pan from cupboard-bottom-left - |
@@ -96,13 +97,14 @@ COMPARING Egg_S06 WITH Egg_S07
                                            none    - none   
 
 Length seq1 = 52; length seq2 = 50
-alignment score: 0.69
+alignment score: 0.37
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S07 WITH Egg_S08
+
                                            none    - none   
                          open cupboard-top-right   - |
            take small-bowl from cupboard-top-right - |
@@ -183,13 +185,14 @@ COMPARING Egg_S07 WITH Egg_S08
                                            none    - |
 
 Length seq1 = 50; length seq2 = 49
-alignment score: 0.71
+alignment score: 0.42
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S08 WITH Egg_S09
+
                                            none    - none   
                                                  | - open cupboard-top-right  
                                                  | - take plate from cupboard-top-right
@@ -266,13 +269,14 @@ COMPARING Egg_S08 WITH Egg_S09
                                            none    - none   
 
 Length seq1 = 49; length seq2 = 53
-alignment score: 0.77
+alignment score: 0.55
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S09 WITH Egg_S11
+
                                            none    - none   
                          open cupboard-top-right   - |
                 take plate from cupboard-top-right - |
@@ -345,13 +349,14 @@ COMPARING Egg_S09 WITH Egg_S11
                                            none    - |
 
 Length seq1 = 53; length seq2 = 46
-alignment score: 0.79
+alignment score: 0.59
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S11 WITH Egg_S12
+
                                            none    - none   
                        open cupboard-bottom-left   - open cupboard-bottom-left  
          take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
@@ -434,13 +439,14 @@ COMPARING Egg_S11 WITH Egg_S12
                                                  | - none   
 
 Length seq1 = 46; length seq2 = 55
-alignment score: 0.71
+alignment score: 0.42
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S12 WITH Egg_S13
+
                                            none    - none   
                        open cupboard-bottom-left   - |
          take frying-pan from cupboard-bottom-left - |
@@ -602,13 +608,14 @@ COMPARING Egg_S12 WITH Egg_S13
                                                  | - none   
 
 Length seq1 = 55; length seq2 = 126
-alignment score: 0.62
+alignment score: 0.24
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S13 WITH Egg_S14
+
                                            none    - none   
                                                  | - open cupboard-top-right  
                                                  | - take small-bowl from cupboard-top-right
@@ -773,13 +780,14 @@ COMPARING Egg_S13 WITH Egg_S14
                                            none    - |
 
 Length seq1 = 126; length seq2 = 69
-alignment score: 0.67
+alignment score: 0.34
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S14 WITH Egg_S15
+
                                            none    - none   
                          open cupboard-top-right   - |
            take small-bowl from cupboard-top-right - |
@@ -877,13 +885,14 @@ COMPARING Egg_S14 WITH Egg_S15
                                            none    - none   
 
 Length seq1 = 69; length seq2 = 46
-alignment score: 0.67
+alignment score: 0.35
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S15 WITH Egg_S16
+
                                            none    - none   
                                                  | - open cupboard-top-right  
                                                  | - take small-bowl from cupboard-bottom-right
@@ -996,13 +1005,14 @@ COMPARING Egg_S15 WITH Egg_S16
                                            none    - none   
 
 Length seq1 = 46; length seq2 = 79
-alignment score: 0.62
+alignment score: 0.24
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S16 WITH Egg_S17
+
                                            none    - none   
                          open cupboard-top-right   - |
         take small-bowl from cupboard-bottom-right - |
@@ -1124,13 +1134,14 @@ COMPARING Egg_S16 WITH Egg_S17
                                            none    - none   
 
 Length seq1 = 79; length seq2 = 57
-alignment score: 0.63
+alignment score: 0.25
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S17 WITH Egg_S19
+
                                            none    - none   
                        open cupboard-bottom-left   - open cupboard-bottom-left  
          take frying-pan from cupboard-bottom-left - take frying-pan from cupboard-bottom-left
@@ -1210,13 +1221,14 @@ COMPARING Egg_S17 WITH Egg_S19
                                            none    - none   
 
 Length seq1 = 57; length seq2 = 49
-alignment score: 0.77
+alignment score: 0.55
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S19 WITH Egg_S20
+
                                            none    - none   
                                                  | - open cupboard-top-right  
                                                  | - take small-bowl from cupboard-top-right
@@ -1318,13 +1330,14 @@ COMPARING Egg_S19 WITH Egg_S20
                                            none    - none   
 
 Length seq1 = 49; length seq2 = 72
-alignment score: 0.68
+alignment score: 0.36
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S20 WITH Egg_S25
+
                                            none    - none   
                                                  | - open cupboard-bottom-left  
                                                  | - take frying-pan from cupboard-bottom-left
@@ -1428,13 +1441,14 @@ COMPARING Egg_S20 WITH Egg_S25
                                            none    - none   
 
 Length seq1 = 72; length seq2 = 46
-alignment score: 0.64
+alignment score: 0.29
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S25 WITH Egg_S53
+
                                            none    - none   
                        open cupboard-bottom-left   - |
          take frying-pan from cupboard-bottom-left - |
@@ -1507,13 +1521,14 @@ COMPARING Egg_S25 WITH Egg_S53
                                            none    - none   
 
 Length seq1 = 46; length seq2 = 44
-alignment score: 0.72
+alignment score: 0.44
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S53 WITH Egg_S54
+
                                            none    - none   
                                  switch-on stove   - |
                          open cupboard-top-right   - |
@@ -1593,13 +1608,14 @@ COMPARING Egg_S53 WITH Egg_S54
                                            none    - none   
 
 Length seq1 = 44; length seq2 = 55
-alignment score: 0.72
+alignment score: 0.44
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S54 WITH Egg_S55
+
                                            none    - none   
                                    walk  to fridge - walk  to fridge
                                      open fridge   - open fridge  
@@ -1675,13 +1691,14 @@ COMPARING Egg_S54 WITH Egg_S55
                                            none    - none   
 
 Length seq1 = 55; length seq2 = 47
-alignment score: 0.78
+alignment score: 0.57
 
 
 
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 COMPARING Egg_S55 WITH Egg_S06
+
                                            none    - none   
                                    walk  to fridge - |
                                      open fridge   - |
@@ -1771,5 +1788,5 @@ COMPARING Egg_S55 WITH Egg_S06
                                            none    - none   
 
 Length seq1 = 47; length seq2 = 52
-alignment score: 0.62
+alignment score: 0.24
 
