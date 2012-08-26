@@ -23,13 +23,8 @@ public class SmithWaterman extends AlignmentAlgorithm{
 	 * @param aSeq1 first ActionSequence
 	 * @param aSeq2 second ActionSequence
 	 */
-	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2) {
-		
-		match = 1.0;
-		mismatch = -1.5;
-		gap = -0.75;
-		
-		calculate(aSeq1, aSeq2, null);
+	public SmithWaterman(ActionSequence aSeq1, ActionSequence aSeq2) {		
+		this(aSeq1, aSeq2, null);
 	}
 	
 	/**
@@ -191,7 +186,7 @@ public class SmithWaterman extends AlignmentAlgorithm{
 				calculateAlignmentRecursive(m, n);
 			}
 		}
-		res += "global alignments:\n";
+		res += "local alignments:\n";
 		
 		for (int i = pointer - 1; i >= 0; i--){
 			// if "ln" println for a space between the next local alignment
@@ -202,7 +197,7 @@ public class SmithWaterman extends AlignmentAlgorithm{
 				for (int k = 50 - s1.length(); k > 0; k--) {
 					res += " ";
 				}
-				res += s1 + " , " + s2 + "\n";
+				res += s1 + " - " + s2 + "\n";
 			} else {
 				res += "\n";
 			}

@@ -16,7 +16,6 @@ public class Translator {
 	public Translator() {
 
 		translateMap.put("none", "Nothing");
-		translateMap.put("", "");
 		
 		translateMap.put("take", "TakingSomething");
 		translateMap.put("put", "PuttingSomethingSomewhere");
@@ -64,8 +63,8 @@ public class Translator {
 		translateMap.put("sink", "Sink");
 		translateMap.put("baking_pan", "CakePan");
 		translateMap.put("frying_pan", "Skillet");
-		translateMap.put("measuring_cup_big", "MeasuringCup-Big");
-		translateMap.put("measuring_cup_small", "MeasuringCup-Small");
+		translateMap.put("measuring-cup-big", "MeasuringCup-Big");
+		translateMap.put("measuring-cup-small", "MeasuringCup-Small");
 		translateMap.put("big_bowl", "Bowl-Mixing");
 		translateMap.put("small_bowl", "Bowl-Mixing");
 		translateMap.put("paper_towel", "PaperTowel");

@@ -15,10 +15,10 @@ public abstract class AlignmentAlgorithm {
 	protected double gap = 0;
 	
 	//the sum of alpha, beta, gamma and delta must be 1
-	protected double weight_act = 0.3;
-	protected double weight_obj1 = 0.55;
-	protected double weight_prep = 0.05;
-	protected double weight_obj2 = 0.1;
+	public static double weight_act = 0.3;
+	public static double weight_obj1 = 0.55;
+	public static double weight_prep = 0.05;
+	public static double weight_obj2 = 0.1;
 	
 	protected double exponent = 3;
 
@@ -145,18 +145,19 @@ public abstract class AlignmentAlgorithm {
 			
 			compare = weight_act * sim_act + weight_obj1 * sim_obj1 + weight_prep * sim_prep + weight_obj2 * sim_obj2;
 			
-			// weight with the length of the sequences: 
+			// weight with the length of the sequences? 
 			// since we assign zero if either element is empty, we compare 
 			// only len(shorter) elements and therefore have to divide by that value
 			
-			compare /= elemCnt;
-			
-			
+//			if(elemCnt!=0)
+//				compare /= ((float) elemCnt);
+//			else 
+//				compare =0;
+
 			//standardize on [-1;1]
 			compare = -1.0 + 2.0 * compare;
 			
-			
-			
+
 			return compare;
 		}
 	}

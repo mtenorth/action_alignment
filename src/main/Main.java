@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import alignmentAlgorithm.AlignmentAlgorithm;
 import alignmentAlgorithm.NeedlemanWunsch;
 import alignmentAlgorithm.SmithWaterman;
 
@@ -70,7 +71,10 @@ public class Main {
 			// // // // // // // // // // // // // // // // // // // // // // 
 			// GLOBAL ALIGNMENT		
 
-			String outpath = "results/weights_0.3_0.55_0.05_0.1/";
+			String outpath = "results/weights_"+AlignmentAlgorithm.weight_act+"_"+
+												AlignmentAlgorithm.weight_obj1+"_"+
+												AlignmentAlgorithm.weight_prep+"_"+
+												AlignmentAlgorithm.weight_obj2+"/";
 
 			// comparison without WUP
 			computeAndPrintGlobalAlignment(brownies, null, outpath + "pairwise-global-alignment-brownies-nowup");
@@ -96,31 +100,31 @@ public class Main {
 			// // // // // // // // // // // // // // // // // // // // // // 
 			// SIMILARITY MATRIX EGGS/BROWNIES
 
+			Writer out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-nowup")));
+			
 			ArrayList<ActionSequence> aList = new ArrayList<ActionSequence>();
 			aList.addAll(brownies.values());
 			aList.addAll(eggs.values());
-
-
-			Writer out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-nowup")));
-
-
+			
 			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
 			out.write("SIMILARITY MATRIX WITHOUT WUP\n");
-
+			out.close();
+			
+			
+			out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-wup")));
+			
 			ConfusionMatrix cm_nowup = new ConfusionMatrix(aList);
 			out.write(cm_nowup.printConfusionMatrix());
-			out.close();
-
-
-			out = new OutputStreamWriter(new FileOutputStream(new File(outpath + "confusion-matrix-wup")));
-
+	
 			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
 			out.write("SIMILARITY MATRIX WITH WUP\n");
-
+			
 			ConfusionMatrix cm_wup = new ConfusionMatrix(aList, ontology);
 			out.write(cm_wup.printConfusionMatrix());
 			out.close();
-
+			
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -129,34 +133,28 @@ public class Main {
 
 	private static void computeAndPrintLocalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology, String outfile) throws IOException {
 
-		Writer out = new OutputStreamWriter(new FileOutputStream(new File(outfile)));
+		Writer out = new OutputStreamWriter(new FileOutputStream(outfile));
 		try {
 
 			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
 			out.write("SMITH-WATERMAN PAIRWISE LOCAL ALIGNMENTS\n");
 
 			ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
+			for(int i=0;i<seqs.size();i++) {
 
-			for(ActionSequence seqA : seqs) {
-				for(ActionSequence seqB : seqs) {
+				out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+				out.write("COMPARING " + seqs.get(i).getIdentifier() + " WITH " + seqs.get((i+1)%seqs.size()).getIdentifier()+"\n\n");
 
-					if(seqA==seqB) continue;
+				SmithWaterman smw;
+				if(ontology!=null)
+					smw = new SmithWaterman(seqs.get(i), seqs.get((i+1)%seqs.size()), ontology);
+				else 
+					smw = new SmithWaterman(seqs.get(i), seqs.get((i+1)%seqs.size()));
 
-					out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
-					out.write("COMPARING " + seqA.getIdentifier() + " WITH " + seqB.getIdentifier());
-
-					SmithWaterman smw;
-					if(ontology!=null)
-						smw = new SmithWaterman(seqA, seqB, ontology);
-					else 
-						smw = new SmithWaterman(seqA, seqB);
-
-					//ndl1.printMatrix();
-					//ndl1.printTraceback();
-					out.write(smw.printAlignment());
-				}
+				//ndl1.printMatrix();
+				//ndl1.printTraceback();
+				out.write(smw.printAlignment());
 			}
-
 		} finally {
 			out.close();
 		}
@@ -166,35 +164,27 @@ public class Main {
 
 	public static void computeAndPrintGlobalAlignment(HashMap<String, ActionSequence> experiment, Ontology ontology, String outfile) throws IOException {
 
-		Writer out = new OutputStreamWriter(new FileOutputStream(new File("outfile")));
+		Writer out = new OutputStreamWriter(new FileOutputStream(outfile));
 		try {
 
 			out.write("\n\n\n\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
 			out.write("NEEDLEMAN-WUNSCH PAIRWISE GLOBAL ALIGNMENTS\n");
 
 			ArrayList<ActionSequence> seqs = new ArrayList<ActionSequence>(experiment.values());
+			for(int i=0;i<seqs.size();i++) {
 
+				out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
+				out.write("COMPARING " + seqs.get(i).getIdentifier() + " WITH " + seqs.get((i+1)%seqs.size()).getIdentifier() + "\n\n");
 
+				NeedlemanWunsch ndl;
+				if(ontology!=null)
+					ndl = new NeedlemanWunsch(seqs.get(i), seqs.get((i+1)%seqs.size()), ontology);
+				else 
+					ndl = new NeedlemanWunsch(seqs.get(i), seqs.get((i+1)%seqs.size()));
 
-			for(ActionSequence seqA : seqs) {
-				for(ActionSequence seqB : seqs) {
-
-					if(seqA==seqB) continue;
-
-
-					out.write("\n\n\n= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
-					out.write("COMPARING " + seqA.getIdentifier() + " WITH " + seqB.getIdentifier() + "\n");
-
-					NeedlemanWunsch ndl;
-					if(ontology!=null)
-						ndl = new NeedlemanWunsch(seqA, seqB, ontology);
-					else 
-						ndl = new NeedlemanWunsch(seqA, seqB);
-
-					//ndl1.printMatrix();
-					//ndl1.printTraceback();
-					out.write(ndl.printAlignment());
-				}
+				//ndl1.printMatrix();
+				//ndl1.printTraceback();
+				out.write(ndl.printAlignment());
 			}
 
 		} finally {

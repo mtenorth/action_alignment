@@ -38,7 +38,7 @@ public class NeedlemanWunsch extends AlignmentAlgorithm {
 		
 		match = 1;
 		mismatch = -1;
-		gap = 0.25;
+		gap = 0.0;
 				
 		calculate(aSeq1, aSeq2, ontology);
 	}
