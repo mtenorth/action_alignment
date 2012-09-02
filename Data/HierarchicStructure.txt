@@ -1,0 +1,3 @@
+PuttingSomethingSomewhere: PickingUpAnObject-CarryingWhileLocomoting-PuttingDownAnObject
+PickingUpAnObject: Reaching-TakingSomething
+PuttingDownAnObject: LoweringAnObject-ReleasingGraspOfSomething
