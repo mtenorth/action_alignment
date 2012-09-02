@@ -1,0 +1,34 @@
+
+COMPARING Egg_S12 WITH Egg_S13
+
+
+COMPARING Egg_S13 WITH Egg_S14
+
+COMPARING Egg_S16 WITH Egg_S17 partly
+
+COMPARING Egg_S20 WITH Egg_S25
+
+ beat egg with fork - stir small-bowl with fork
+ switch-on stove   - switch-on stove  
+ 
+ 
+ LOCAL:
+ COMPARING Egg_S09 WITH Egg_S11
+ 
+ 
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+COMPARING Egg_S55 WITH Egg_S06local alignments:
+
+                none    - none   
+        walk  to fridge - walk  to fridge
+          open fridge   - open fridge  
+         open egg-box   - |
+  take egg from egg-box - take egg from fridge
+        close egg-box   - |
+         close fridge   - close fridge  
+       walk  to counter - walk  to counter
+
+vs. only
+          none    - none   
+  walk  to fridge - walk  to fridge
+    open fridge   - open fridge 
